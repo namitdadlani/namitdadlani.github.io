@@ -5,11 +5,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello! This website is under construction, please check back later...
-        </p>
-		<p>Till then you can check out my <a href="https://www.linkedin.com/in/namit-dadlani">Linkedin</a>!</p>
+        <h2>~ Hello! ~</h2>
+        <h3>
+          This website is under construction and will be up soon!
+        </h3>
+        <p>Till then you can check out my <a href="https://www.linkedin.com/in/namit-dadlani" className='App-link'>Linkedin</a>.</p>
       </header>
     </div>
   );
