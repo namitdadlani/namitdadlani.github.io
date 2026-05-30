@@ -332,6 +332,49 @@
       border: 1px solid rgba(88, 166, 255, 0.2);
     }
 
+    /* ─── Education ─────────────────────────────────────── */
+    .edu-grid { display: flex; flex-direction: column; gap: 1rem; }
+
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.8rem;
+      transition: border-color var(--ease);
+    }
+    .edu-card:hover { border-color: var(--border-hover); }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.25rem;
+    }
+    .edu-degree {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .edu-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .edu-school {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+    .edu-location {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
     /* ─── Footer / Contact ─────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
@@ -417,6 +460,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -428,6 +472,7 @@
     <ul>
       <li><a href="#about"      onclick="closeMobileMenu()">About</a></li>
       <li><a href="#experience" onclick="closeMobileMenu()">Experience</a></li>
+      <li><a href="#education"  onclick="closeMobileMenu()">Education</a></li>
       <li><a href="#contact"    onclick="closeMobileMenu()">Contact</a></li>
     </ul>
   </div>
@@ -440,9 +485,9 @@
         <h1 class="hero-name">Namit Dadlani.</h1>
         <p class="hero-tagline">I build scalable backend systems.</p>
         <p class="hero-description">
-          Software Development Engineer with 6+ years of experience designing distributed systems
-          and cloud infrastructure. Most recently at AWS, where I helped scale infrastructure
-          provisioning across 38 regions and ~200,000 hosts.
+          Software Development Engineer with 6+ years of experience building backend systems,
+          distributed services, and APIs. Most recently a founding engineer at AWS, where I helped
+          build a platform adopted by 5 AWS products across 38 regions.
         </p>
         <div class="hero-cta">
           <a href="https://www.linkedin.com/in/namit-dadlani" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
@@ -472,20 +517,26 @@
       <div class="section-rule"></div>
       <div class="about-body fade-up">
         <p>
-          I'm a backend engineer based in <strong>Toronto, Canada</strong>, focused on distributed systems,
-          cloud infrastructure, and reliability engineering. I care about building systems that are
-          <strong>scalable, fault-tolerant, and well-architected</strong> — work where the engineering
-          decisions have lasting impact.
+          I'm a backend engineer based in <strong>Toronto</strong> with a focus on
+          <strong>distributed systems</strong>, <strong>API design</strong>, and building software
+          that operates reliably at scale.
         </p>
         <p>
-          At <strong>AWS</strong>, I was a founding engineer on a managed platform responsible for
-          provisioning compute, storage, and networking infrastructure across AWS data-planes —
-          operating at the scale of <strong>~200,000 hosts across 38 regions</strong>, supporting 5+
-          internal AWS services. I'm drawn to ownership-oriented work in complex, high-scale
-          infrastructure environments.
+          Most recently at <strong>AWS</strong>, I was a founding engineer on a 4-person team that
+          built a host provisioning platform from scratch - a backend service adopted by
+          <strong>5 AWS products</strong>, running across <strong>38 regions</strong> and supporting
+          <strong>~200K hosts</strong> at peak. The work spanned API design, event-driven architecture,
+          encryption, and cross-functional delivery. I like projects where the engineering decisions
+          matter and the ownership is real.
         </p>
         <p>
-          I'm open to exploring new opportunities.
+          Before AWS, I built backend services for a <strong>Medicaid eligibility system serving
+          1.6M+ citizens</strong> at Deloitte, where I learned to navigate complex systems, debug
+          deep, and ship carefully.
+        </p>
+        <p>
+          I'm currently looking for my next role - ideally somewhere with hard problems, strong
+          engineering culture, and room to grow.
         </p>
       </div>
     </div>
@@ -504,109 +555,100 @@
         <div class="exp-card fade-up">
           <div class="exp-header">
             <span class="exp-role">Software Development Engineer</span>
-            <span class="exp-period">2022 — 2026</span>
+            <span class="exp-period">Sep 2022 – Apr 2026</span>
           </div>
           <div class="exp-company">Amazon Web Services (AWS)</div>
           <ul class="exp-bullets">
-            <li>
-              Founding engineer on a managed platform that provisioned data-plane infrastructure
-              (compute, storage, networking) for 5+ AWS services across
-              <strong style="color:var(--text)">38 regions</strong> and
-              <strong style="color:var(--text)">~200,000 hosts</strong> at peak scale.
-            </li>
-            <li>
-              Designed and built asynchronous orchestration workflows using
-              Step Functions + Lambda to manage complex, multi-stage provisioning pipelines.
-            </li>
-            <li>
-              Built infrastructure state management with DynamoDB; implemented
-              event-driven execution via DynamoDB Streams.
-            </li>
-            <li>
-              Developed VPC endpoint retry and pooling systems, improving provisioning
-              reliability and reducing tail latency.
-            </li>
-            <li>
-              Implemented Customer Managed Key (CMK) support for EBS encryption with
-              full KMS grant lifecycle safeguards.
-            </li>
-            <li>
-              Led GovCloud region launch and built EBS snapshot-based host recovery systems.
-            </li>
-            <li>
-              Reduced overall provisioning latency by <strong style="color:var(--text)">~57%</strong>
-              through architectural and pipeline optimizations.
-            </li>
-            <li>
-              Onboarded and ramped up an 18-member engineering team; mentored interns and new engineers.
-            </li>
+            <li>Founding engineer on a 4-person team that built a Host Provisioning Service from scratch, adopted by 5 AWS services across 38 regions, supporting ~200K hosts at peak scale and eliminating the need for ~25 dedicated engineers across customer teams (~$5–6M/year in avoided headcount).</li>
+            <li>Designed and built CRUD APIs for compute, networking, and storage resources (EC2, EBS, VPC, ENI), backed by an event-driven orchestration system using DynamoDB Streams, Step Functions, and Lambda.</li>
+            <li>Reduced host provisioning latency by ~57% by building efficient systems to eliminate cold-start bottlenecks and implementing exponential backoff retry logic to handle throttling.</li>
+            <li>Owned end-to-end design and implementation of customer-managed key (CMK) encryption for hosted volumes, consulted with AWS KMS and security teams, completed security review, and enabled customer teams to serve government and enterprise clients.</li>
+            <li>Extended the Host Creation API with snapshot-based recovery, allowing customer services to restore hosts from prior state and improving system resilience across failure scenarios.</li>
+            <li>Led the service launch into AWS GovCloud as the sole engineer responsible for all code changes, cross-functional coordination, and compliance adaptations for regulated environments.</li>
+            <li>Onboarded an 18-person team as the founding engineer, creating documentation, running knowledge transfer sessions, and supporting first on-call rotations to enable a zero-impact production handover.</li>
           </ul>
           <div class="exp-tags">
             <span class="exp-tag">Java</span>
-            <span class="exp-tag">Step Functions</span>
-            <span class="exp-tag">Lambda</span>
-            <span class="exp-tag">DynamoDB</span>
             <span class="exp-tag">EC2</span>
             <span class="exp-tag">EBS</span>
             <span class="exp-tag">VPC</span>
+            <span class="exp-tag">ENI</span>
+            <span class="exp-tag">DynamoDB Streams</span>
+            <span class="exp-tag">Step Functions</span>
+            <span class="exp-tag">Lambda</span>
             <span class="exp-tag">KMS</span>
-            <span class="exp-tag">Distributed Systems</span>
-          </div>
-        </div>
-
-        <!-- Deloitte -->
-        <div class="exp-card fade-up delay-1">
-          <div class="exp-header">
-            <span class="exp-role">Technology Analyst</span>
-            <span class="exp-period">2018 — 2021</span>
-          </div>
-          <div class="exp-company">Deloitte Consulting</div>
-          <ul class="exp-bullets">
-            <li>
-              Built and maintained backend systems for a Medicaid eligibility platform
-              serving <strong style="color:var(--text)">1.6M+ users</strong>.
-            </li>
-            <li>
-              Developed REST APIs and Java backend services with a focus on correctness
-              and production reliability.
-            </li>
-            <li>
-              Optimized MySQL queries and batch processing pipelines to improve throughput.
-            </li>
-            <li>
-              Contributed to production debugging and Selenium-based test automation.
-            </li>
-          </ul>
-          <div class="exp-tags">
-            <span class="exp-tag">Java</span>
-            <span class="exp-tag">REST APIs</span>
-            <span class="exp-tag">MySQL</span>
-            <span class="exp-tag">Batch Processing</span>
-            <span class="exp-tag">Selenium</span>
           </div>
         </div>
 
         <!-- CRA -->
-        <div class="exp-card fade-up delay-2">
+        <div class="exp-card fade-up delay-1">
           <div class="exp-header">
             <span class="exp-role">IT Developer Co-op</span>
-            <span class="exp-period">2022</span>
+            <span class="exp-period">May 2022 – Aug 2022</span>
           </div>
           <div class="exp-company">Canada Revenue Agency</div>
           <ul class="exp-bullets">
-            <li>
-              Contributed to a notification platform delivering emails to
-              <strong style="color:var(--text)">1M+ Canadian taxpayers</strong>.
-            </li>
-            <li>
-              Built Java backend services and REST APIs; developed Angular frontend components.
-            </li>
+            <li>Contributed to a bilingual (English and French) email notification system serving 1M+ taxpayers, developing backend modules and REST APIs.</li>
+            <li>Built full-stack features across a Java backend and Angular frontend, picking up Angular independently during the term and writing spec-based unit tests for frontend modules.</li>
           </ul>
           <div class="exp-tags">
             <span class="exp-tag">Java</span>
             <span class="exp-tag">Angular</span>
             <span class="exp-tag">REST APIs</span>
           </div>
+        </div>
+
+        <!-- Deloitte -->
+        <div class="exp-card fade-up delay-2">
+          <div class="exp-header">
+            <span class="exp-role">Technology Analyst</span>
+            <span class="exp-period">Oct 2018 – May 2021</span>
+          </div>
+          <div class="exp-company">Deloitte Consulting</div>
+          <ul class="exp-bullets">
+            <li>Developed and maintained backend services in Java for the State of Louisiana's Medicaid Eligibility Determination system, serving 1.6M+ citizens, implementing policy-driven updates and new features.</li>
+            <li>Diagnosed and resolved critical eligibility bugs in an IBM ODM rules engine, including incorrect household income calculations that were wrongly classifying low-income citizens as ineligible for free Medicaid coverage.</li>
+            <li>Optimized MySQL queries by reducing unnecessary column joins and adding indexes, cutting eligibility decision time by 17%.</li>
+            <li>Contributed to batch processing jobs in Java that handled ~360K citizen records per year, covering benefit updates, expiry-based terminations, and co-pay claim processing.</li>
+            <li>Built a Selenium test suite automating end-to-end sanity testing across 5 Medicaid program scenarios, reducing validation time from 80 minutes to 15 minutes per build cycle (81% reduction).</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Java</span>
+            <span class="exp-tag">MySQL</span>
+            <span class="exp-tag">IBM ODM</span>
+            <span class="exp-tag">Batch Processing</span>
+            <span class="exp-tag">Selenium</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ───────────────────────────────── -->
+  <section id="education">
+    <div class="container">
+      <p class="section-label">03 / education</p>
+      <h2 class="section-title">Education</h2>
+      <div class="section-rule"></div>
+      <div class="edu-grid fade-up">
+
+        <div class="edu-card">
+          <div class="edu-header">
+            <span class="edu-degree">Master of Applied Computer Science</span>
+            <span class="edu-year">2021 – 2022</span>
+          </div>
+          <div class="edu-school">Dalhousie University</div>
+          <div class="edu-location">Halifax, Canada</div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-header">
+            <span class="edu-degree">Bachelor of Engineering, Computer Engineering</span>
+            <span class="edu-year">2014 – 2018</span>
+          </div>
+          <div class="edu-school">University of Mumbai</div>
+          <div class="edu-location">Mumbai, India</div>
         </div>
 
       </div>
