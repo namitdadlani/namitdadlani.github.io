@@ -332,47 +332,6 @@
       border: 1px solid rgba(88, 166, 255, 0.2);
     }
 
-    /* ─── Skills ───────────────────────────────────────── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .skill-group {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.4rem 1.6rem;
-      transition: border-color var(--ease);
-    }
-    .skill-group:hover { border-color: var(--border-hover); }
-
-    .skill-group-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 0.9rem;
-    }
-
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .skill-tag {
-      font-size: 0.82rem;
-      padding: 0.25rem 0.65rem;
-      background: rgba(240, 246, 252, 0.05);
-      color: var(--text-muted);
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      transition: color var(--ease), border-color var(--ease);
-    }
-    .skill-tag:hover {
-      color: var(--text);
-      border-color: rgba(240, 246, 252, 0.2);
-    }
-
     /* ─── Footer / Contact ─────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
@@ -445,6 +404,7 @@
 
       .exp-card { padding: 1.3rem 1.2rem; }
       .exp-header { flex-direction: column; }
+
     }
   </style>
 </head>
@@ -457,7 +417,6 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -469,7 +428,6 @@
     <ul>
       <li><a href="#about"      onclick="closeMobileMenu()">About</a></li>
       <li><a href="#experience" onclick="closeMobileMenu()">Experience</a></li>
-      <li><a href="#skills"     onclick="closeMobileMenu()">Skills</a></li>
       <li><a href="#contact"    onclick="closeMobileMenu()">Contact</a></li>
     </ul>
   </div>
@@ -527,8 +485,7 @@
           infrastructure environments.
         </p>
         <p>
-          I'm currently open to <strong>SDE2-level backend and distributed systems roles</strong> at
-          engineering-focused companies.
+          I'm open to exploring new opportunities.
         </p>
       </div>
     </div>
@@ -600,7 +557,7 @@
         <!-- Deloitte -->
         <div class="exp-card fade-up delay-1">
           <div class="exp-header">
-            <span class="exp-role">Software Development Engineer</span>
+            <span class="exp-role">Technology Analyst</span>
             <span class="exp-period">2018 — 2021</span>
           </div>
           <div class="exp-company">Deloitte Consulting</div>
@@ -632,7 +589,7 @@
         <!-- CRA -->
         <div class="exp-card fade-up delay-2">
           <div class="exp-header">
-            <span class="exp-role">Software Developer</span>
+            <span class="exp-role">IT Developer Co-op</span>
             <span class="exp-period">2022</span>
           </div>
           <div class="exp-company">Canada Revenue Agency</div>
@@ -649,58 +606,6 @@
             <span class="exp-tag">Java</span>
             <span class="exp-tag">Angular</span>
             <span class="exp-tag">REST APIs</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SKILLS ────────────────────────────────────── -->
-  <section id="skills">
-    <div class="container">
-      <p class="section-label">03 / skills</p>
-      <h2 class="section-title">Technical Skills</h2>
-      <div class="section-rule"></div>
-
-      <div class="skills-grid fade-up">
-
-        <div class="skill-group">
-          <div class="skill-group-title">Languages</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Java</span>
-            <span class="skill-tag">Kotlin</span>
-            <span class="skill-tag">Python</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-group-title">AWS Services</div>
-          <div class="skill-tags">
-            <span class="skill-tag">EC2</span>
-            <span class="skill-tag">EBS</span>
-            <span class="skill-tag">Lambda</span>
-            <span class="skill-tag">Step Functions</span>
-            <span class="skill-tag">DynamoDB</span>
-            <span class="skill-tag">VPC</span>
-            <span class="skill-tag">KMS</span>
-            <span class="skill-tag">CloudWatch</span>
-            <span class="skill-tag">Security Groups</span>
-            <span class="skill-tag">ENI</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-group-title">Systems & Architecture</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Distributed Systems</span>
-            <span class="skill-tag">Event-Driven Architecture</span>
-            <span class="skill-tag">Infrastructure Orchestration</span>
-            <span class="skill-tag">API Design</span>
-            <span class="skill-tag">System Design</span>
-            <span class="skill-tag">Fault Tolerance</span>
-            <span class="skill-tag">Scalability</span>
-            <span class="skill-tag">Reliability Engineering</span>
           </div>
         </div>
 
