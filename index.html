@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namit Dadlani — Software Development Engineer</title>
+  <meta name="description" content="Software Development Engineer specializing in backend systems and cloud infrastructure. 6+ years of experience, most recently at AWS." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0d1117;
+      --bg-elevated:  #161b22;
+      --bg-card:      #1c2128;
+      --border:       rgba(240, 246, 252, 0.08);
+      --border-hover: rgba(88, 166, 255, 0.5);
+      --accent:       #58a6ff;
+      --accent-glow:  rgba(88, 166, 255, 0.12);
+      --text:         #e6edf3;
+      --text-muted:   #8b949e;
+      --text-faint:   #3d444d;
+      --radius:       8px;
+      --nav-h:        64px;
+      --ease:         0.2s ease;
+      --max-w:        860px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Nav ──────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(13, 17, 23, 0.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color var(--ease);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform var(--ease);
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-muted);
+      border-radius: 2px;
+      transition: var(--ease);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      z-index: 199;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+    .mobile-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color var(--ease);
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── Layout helpers ───────────────────────────────── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+
+    section { padding: 90px 0; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── Hero ─────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+    }
+
+    .hero-inner { padding: 60px 0; }
+
+    .hero-greeting {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 2.4rem;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── Buttons ──────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.3rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 500;
+      font-family: inherit;
+      text-decoration: none;
+      transition: all var(--ease);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+    .btn-primary:hover {
+      background: #79b8ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(88, 166, 255, 0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(88, 166, 255, 0.5);
+    }
+    .btn-outline:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ─── About ────────────────────────────────────────── */
+    .about-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .about-body p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+    .about-body strong { color: var(--text); font-weight: 600; }
+
+    /* ─── Experience ───────────────────────────────────── */
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+    }
+    .exp-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.2rem;
+    }
+    .exp-role {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .exp-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .exp-company {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.1rem;
+    }
+
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .exp-bullets li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-left: 1.3rem;
+      position: relative;
+      line-height: 1.65;
+    }
+    .exp-bullets li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1.3rem;
+    }
+    .exp-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.22rem 0.6rem;
+      background: var(--accent-glow);
+      color: var(--accent);
+      border-radius: 4px;
+      border: 1px solid rgba(88, 166, 255, 0.2);
+    }
+
+    /* ─── Skills ───────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      transition: border-color var(--ease);
+    }
+    .skill-group:hover { border-color: var(--border-hover); }
+
+    .skill-group-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag {
+      font-size: 0.82rem;
+      padding: 0.25rem 0.65rem;
+      background: rgba(240, 246, 252, 0.05);
+      color: var(--text-muted);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      transition: color var(--ease), border-color var(--ease);
+    }
+    .skill-tag:hover {
+      color: var(--text);
+      border-color: rgba(240, 246, 252, 0.2);
+    }
+
+    /* ─── Footer / Contact ─────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .footer-heading {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .footer-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.6rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: all var(--ease);
+    }
+    .social-link:hover {
+      color: var(--accent);
+      border-color: rgba(88, 166, 255, 0.4);
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-faint);
+    }
+
+    /* ─── Scroll-fade animation ────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+
+    /* ─── Responsive ───────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .exp-card { padding: 1.3rem 1.2rem; }
+      .exp-header { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────── -->
+  <nav>
+    <a href="#hero" class="nav-logo">nd<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#about"      onclick="closeMobileMenu()">About</a></li>
+      <li><a href="#experience" onclick="closeMobileMenu()">Experience</a></li>
+      <li><a href="#skills"     onclick="closeMobileMenu()">Skills</a></li>
+      <li><a href="#contact"    onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ── HERO ─────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <p class="hero-greeting">Hi, my name is</p>
+        <h1 class="hero-name">Namit Dadlani.</h1>
+        <p class="hero-tagline">I build scalable backend systems.</p>
+        <p class="hero-description">
+          Software Development Engineer with 6+ years of experience designing distributed systems
+          and cloud infrastructure. Most recently at AWS, where I helped scale infrastructure
+          provisioning across 38 regions and ~200,000 hosts.
+        </p>
+        <div class="hero-cta">
+          <a href="https://www.linkedin.com/in/namit-dadlani" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/namitdadlani" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">01 / about</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-rule"></div>
+      <div class="about-body fade-up">
+        <p>
+          I'm a backend engineer based in <strong>Toronto, Canada</strong>, focused on distributed systems,
+          cloud infrastructure, and reliability engineering. I care about building systems that are
+          <strong>scalable, fault-tolerant, and well-architected</strong> — work where the engineering
+          decisions have lasting impact.
+        </p>
+        <p>
+          At <strong>AWS</strong>, I was a founding engineer on a managed platform responsible for
+          provisioning compute, storage, and networking infrastructure across AWS data-planes —
+          operating at the scale of <strong>~200,000 hosts across 38 regions</strong>, supporting 5+
+          internal AWS services. I'm drawn to ownership-oriented work in complex, high-scale
+          infrastructure environments.
+        </p>
+        <p>
+          I'm currently open to <strong>SDE2-level backend and distributed systems roles</strong> at
+          engineering-focused companies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ────────────────────────────────── -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">02 / experience</p>
+      <h2 class="section-title">Where I've Worked</h2>
+      <div class="section-rule"></div>
+
+      <div class="timeline">
+
+        <!-- AWS -->
+        <div class="exp-card fade-up">
+          <div class="exp-header">
+            <span class="exp-role">Software Development Engineer</span>
+            <span class="exp-period">2020 — 2026</span>
+          </div>
+          <div class="exp-company">Amazon Web Services (AWS)</div>
+          <ul class="exp-bullets">
+            <li>
+              Founding engineer on a managed platform that provisioned data-plane infrastructure
+              (compute, storage, networking) for 5+ AWS services across
+              <strong style="color:var(--text)">38 regions</strong> and
+              <strong style="color:var(--text)">~200,000 hosts</strong> at peak scale.
+            </li>
+            <li>
+              Designed and built asynchronous orchestration workflows using
+              Step Functions + Lambda to manage complex, multi-stage provisioning pipelines.
+            </li>
+            <li>
+              Built infrastructure state management with DynamoDB; implemented
+              event-driven execution via DynamoDB Streams.
+            </li>
+            <li>
+              Developed VPC endpoint retry and pooling systems, improving provisioning
+              reliability and reducing tail latency.
+            </li>
+            <li>
+              Implemented Customer Managed Key (CMK) support for EBS encryption with
+              full KMS grant lifecycle safeguards.
+            </li>
+            <li>
+              Led GovCloud region launch and built EBS snapshot-based host recovery systems.
+            </li>
+            <li>
+              Reduced overall provisioning latency by <strong style="color:var(--text)">~57%</strong>
+              through architectural and pipeline optimizations.
+            </li>
+            <li>
+              Onboarded and ramped up an 18-member engineering team; mentored interns and new engineers.
+            </li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Java</span>
+            <span class="exp-tag">Step Functions</span>
+            <span class="exp-tag">Lambda</span>
+            <span class="exp-tag">DynamoDB</span>
+            <span class="exp-tag">EC2</span>
+            <span class="exp-tag">EBS</span>
+            <span class="exp-tag">VPC</span>
+            <span class="exp-tag">KMS</span>
+            <span class="exp-tag">Distributed Systems</span>
+          </div>
+        </div>
+
+        <!-- Deloitte -->
+        <div class="exp-card fade-up delay-1">
+          <div class="exp-header">
+            <span class="exp-role">Software Development Engineer</span>
+            <span class="exp-period">2018 — 2020</span>
+          </div>
+          <div class="exp-company">Deloitte Consulting</div>
+          <ul class="exp-bullets">
+            <li>
+              Built and maintained backend systems for a Medicaid eligibility platform
+              serving <strong style="color:var(--text)">1.6M+ users</strong>.
+            </li>
+            <li>
+              Developed REST APIs and Java backend services with a focus on correctness
+              and production reliability.
+            </li>
+            <li>
+              Optimized MySQL queries and batch processing pipelines to improve throughput.
+            </li>
+            <li>
+              Contributed to production debugging and Selenium-based test automation.
+            </li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Java</span>
+            <span class="exp-tag">REST APIs</span>
+            <span class="exp-tag">MySQL</span>
+            <span class="exp-tag">Batch Processing</span>
+            <span class="exp-tag">Selenium</span>
+          </div>
+        </div>
+
+        <!-- CRA -->
+        <div class="exp-card fade-up delay-2">
+          <div class="exp-header">
+            <span class="exp-role">Software Developer</span>
+            <span class="exp-period">2017 — 2018</span>
+          </div>
+          <div class="exp-company">Canada Revenue Agency</div>
+          <ul class="exp-bullets">
+            <li>
+              Contributed to a notification platform delivering emails to
+              <strong style="color:var(--text)">1M+ Canadian taxpayers</strong>.
+            </li>
+            <li>
+              Built Java backend services and REST APIs; developed Angular frontend components.
+            </li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Java</span>
+            <span class="exp-tag">Angular</span>
+            <span class="exp-tag">REST APIs</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ────────────────────────────────────── -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">03 / skills</p>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="section-rule"></div>
+
+      <div class="skills-grid fade-up">
+
+        <div class="skill-group">
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Kotlin</span>
+            <span class="skill-tag">Python</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">AWS Services</div>
+          <div class="skill-tags">
+            <span class="skill-tag">EC2</span>
+            <span class="skill-tag">EBS</span>
+            <span class="skill-tag">Lambda</span>
+            <span class="skill-tag">Step Functions</span>
+            <span class="skill-tag">DynamoDB</span>
+            <span class="skill-tag">VPC</span>
+            <span class="skill-tag">KMS</span>
+            <span class="skill-tag">CloudWatch</span>
+            <span class="skill-tag">Security Groups</span>
+            <span class="skill-tag">ENI</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Systems & Architecture</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Distributed Systems</span>
+            <span class="skill-tag">Event-Driven Architecture</span>
+            <span class="skill-tag">Infrastructure Orchestration</span>
+            <span class="skill-tag">API Design</span>
+            <span class="skill-tag">System Design</span>
+            <span class="skill-tag">Fault Tolerance</span>
+            <span class="skill-tag">Scalability</span>
+            <span class="skill-tag">Reliability Engineering</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT / FOOTER ──────────────────────────── -->
+  <footer id="contact">
+    <div class="container">
+      <p class="footer-heading">Let's connect.</p>
+      <p class="footer-sub">I'm currently open to new opportunities.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/namit-dadlani" class="social-link" target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/namitdadlani" class="social-link" target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+      <p class="footer-copy">Designed &amp; built by Namit Dadlani</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Mobile menu ──────────────────────────────────
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+      }
+    });
+
+    // ── Scroll-fade-in ───────────────────────────────
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target); // fire once
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+    // ── Active nav link ──────────────────────────────
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks  = document.querySelectorAll('.nav-links a');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.toggle(
+              'active',
+              link.getAttribute('href') === '#' + entry.target.id
+            );
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+
+</body>
+</html>
