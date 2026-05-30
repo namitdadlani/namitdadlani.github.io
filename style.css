@@ -26,6 +26,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ─── Nav ──────────────────────────────────────────── */
@@ -42,6 +43,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(1.5rem, 5vw, 4rem);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-logo {
@@ -252,7 +254,7 @@ section { padding: 90px 0; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.75rem 2rem;
-  transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+  transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease), background-color 0.3s ease;
 }
 .exp-card:hover {
   border-color: var(--border-hover);
@@ -326,7 +328,7 @@ section { padding: 90px 0; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.4rem 1.8rem;
-  transition: border-color var(--ease);
+  transition: border-color var(--ease), background-color 0.3s ease;
 }
 .edu-card:hover { border-color: var(--border-hover); }
 
@@ -425,6 +427,56 @@ footer {
 .fade-up.delay-1 { transition-delay: 0.1s; }
 .fade-up.delay-2 { transition-delay: 0.2s; }
 .fade-up.delay-3 { transition-delay: 0.3s; }
+
+/* ─── Theme toggle button ────────────────────────────── */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.4rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition: color var(--ease), border-color var(--ease), background-color var(--ease);
+}
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--border-hover);
+  background: var(--accent-glow);
+}
+
+/* In dark mode (default): show sun icon, hide moon */
+.icon-moon { display: none; }
+.icon-sun  { display: block; }
+
+/* In light mode: show moon icon, hide sun */
+[data-theme="light"] .icon-moon { display: block; }
+[data-theme="light"] .icon-sun  { display: none; }
+
+/* ─── Light theme ────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:           #f6f8fa;
+  --bg-elevated:  #eaeef2;
+  --bg-card:      #ffffff;
+  --border:       rgba(31, 35, 40, 0.12);
+  --border-hover: rgba(9, 105, 218, 0.5);
+  --accent:       #0969da;
+  --accent-glow:  rgba(9, 105, 218, 0.08);
+  --text:         #1f2328;
+  --text-muted:   #656d76;
+  --text-faint:   #8c959f;
+}
+
+[data-theme="light"] nav {
+  background: rgba(246, 248, 250, 0.85);
+}
+
+[data-theme="light"] .mobile-menu {
+  background: var(--bg-elevated);
+}
 
 /* ─── Responsive ───────────────────────────────────── */
 @media (max-width: 600px) {
