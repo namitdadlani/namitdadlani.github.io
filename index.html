@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Namit Dadlani — Software Development Engineer</title>
+  <title>Namit Dadlani - Software Development Engineer</title>
   <meta name="description" content="Software Development Engineer specializing in backend systems and cloud infrastructure. 6+ years of experience, most recently at AWS." />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="light">
 
   <!-- ── NAV ──────────────────────────────────────── -->
   <nav>
-    <a href="#hero" class="nav-logo">nd<span>.</span></a>
+    <a href="#" class="nav-logo">
+      <span class="logo-mark">
+        <span class="logo-brace">{</span>
+        <span class="logo-letters">N<em>D</em></span>
+        <span class="logo-brace">}</span>
+      </span>
+    </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -26,61 +31,56 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-      <!-- Sun: visible in dark mode, click to go light -->
-      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <!-- Moon: visible in light mode, click to go dark -->
-      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
       </svg>
-    </button>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
     </button>
   </nav>
-
-  <div class="mobile-menu" id="mobile-menu">
-    <ul>
-      <li><a href="#about"      onclick="closeMobileMenu()">About</a></li>
-      <li><a href="#experience" onclick="closeMobileMenu()">Experience</a></li>
-      <li><a href="#education"  onclick="closeMobileMenu()">Education</a></li>
-      <li><a href="#contact"    onclick="closeMobileMenu()">Contact</a></li>
-    </ul>
-  </div>
 
   <!-- ── HERO ─────────────────────────────────────── -->
   <section id="hero">
     <div class="container">
-      <div class="hero-inner">
-        <p class="hero-greeting">Hi, my name is</p>
-        <h1 class="hero-name">Namit Dadlani.</h1>
-        <p class="hero-tagline">I build scalable backend systems.</p>
-        <p class="hero-description">
-          Software Development Engineer with 6+ years of experience building backend systems,
-          distributed services, and APIs. Most recently a founding engineer at AWS, where I helped
-          build a platform adopted by 5 AWS products across 38 regions.
-        </p>
-        <div class="hero-cta">
-          <a href="https://www.linkedin.com/in/namit-dadlani" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-            LinkedIn
-          </a>
-          <a href="https://github.com/namitdadlani" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-            GitHub
-          </a>
+      <div class="hero-grid">
+
+        <div class="hero-left">
+          <p class="section-label">Software Development Engineer</p>
+          <h1 class="hero-name">Namit<br><em>Dadlani.</em></h1>
+          <p class="hero-desc">
+            Backend engineer with 6+ years of experience building distributed systems and APIs.
+            Most recently a founding engineer on an AWS product that eliminated redundant engineering work at scale.
+          </p>
+          <div class="hero-cta">
+            <a href="https://www.linkedin.com/in/namit-dadlani" class="btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/namitdadlani" class="btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
         </div>
+
+        <div class="hero-right">
+          <div class="stat">
+            <span class="stat-num">$5–6M/yr</span>
+            <span class="stat-label">engineering costs saved</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">200K</span>
+            <span class="stat-label">hosts at peak scale</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">57%</span>
+            <span class="stat-label">latency reduction</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -88,27 +88,22 @@
   <!-- ── ABOUT ─────────────────────────────────────── -->
   <section id="about">
     <div class="container">
-      <p class="section-label">01 / about</p>
-      <h2 class="section-title">About Me</h2>
-      <div class="section-rule"></div>
-      <div class="about-body fade-up">
+      <p class="section-label">About</p>
+      <div class="about-body">
         <p>
-          I'm a backend engineer based in <strong>Toronto</strong> with a focus on
-          <strong>distributed systems</strong>, <strong>API design</strong>, and building software
-          that operates reliably at scale.
+          I'm a backend engineer based in Toronto with a focus on distributed systems, API design,
+          and building software that operates reliably at scale.
         </p>
         <p>
-          Most recently at <strong>AWS</strong>, I was a founding engineer on a 4-person team that
-          built a host provisioning platform from scratch - a backend service adopted by
-          <strong>5 AWS products</strong>, running across <strong>38 regions</strong> and supporting
-          <strong>~200K hosts</strong> at peak. The work spanned API design, event-driven architecture,
-          encryption, and cross-functional delivery. I like projects where the engineering decisions
-          matter and the ownership is real.
+          Most recently at AWS, I was a founding engineer on a 4-person team that built a host
+          provisioning platform from scratch - a backend service adopted by 5 AWS products, running
+          across 38 regions and supporting ~200K hosts at peak. The work spanned API design,
+          event-driven architecture, encryption, and cross-functional delivery.
         </p>
         <p>
-          Before AWS, I built backend services for a <strong>Medicaid eligibility system serving
-          1.6M+ citizens</strong> at Deloitte, where I learned to navigate complex systems, debug
-          deep, and ship carefully.
+          Before AWS, I built backend services for a Medicaid eligibility system serving 1.6M+
+          citizens at Deloitte, where I learned to navigate complex systems, debug deep, and ship
+          carefully.
         </p>
         <p>
           I'm currently looking for my next role - ideally somewhere with hard problems, strong
@@ -121,19 +116,18 @@
   <!-- ── EXPERIENCE ────────────────────────────────── -->
   <section id="experience">
     <div class="container">
-      <p class="section-label">02 / experience</p>
+      <p class="section-label">Experience</p>
       <h2 class="section-title">Where I've Worked</h2>
-      <div class="section-rule"></div>
+      <div class="exp-list">
 
-      <div class="timeline">
-
-        <!-- AWS -->
-        <div class="exp-card fade-up">
-          <div class="exp-header">
-            <span class="exp-role">Software Development Engineer</span>
-            <span class="exp-period">Sep 2022 – Apr 2026</span>
+        <div class="exp-entry">
+          <div class="exp-row">
+            <div class="exp-meta">
+              <span class="exp-role">Software Development Engineer</span>
+              <span class="exp-company">Amazon Web Services (AWS)</span>
+            </div>
+            <span class="exp-date">Sep 2022 – Apr 2026</span>
           </div>
-          <div class="exp-company">Amazon Web Services (AWS)</div>
           <ul class="exp-bullets">
             <li>Founding engineer on a 4-person team that built a Host Provisioning Service from scratch, adopted by 5 AWS services across 38 regions, supporting ~200K hosts at peak scale and eliminating the need for ~25 dedicated engineers across customer teams (~$5–6M/year in avoided headcount).</li>
             <li>Designed and built CRUD APIs for compute, networking, and storage resources (EC2, EBS, VPC, ENI), backed by an event-driven orchestration system using DynamoDB Streams, Step Functions, and Lambda.</li>
@@ -144,43 +138,45 @@
             <li>Onboarded an 18-person team as the founding engineer, creating documentation, running knowledge transfer sessions, and supporting first on-call rotations to enable a zero-impact production handover.</li>
           </ul>
           <div class="exp-tags">
-            <span class="exp-tag">Java</span>
-            <span class="exp-tag">EC2</span>
-            <span class="exp-tag">EBS</span>
-            <span class="exp-tag">VPC</span>
-            <span class="exp-tag">ENI</span>
-            <span class="exp-tag">DynamoDB Streams</span>
-            <span class="exp-tag">Step Functions</span>
-            <span class="exp-tag">Lambda</span>
-            <span class="exp-tag">KMS</span>
+            <span class="tag">Java</span>
+            <span class="tag">EC2</span>
+            <span class="tag">EBS</span>
+            <span class="tag">VPC</span>
+            <span class="tag">ENI</span>
+            <span class="tag">DynamoDB Streams</span>
+            <span class="tag">Step Functions</span>
+            <span class="tag">Lambda</span>
+            <span class="tag">KMS</span>
           </div>
         </div>
 
-        <!-- CRA -->
-        <div class="exp-card fade-up delay-1">
-          <div class="exp-header">
-            <span class="exp-role">IT Developer Co-op</span>
-            <span class="exp-period">May 2022 – Aug 2022</span>
+        <div class="exp-entry">
+          <div class="exp-row">
+            <div class="exp-meta">
+              <span class="exp-role">IT Developer Co-op</span>
+              <span class="exp-company">Canada Revenue Agency</span>
+            </div>
+            <span class="exp-date">May 2022 – Aug 2022</span>
           </div>
-          <div class="exp-company">Canada Revenue Agency</div>
           <ul class="exp-bullets">
             <li>Contributed to a bilingual (English and French) email notification system serving 1M+ taxpayers, developing backend modules and REST APIs.</li>
             <li>Built full-stack features across a Java backend and Angular frontend, picking up Angular independently during the term and writing spec-based unit tests for frontend modules.</li>
           </ul>
           <div class="exp-tags">
-            <span class="exp-tag">Java</span>
-            <span class="exp-tag">Angular</span>
-            <span class="exp-tag">REST APIs</span>
+            <span class="tag">Java</span>
+            <span class="tag">Angular</span>
+            <span class="tag">REST APIs</span>
           </div>
         </div>
 
-        <!-- Deloitte -->
-        <div class="exp-card fade-up delay-2">
-          <div class="exp-header">
-            <span class="exp-role">Technology Analyst</span>
-            <span class="exp-period">Oct 2018 – May 2021</span>
+        <div class="exp-entry">
+          <div class="exp-row">
+            <div class="exp-meta">
+              <span class="exp-role">Technology Analyst</span>
+              <span class="exp-company">Deloitte Consulting</span>
+            </div>
+            <span class="exp-date">Oct 2018 – May 2021</span>
           </div>
-          <div class="exp-company">Deloitte Consulting</div>
           <ul class="exp-bullets">
             <li>Developed and maintained backend services in Java for the State of Louisiana's Medicaid Eligibility Determination system, serving 1.6M+ citizens, implementing policy-driven updates and new features.</li>
             <li>Diagnosed and resolved critical eligibility bugs in an IBM ODM rules engine, including incorrect household income calculations that were wrongly classifying low-income citizens as ineligible for free Medicaid coverage.</li>
@@ -189,11 +185,11 @@
             <li>Built a Selenium test suite automating end-to-end sanity testing across 5 Medicaid program scenarios, reducing validation time from 80 minutes to 15 minutes per build cycle (81% reduction).</li>
           </ul>
           <div class="exp-tags">
-            <span class="exp-tag">Java</span>
-            <span class="exp-tag">MySQL</span>
-            <span class="exp-tag">IBM ODM</span>
-            <span class="exp-tag">Batch Processing</span>
-            <span class="exp-tag">Selenium</span>
+            <span class="tag">Java</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">IBM ODM</span>
+            <span class="tag">Batch Processing</span>
+            <span class="tag">Selenium</span>
           </div>
         </div>
 
@@ -204,127 +200,56 @@
   <!-- ── EDUCATION ───────────────────────────────── -->
   <section id="education">
     <div class="container">
-      <p class="section-label">03 / education</p>
-      <h2 class="section-title">Education</h2>
-      <div class="section-rule"></div>
-      <div class="edu-grid fade-up">
+      <p class="section-label">Education</p>
+      <div class="edu-list">
 
-        <div class="edu-card">
-          <div class="edu-header">
-            <span class="edu-degree">Master of Applied Computer Science</span>
-            <span class="edu-year">2021 – 2022</span>
+        <div class="edu-entry">
+          <div class="edu-row">
+            <div class="edu-meta">
+              <span class="edu-degree">Master of Applied Computer Science</span>
+              <span class="edu-school">Dalhousie University</span>
+            </div>
+            <span class="edu-date">2021 – 2022</span>
           </div>
-          <div class="edu-school">Dalhousie University</div>
-          <div class="edu-location">Halifax, Canada</div>
         </div>
 
-        <div class="edu-card">
-          <div class="edu-header">
-            <span class="edu-degree">Bachelor of Engineering, Computer Engineering</span>
-            <span class="edu-year">2014 – 2018</span>
+        <div class="edu-entry">
+          <div class="edu-row">
+            <div class="edu-meta">
+              <span class="edu-degree">Bachelor of Engineering, Computer Engineering</span>
+              <span class="edu-school">University of Mumbai</span>
+            </div>
+            <span class="edu-date">2014 – 2018</span>
           </div>
-          <div class="edu-school">University of Mumbai</div>
-          <div class="edu-location">Mumbai, India</div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ── CONTACT / FOOTER ──────────────────────────── -->
+  <!-- ── FOOTER / CONTACT ──────────────────────────── -->
   <footer id="contact">
     <div class="container">
-      <p class="footer-heading">Let's connect.</p>
-      <p class="footer-sub">I'm currently open to new opportunities.</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/namit-dadlani" class="social-link" target="_blank" rel="noopener noreferrer">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-          LinkedIn
-        </a>
-        <a href="https://github.com/namitdadlani" class="social-link" target="_blank" rel="noopener noreferrer">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-          </svg>
-          GitHub
-        </a>
+      <div class="footer-row">
+        <p class="footer-status">Open to new opportunities · Toronto, CA</p>
+        <a href="mailto:namitdadlani17@gmail.com" class="btn">Get in touch →</a>
       </div>
-      <p class="footer-copy">Designed &amp; built by Namit Dadlani</p>
+      <p class="footer-copy">namitdadlani.com</p>
     </div>
   </footer>
 
   <script>
-    // ── Theme toggle ─────────────────────────────────
-    const html        = document.documentElement;
-    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const toggle = document.getElementById('theme-toggle');
 
-    // On load: use saved preference, fall back to system preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      html.setAttribute('data-theme', savedTheme);
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-    }
+    const saved = localStorage.getItem('theme') || 'light';
+    body.className = saved;
 
-    themeToggle.addEventListener('click', () => {
-      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
+    toggle.addEventListener('click', () => {
+      const next = body.classList.contains('dark') ? 'light' : 'dark';
+      body.className = next;
       localStorage.setItem('theme', next);
     });
-
-    // ── Mobile menu ──────────────────────────────────
-    const hamburger   = document.getElementById('hamburger');
-    const mobileMenu  = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('open');
-    }
-
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove('open');
-      }
-    });
-
-    // ── Scroll-fade-in ───────────────────────────────
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target); // fire once
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
-
-    // ── Active nav link ──────────────────────────────
-    const sections = document.querySelectorAll('section[id], footer[id]');
-    const navLinks  = document.querySelectorAll('.nav-links a');
-
-    const navObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.toggle(
-              'active',
-              link.getAttribute('href') === '#' + entry.target.id
-            );
-          });
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-
-    sections.forEach(s => navObserver.observe(s));
   </script>
 
 </body>
