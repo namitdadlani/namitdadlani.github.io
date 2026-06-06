@@ -145,6 +145,24 @@ body.light .icon-moon { display: block; }
 body.dark .icon-moon { display: none; }
 body.dark .icon-sun  { display: block; }
 
+/* ─── Hero avatar ────────────────────────────────── */
+.hero-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1.5px solid var(--amber);
+  margin-bottom: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.hero-avatar img {
+  width: 115%;
+  height: 115%;
+  object-fit: cover;
+  object-position: center top;
+  margin: -7.5%;
+}
+
 /* ─── Hero ───────────────────────────────────────── */
 #hero {
   padding: 72px 0 64px;
