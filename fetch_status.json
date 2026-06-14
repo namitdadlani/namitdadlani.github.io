@@ -1,0 +1,533 @@
+{
+  "generated_at": "2026-06-14T04:33:56Z",
+  "trigger": "generate --live",
+  "sources": {
+    "Open-Meteo": {
+      "ok": true
+    },
+    "Yahoo Finance": {
+      "ok": true,
+      "fetched": 9,
+      "failed": []
+    },
+    "Tech RSS": {
+      "ok": true,
+      "items": 3
+    },
+    "AI RSS": {
+      "ok": true,
+      "items": 3
+    },
+    "Finance RSS": {
+      "ok": true,
+      "items": 3
+    },
+    "Global RSS": {
+      "ok": true,
+      "items": 3
+    },
+    "Toronto RSS": {
+      "ok": true,
+      "items": 3
+    }
+  },
+  "weather": {
+    "ok": true,
+    "current": {
+      "temp": 16.3,
+      "code": 0,
+      "description": "Clear sky",
+      "icon": "\u2600\ufe0f",
+      "windspeed": 8.0,
+      "windgusts": 22.3,
+      "is_day": 0
+    },
+    "forecast": [
+      {
+        "date": "2026-06-14",
+        "max": 19.3,
+        "min": 13.2,
+        "precip_prob": 65,
+        "windspeed_max": 17.6,
+        "windgusts_max": 33.8,
+        "code": 65,
+        "icon": "\ud83c\udf27\ufe0f",
+        "description": "Heavy rain"
+      },
+      {
+        "date": "2026-06-15",
+        "max": 17.3,
+        "min": 10.0,
+        "precip_prob": 0,
+        "windspeed_max": 20.5,
+        "windgusts_max": 42.8,
+        "code": 3,
+        "icon": "\u2601\ufe0f",
+        "description": "Overcast"
+      },
+      {
+        "date": "2026-06-16",
+        "max": 22.9,
+        "min": 13.6,
+        "precip_prob": 19,
+        "windspeed_max": 24.1,
+        "windgusts_max": 42.5,
+        "code": 3,
+        "icon": "\u2601\ufe0f",
+        "description": "Overcast"
+      },
+      {
+        "date": "2026-06-17",
+        "max": 20.7,
+        "min": 14.5,
+        "precip_prob": 62,
+        "windspeed_max": 20.2,
+        "windgusts_max": 36.7,
+        "code": 80,
+        "icon": "\ud83c\udf26\ufe0f",
+        "description": "Slight showers"
+      },
+      {
+        "date": "2026-06-18",
+        "max": 20.4,
+        "min": 14.8,
+        "precip_prob": 78,
+        "windspeed_max": 24.8,
+        "windgusts_max": 42.1,
+        "code": 81,
+        "icon": "\ud83c\udf26\ufe0f",
+        "description": "Moderate showers"
+      },
+      {
+        "date": "2026-06-19",
+        "max": 23.8,
+        "min": 13.9,
+        "precip_prob": 15,
+        "windspeed_max": 14.6,
+        "windgusts_max": 31.7,
+        "code": 3,
+        "icon": "\u2601\ufe0f",
+        "description": "Overcast"
+      },
+      {
+        "date": "2026-06-20",
+        "max": 17.1,
+        "min": 11.8,
+        "precip_prob": 14,
+        "windspeed_max": 25.2,
+        "windgusts_max": 48.2,
+        "code": 3,
+        "icon": "\u2601\ufe0f",
+        "description": "Overcast"
+      }
+    ]
+  },
+  "markets": {
+    "ok": true,
+    "quotes": [
+      {
+        "ticker": "^GSPC",
+        "name": "S&P 500",
+        "desc": "US large-cap",
+        "dollar": false,
+        "price": 7431.46,
+        "change": 37.159999999999854,
+        "change_pct": 0.502549260917191
+      },
+      {
+        "ticker": "^IXIC",
+        "name": "NASDAQ",
+        "desc": "Tech composite",
+        "dollar": false,
+        "price": 25888.844,
+        "change": 79.1840000000011,
+        "change_pct": 0.30679985710776936
+      },
+      {
+        "ticker": "^GSPTSE",
+        "name": "TSX",
+        "desc": "Toronto S&E",
+        "dollar": false,
+        "price": 34937.85,
+        "change": 266.3899999999994,
+        "change_pct": 0.7683264563995846
+      },
+      {
+        "ticker": "AMZN",
+        "name": "AMZN",
+        "desc": "Amazon",
+        "dollar": true,
+        "price": 238.55,
+        "change": -2.9599999999999795,
+        "change_pct": -1.2256221274481303
+      },
+      {
+        "ticker": "NVDA",
+        "name": "NVDA",
+        "desc": "Nvidia",
+        "dollar": true,
+        "price": 205.19,
+        "change": 0.3199999999999932,
+        "change_pct": 0.1561966124859634
+      },
+      {
+        "ticker": "MSFT",
+        "name": "MSFT",
+        "desc": "Microsoft",
+        "dollar": true,
+        "price": 390.74,
+        "change": 0.4000000000000341,
+        "change_pct": 0.10247476558898246
+      },
+      {
+        "ticker": "BTC-USD",
+        "name": "BTC",
+        "desc": "Bitcoin",
+        "dollar": true,
+        "price": 64439.0,
+        "change": 26.349999999998545,
+        "change_pct": 0.04090811354601703
+      },
+      {
+        "ticker": "USDCAD=X",
+        "name": "USD/CAD",
+        "desc": "Forex",
+        "dollar": false,
+        "price": 1.3989,
+        "change": 0.0030000000000001137,
+        "change_pct": 0.21491510853213794
+      },
+      {
+        "ticker": "^TNX",
+        "name": "10Y UST",
+        "desc": "Treasury yield",
+        "dollar": false,
+        "price": 4.487,
+        "change": 0.023999700000000068,
+        "change_pct": 0.5377481153205405
+      }
+    ],
+    "groups": [
+      {
+        "label": "Indices",
+        "tickers": [
+          "^GSPC",
+          "^IXIC",
+          "^GSPTSE"
+        ]
+      },
+      {
+        "label": "Tech Picks",
+        "tickers": [
+          "AMZN",
+          "NVDA",
+          "MSFT"
+        ]
+      },
+      {
+        "label": "Macro",
+        "tickers": [
+          "BTC-USD",
+          "USDCAD=X",
+          "^TNX"
+        ]
+      }
+    ],
+    "failed": []
+  },
+  "tech": {
+    "ok": true,
+    "items": [
+      {
+        "title": "As Anthropic suspends access to new models, India debates its AI future",
+        "link": "https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future/",
+        "summary": "Tech leaders debate whether the Anthropic episode is a wake-up call for India\u2019s AI ambitions.",
+        "published": [
+          2026,
+          6,
+          14,
+          3,
+          0,
+          0,
+          6,
+          165,
+          0
+        ],
+        "source": "TechCrunch",
+        "score": 0
+      },
+      {
+        "title": "The Redistribution of Housing Wealth Caused by Rent Control [pdf]",
+        "link": "https://www.rhawa.org/file/secure/shs-the-impact-of-rent-control-in-st-paul.pdf",
+        "summary": "Article URL: https://www.rhawa.org/file/secure/shs-the-impact-of-rent-control-in-st-paul.pdf Comments URL: https://news.ycombinator.com/item?id=48523773 Points: 43 # Comments: 32",
+        "published": [
+          2026,
+          6,
+          14,
+          2,
+          59,
+          34,
+          6,
+          165,
+          0
+        ],
+        "source": "Hacker News: Front Page",
+        "score": 0
+      },
+      {
+        "title": "Weave: Merging based on language structure and not lines",
+        "link": "https://ataraxy-labs.github.io/weave/",
+        "summary": "Article URL: https://ataraxy-labs.github.io/weave/ Comments URL: https://news.ycombinator.com/item?id=48523705 Points: 5 # Comments: 1",
+        "published": [
+          2026,
+          6,
+          14,
+          2,
+          45,
+          38,
+          6,
+          165,
+          0
+        ],
+        "source": "Hacker News: Front Page",
+        "score": 0
+      }
+    ]
+  },
+  "ai": {
+    "ok": true,
+    "items": [
+      {
+        "title": "As Anthropic suspends access to new models, India debates its AI future",
+        "link": "https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future/",
+        "summary": "Tech leaders debate whether the Anthropic episode is a wake-up call for India\u2019s AI ambitions.",
+        "published": [
+          2026,
+          6,
+          14,
+          3,
+          0,
+          0,
+          6,
+          165,
+          0
+        ],
+        "source": "AI News & Artificial Intelligence | TechCrunch",
+        "score": 2
+      },
+      {
+        "title": "Amazon CEO reportedly raised Anthropic model concerns before government crackdown",
+        "link": "https://techcrunch.com/2026/06/13/amazon-ceo-reportedly-raised-anthropic-model-concerns-before-government-crackdown/",
+        "summary": "Amazon CEO Andy Jassy may have been the source of security concerns that led Anthropic to cut off worldwide access to two models on Friday.",
+        "published": [
+          2026,
+          6,
+          13,
+          19,
+          11,
+          41,
+          5,
+          164,
+          0
+        ],
+        "source": "AI News & Artificial Intelligence | TechCrunch",
+        "score": 2
+      },
+      {
+        "title": "OpenAI faces investigation from state attorneys general",
+        "link": "https://techcrunch.com/2026/06/13/openai-faces-investigation-from-state-attorneys-general/",
+        "summary": "It's not clear which states are involved, but they're asking about everything from OpenAI's ad policies to its handling of health data.",
+        "published": [
+          2026,
+          6,
+          13,
+          16,
+          47,
+          18,
+          5,
+          164,
+          0
+        ],
+        "source": "AI News & Artificial Intelligence | TechCrunch",
+        "score": 2
+      }
+    ]
+  },
+  "finance": {
+    "ok": true,
+    "items": [
+      {
+        "title": "SpaceX IPO live updates: Elon Musk's SpaceX stock soars in market debut as Dow, S&P 500, Nasdaq rise",
+        "link": "https://finance.yahoo.com/markets/live/spacex-ipo-live-updates-elon-musks-spacex-set-to-make-record-debut-as-dow-sp-500-nasdaq-rise-230015961.html",
+        "summary": "",
+        "published": [
+          2026,
+          6,
+          11,
+          23,
+          0,
+          15,
+          3,
+          162,
+          0
+        ],
+        "source": "Yahoo Finance",
+        "score": 4
+      },
+      {
+        "title": "Stock Market Today: Dow Ends Higher On Iran Deal Hopes; SpaceX Rockets 19% In Debut",
+        "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-iran-deal-spacex-ipo-spcx-stock/?src=A00220&yptr=yahoo",
+        "summary": "",
+        "published": [
+          2026,
+          6,
+          12,
+          20,
+          51,
+          39,
+          4,
+          163,
+          0
+        ],
+        "source": "Yahoo Finance",
+        "score": 2
+      },
+      {
+        "title": "RXO\u2019s debt rating at S&P holds; so does its negative outlook",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/rxo-debt-rating-p-holds-204915139.html",
+        "summary": "",
+        "published": [
+          2026,
+          6,
+          12,
+          20,
+          49,
+          15,
+          4,
+          163,
+          0
+        ],
+        "source": "Yahoo Finance",
+        "score": 2
+      }
+    ]
+  },
+  "global": {
+    "ok": true,
+    "items": [
+      {
+        "title": "Nigerian author accuses hospital of stalling review into her son's death",
+        "link": "https://www.bbc.com/news/articles/cgk6jzkr0xvo?at_medium=RSS&at_campaign=rss",
+        "summary": "Chimamanda Ngozi Adichie's 21-month old son died in a Lagos hospital, which she says is trying to stop an inquest into the circumstances of his death.",
+        "published": [
+          2026,
+          6,
+          14,
+          1,
+          8,
+          20,
+          6,
+          165,
+          0
+        ],
+        "source": "BBC News",
+        "score": 0
+      },
+      {
+        "title": "Ticketmaster says Knicks fans won't be locked out of game after last-minute panic",
+        "link": "https://www.bbc.com/news/articles/c5yz7gj4x3yo?at_medium=RSS&at_campaign=rss",
+        "summary": "An note on the Ticketmaster website for buying tickets to the game caused confusion and backlash among New Yorkers.",
+        "published": [
+          2026,
+          6,
+          13,
+          22,
+          17,
+          8,
+          5,
+          164,
+          0
+        ],
+        "source": "BBC News",
+        "score": 0
+      },
+      {
+        "title": "Vincent's parents 'never say he's good enough' - so he turned to a middle-aged couple online",
+        "link": "https://www.bbc.com/news/articles/cpq3dnr5vlzo?at_medium=RSS&at_campaign=rss",
+        "summary": "A niche group of content creators called \"virtual parents\" have become hugely popular among young people.",
+        "published": [
+          2026,
+          6,
+          13,
+          22,
+          5,
+          24,
+          5,
+          164,
+          0
+        ],
+        "source": "BBC News",
+        "score": 0
+      }
+    ]
+  },
+  "toronto": {
+    "ok": true,
+    "items": [
+      {
+        "title": "Woman who killed stranger in downtown Toronto store granted absolute discharge",
+        "link": "https://www.cbc.ca/news/canada/toronto/toronto-path-stabber-bisesar-discharge-9.7234358?cmp=rss",
+        "summary": "A woman found not criminally responsible for stabbing a stranger to death in a downtown Toronto drugstore a decade ago has been granted an absolute discharge after an Ontario board concluded she no longer poses a significant threat to public safety.",
+        "published": [
+          2026,
+          6,
+          13,
+          0,
+          39,
+          18,
+          5,
+          164,
+          0
+        ],
+        "source": "CBC | Toronto News",
+        "score": 3
+      },
+      {
+        "title": "'Our loving family is shattered,' says mother of slain Toronto police officer",
+        "link": "https://www.cbc.ca/news/canada/toronto/tributes-to-fallen-tps-officer-9.7232999?cmp=rss",
+        "summary": "The death of Const. Marc Pinizzotto, who was fatally shot while conducting a search warrant early Thursday morning, has drawn tributes from all over the country, ranging from Ontario's premier to the prime minister.",
+        "published": [
+          2026,
+          6,
+          12,
+          13,
+          36,
+          3,
+          4,
+          163,
+          0
+        ],
+        "source": "CBC | Toronto News",
+        "score": 3
+      },
+      {
+        "title": "FIFA World Cup 2026 bringing special energy to Toronto, local business owners say",
+        "link": "https://www.cbc.ca/player/play/9.7234735?cmp=rss",
+        "summary": "Canada's national men's soccer team recorded their first-ever point at the FIFA World Cup against Bosnia-Herzegovina on Friday. The team now looks forward to a matchup with Qatar on Thursday, in Vancouver. Local business owners in Toronto say every match is drawing large crowds and a special energy ",
+        "published": [
+          2026,
+          6,
+          13,
+          22,
+          48,
+          20,
+          5,
+          164,
+          0
+        ],
+        "source": "CBC | Toronto News",
+        "score": 2
+      }
+    ]
+  }
+}

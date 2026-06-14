@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dadlani Digest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f5f0e8;
+  color: #1a1a1a;
+  font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: #1a1a1a; }
+a:hover { color: #8b1a1a; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* Masthead */
+.masthead {
+  text-align: center;
+  border-bottom: 3px double #1a1a1a;
+  padding: 32px 24px 20px;
+  margin-bottom: 32px;
+}
+.masthead-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.masthead-motto {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 6px;
+}
+.masthead-date {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Section labels */
+.section { margin-bottom: 40px; }
+.section-label {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #8b1a1a;
+  border-bottom: 2px solid #8b1a1a;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+}
+
+/* Weather — today panel */
+.weather-panel {
+  background: rgba(255,255,255,0.55);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 28px 24px 22px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.weather-temp-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.weather-icon-big { font-size: 2.6rem; line-height: 1; }
+.weather-temp-big {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.weather-desc { font-size: 1.1rem; color: #555; margin-bottom: 6px; }
+.weather-hilow { font-size: 0.95rem; color: #444; margin-bottom: 8px; }
+.weather-hilow .hi { font-weight: 700; }
+.weather-hilow .lo { color: #777; }
+.weather-details { font-size: 0.88rem; color: #666; }
+.weather-details span + span::before { content: ' · '; }
+
+/* Weather — 5-day forecast */
+.forecast-row { display: flex; gap: 10px; }
+.day-card {
+  flex: 1 1 0;
+  text-align: center;
+  padding: 12px 6px 10px;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.day-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #8b1a1a; }
+.day-icon { font-size: 1.6rem; margin: 5px 0 2px; }
+.day-desc { font-size: 0.68rem; color: #777; margin-bottom: 4px; line-height: 1.2; }
+.day-hi { font-weight: 700; font-size: 1rem; }
+.day-lo { color: #666; font-size: 0.88rem; }
+.day-precip { font-size: 0.78rem; color: #555; margin-top: 4px; }
+.day-wind {
+  font-size: 0.72rem;
+  color: #777;
+  border-top: 1px solid #e4dfd4;
+  margin-top: 6px;
+  padding-top: 5px;
+  line-height: 1.5;
+}
+
+/* Markets */
+.markets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.markets-group {
+  background: rgba(255,255,255,0.55);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.markets-group-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #888;
+  padding: 7px 12px 6px;
+  background: rgba(0,0,0,0.03);
+  border-bottom: 1px solid #e4dfd4;
+}
+.markets-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.markets-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #ede9e0;
+  vertical-align: middle;
+}
+.markets-table tr:last-child td { border-bottom: none; }
+.mkt-name { font-weight: 700; }
+.mkt-desc { display: block; font-size: 0.73rem; color: #888; font-weight: 400; }
+.mkt-price {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.mkt-pct { text-align: right; width: 1%; white-space: nowrap; }
+.pct-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.pct-positive { background: #d4edda; color: #1a6e2e; }
+.pct-negative { background: #f8d7da; color: #721c24; }
+.pct-neutral  { background: #eeebe4; color: #888; }
+
+/* Stories grid */
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .markets-grid { grid-template-columns: 1fr; }
+  .stories-grid { grid-template-columns: 1fr; }
+  .forecast-row { flex-wrap: wrap; }
+}
+.story-card {
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.story-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.story-headline a { text-decoration: none; }
+.story-headline a:hover { text-decoration: underline; color: #8b1a1a; }
+.story-summary {
+  font-size: 0.88rem;
+  color: #444;
+  flex: 1;
+}
+.story-meta {
+  font-size: 0.78rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Footer */
+.footer {
+  border-top: 2px solid #1a1a1a;
+  margin-top: 48px;
+  padding: 20px 0 36px;
+  font-size: 0.8rem;
+  color: #888;
+}
+.error-note { color: #888; font-style: italic; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="masthead">
+      <div class="masthead-title">The Dadlani Digest</div>
+      <div class="masthead-motto">Built by code, read over coffee.</div>
+      <div class="masthead-date">Sunday, June 14, 2026 &nbsp;|&nbsp; Generated at 12:33 AM ET</div>
+    </header>
+    
+
+    <section class="section weather-section">
+      <div class="section-label">Toronto Weather</div>
+      
+      <div class="weather-panel">
+        <div class="weather-temp-line">
+          <span class="weather-icon-big">☀️</span>
+          <span class="weather-temp-big">16°C</span>
+        </div>
+        <div class="weather-desc">Clear sky</div>
+        <div class="weather-hilow">
+          <span class="hi">H: 19°</span>&nbsp;&nbsp;<span class="lo">L: 13°</span>
+        </div>
+        <div class="weather-details">
+          <span>💨 Wind 8 km/h</span><span>Gusts 22 km/h</span><span>💧 65%</span>
+        </div>
+      </div>
+      <div class="forecast-row">
+        <div class="day-card">
+          <div class="day-label">Mon</div>
+          <div class="day-icon">☁️</div>
+          <div class="day-desc">Overcast</div>
+          <div class="day-hi">17°</div>
+          <div class="day-lo">10°</div>
+          <div class="day-precip">💧 0%</div>
+          <div class="day-wind">💨 20 km/h · 43 km/h</div>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Tue</div>
+          <div class="day-icon">☁️</div>
+          <div class="day-desc">Overcast</div>
+          <div class="day-hi">23°</div>
+          <div class="day-lo">14°</div>
+          <div class="day-precip">💧 19%</div>
+          <div class="day-wind">💨 24 km/h · 42 km/h</div>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Wed</div>
+          <div class="day-icon">🌦️</div>
+          <div class="day-desc">Slight showers</div>
+          <div class="day-hi">21°</div>
+          <div class="day-lo">14°</div>
+          <div class="day-precip">💧 62%</div>
+          <div class="day-wind">💨 20 km/h · 37 km/h</div>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Thu</div>
+          <div class="day-icon">🌦️</div>
+          <div class="day-desc">Moderate showers</div>
+          <div class="day-hi">20°</div>
+          <div class="day-lo">15°</div>
+          <div class="day-precip">💧 78%</div>
+          <div class="day-wind">💨 25 km/h · 42 km/h</div>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Fri</div>
+          <div class="day-icon">☁️</div>
+          <div class="day-desc">Overcast</div>
+          <div class="day-hi">24°</div>
+          <div class="day-lo">14°</div>
+          <div class="day-precip">💧 15%</div>
+          <div class="day-wind">💨 15 km/h · 32 km/h</div>
+        </div></div>
+    </section>
+    
+
+    <section class="section markets-section">
+      <div class="section-label">Markets</div>
+      <div class="markets-grid">
+        <div class="markets-group">
+          <div class="markets-group-label">Indices</div>
+          <table class="markets-table"><tbody>
+            <tr>
+              <td class="mkt-name">S&amp;P 500<span class="mkt-desc">US large-cap</span></td>
+              <td class="mkt-price">7,431.46</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.50%</span></td>
+            </tr>
+            <tr>
+              <td class="mkt-name">NASDAQ<span class="mkt-desc">Tech composite</span></td>
+              <td class="mkt-price">25,888.84</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.31%</span></td>
+            </tr>
+            <tr>
+              <td class="mkt-name">TSX<span class="mkt-desc">Toronto S&amp;E</span></td>
+              <td class="mkt-price">34,937.85</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.77%</span></td>
+            </tr></tbody></table>
+        </div>
+        <div class="markets-group">
+          <div class="markets-group-label">Tech Picks</div>
+          <table class="markets-table"><tbody>
+            <tr>
+              <td class="mkt-name">AMZN<span class="mkt-desc">Amazon</span></td>
+              <td class="mkt-price">$238.55</td>
+              <td class="mkt-pct"><span class="pct-badge pct-negative">-1.23%</span></td>
+            </tr>
+            <tr>
+              <td class="mkt-name">NVDA<span class="mkt-desc">Nvidia</span></td>
+              <td class="mkt-price">$205.19</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.16%</span></td>
+            </tr>
+            <tr>
+              <td class="mkt-name">MSFT<span class="mkt-desc">Microsoft</span></td>
+              <td class="mkt-price">$390.74</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.10%</span></td>
+            </tr></tbody></table>
+        </div>
+        <div class="markets-group">
+          <div class="markets-group-label">Macro</div>
+          <table class="markets-table"><tbody>
+            <tr>
+              <td class="mkt-name">BTC<span class="mkt-desc">Bitcoin</span></td>
+              <td class="mkt-price">$64,439.00</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.04%</span></td>
+            </tr>
+            <tr>
+              <td class="mkt-name">USD/CAD<span class="mkt-desc">Forex</span></td>
+              <td class="mkt-price">1.40</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.21%</span></td>
+            </tr>
+            <tr>
+              <td class="mkt-name">10Y UST<span class="mkt-desc">Treasury yield</span></td>
+              <td class="mkt-price">4.49</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.54%</span></td>
+            </tr></tbody></table>
+        </div></div>
+    </section>
+    
+
+    <section class="section news-section">
+      <div class="section-label">Tech News</div>
+      <div class="stories-grid">
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future/" target="_blank" rel="noopener">As Anthropic suspends access to new models, India debates its AI future</a></h3>
+          <p class="story-summary">Tech leaders debate whether the Anthropic episode is a wake-up call for India’s AI ambitions.</p>
+          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://www.rhawa.org/file/secure/shs-the-impact-of-rent-control-in-st-paul.pdf" target="_blank" rel="noopener">The Redistribution of Housing Wealth Caused by Rent Control [pdf]</a></h3>
+          <p class="story-summary">Article URL: https://www.rhawa.org/file/secure/shs-the-impact-of-rent-control-in-st-paul.pdf Comments URL: https://news.ycombinator.com/item?id=48523773 Points: 43 # Comments: 32</p>
+          <div class="story-meta">Hacker News: Front Page &nbsp;·&nbsp; Jun 14, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://ataraxy-labs.github.io/weave/" target="_blank" rel="noopener">Weave: Merging based on language structure and not lines</a></h3>
+          <p class="story-summary">Article URL: https://ataraxy-labs.github.io/weave/ Comments URL: https://news.ycombinator.com/item?id=48523705 Points: 5 # Comments: 1</p>
+          <div class="story-meta">Hacker News: Front Page &nbsp;·&nbsp; Jun 14, 2026</div>
+        </div></div>
+    </section>
+    
+
+    <section class="section news-section">
+      <div class="section-label">AI News</div>
+      <div class="stories-grid">
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future/" target="_blank" rel="noopener">As Anthropic suspends access to new models, India debates its AI future</a></h3>
+          <p class="story-summary">Tech leaders debate whether the Anthropic episode is a wake-up call for India’s AI ambitions.</p>
+          <div class="story-meta">AI News &amp; Artificial Intelligence | TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/amazon-ceo-reportedly-raised-anthropic-model-concerns-before-government-crackdown/" target="_blank" rel="noopener">Amazon CEO reportedly raised Anthropic model concerns before government crackdown</a></h3>
+          <p class="story-summary">Amazon CEO Andy Jassy may have been the source of security concerns that led Anthropic to cut off worldwide access to two models on Friday.</p>
+          <div class="story-meta">AI News &amp; Artificial Intelligence | TechCrunch &nbsp;·&nbsp; Jun 13, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/openai-faces-investigation-from-state-attorneys-general/" target="_blank" rel="noopener">OpenAI faces investigation from state attorneys general</a></h3>
+          <p class="story-summary">It&#x27;s not clear which states are involved, but they&#x27;re asking about everything from OpenAI&#x27;s ad policies to its handling of health data.</p>
+          <div class="story-meta">AI News &amp; Artificial Intelligence | TechCrunch &nbsp;·&nbsp; Jun 13, 2026</div>
+        </div></div>
+    </section>
+    
+
+    <section class="section news-section">
+      <div class="section-label">Finance &amp; Markets News</div>
+      <div class="stories-grid">
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://finance.yahoo.com/markets/live/spacex-ipo-live-updates-elon-musks-spacex-set-to-make-record-debut-as-dow-sp-500-nasdaq-rise-230015961.html" target="_blank" rel="noopener">SpaceX IPO live updates: Elon Musk&#x27;s SpaceX stock soars in market debut as Dow, S&amp;P 500, Nasdaq rise</a></h3>
+          <p class="story-summary"></p>
+          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 11, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-iran-deal-spacex-ipo-spcx-stock/?src=A00220&amp;yptr=yahoo" target="_blank" rel="noopener">Stock Market Today: Dow Ends Higher On Iran Deal Hopes; SpaceX Rockets 19% In Debut</a></h3>
+          <p class="story-summary"></p>
+          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 12, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://finance.yahoo.com/markets/stocks/articles/rxo-debt-rating-p-holds-204915139.html" target="_blank" rel="noopener">RXO’s debt rating at S&amp;P holds; so does its negative outlook</a></h3>
+          <p class="story-summary"></p>
+          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 12, 2026</div>
+        </div></div>
+    </section>
+    
+
+    <section class="section news-section">
+      <div class="section-label">Global News</div>
+      <div class="stories-grid">
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://www.bbc.com/news/articles/cgk6jzkr0xvo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Nigerian author accuses hospital of stalling review into her son&#x27;s death</a></h3>
+          <p class="story-summary">Chimamanda Ngozi Adichie&#x27;s 21-month old son died in a Lagos hospital, which she says is trying to stop an inquest into the circumstances of his death.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 14, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://www.bbc.com/news/articles/c5yz7gj4x3yo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Ticketmaster says Knicks fans won&#x27;t be locked out of game after last-minute panic</a></h3>
+          <p class="story-summary">An note on the Ticketmaster website for buying tickets to the game caused confusion and backlash among New Yorkers.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 13, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://www.bbc.com/news/articles/cpq3dnr5vlzo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Vincent&#x27;s parents &#x27;never say he&#x27;s good enough&#x27; - so he turned to a middle-aged couple online</a></h3>
+          <p class="story-summary">A niche group of content creators called &quot;virtual parents&quot; have become hugely popular among young people.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 13, 2026</div>
+        </div></div>
+    </section>
+    
+
+    <section class="section news-section">
+      <div class="section-label">Toronto Local</div>
+      <div class="stories-grid">
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/toronto-path-stabber-bisesar-discharge-9.7234358?cmp=rss" target="_blank" rel="noopener">Woman who killed stranger in downtown Toronto store granted absolute discharge</a></h3>
+          <p class="story-summary">A woman found not criminally responsible for stabbing a stranger to death in a downtown Toronto drugstore a decade ago has been granted an absolute discharge after an Ontario board concluded she no longer poses a significant threat to public safety.</p>
+          <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 13, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/tributes-to-fallen-tps-officer-9.7232999?cmp=rss" target="_blank" rel="noopener">&#x27;Our loving family is shattered,&#x27; says mother of slain Toronto police officer</a></h3>
+          <p class="story-summary">The death of Const. Marc Pinizzotto, who was fatally shot while conducting a search warrant early Thursday morning, has drawn tributes from all over the country, ranging from Ontario&#x27;s premier to the prime minister.</p>
+          <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 12, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://www.cbc.ca/player/play/9.7234735?cmp=rss" target="_blank" rel="noopener">FIFA World Cup 2026 bringing special energy to Toronto, local business owners say</a></h3>
+          <p class="story-summary">Canada&#x27;s national men&#x27;s soccer team recorded their first-ever point at the FIFA World Cup against Bosnia-Herzegovina on Friday. The team now looks forward to a matchup with Qatar on Thursday, in Vancouver. Local business owners in Toronto say every match is drawing large crowds and a special energy </p>
+          <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 13, 2026</div>
+        </div></div>
+    </section>
+    
+
+    <footer class="footer">
+      <div class="footer-generated">Generated 2026-06-14 00:33 ET &nbsp;|&nbsp; Powered by code</div>
+    </footer>
+    
+  </div>
+</body>
+</html>
