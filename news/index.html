@@ -11,7 +11,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: #FAFAF8;
+  background: #F5F0E8;
   color: #1a1a18;
   font-family: 'Outfit', system-ui, sans-serif;
   font-size: 16px;
@@ -59,8 +59,8 @@ a:hover { color: #B07D3A; }
 .section { margin-bottom: 40px; }
 .section-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.69rem;
-  font-weight: 400;
+  font-size: 0.82rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: #B07D3A;
@@ -71,7 +71,7 @@ a:hover { color: #B07D3A; }
 
 /* Weather — today panel */
 .weather-panel {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,252,245,0.6);
   border: 0.5px solid rgba(0,0,0,0.1);
   border-radius: 3px;
   padding: 28px 24px 22px;
@@ -105,7 +105,7 @@ a:hover { color: #B07D3A; }
   flex: 1 1 0;
   text-align: center;
   padding: 12px 6px 10px;
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,252,245,0.6);
   border: 0.5px solid rgba(0,0,0,0.1);
   border-radius: 3px;
 }
@@ -132,7 +132,7 @@ a:hover { color: #B07D3A; }
   gap: 14px;
 }
 .markets-group {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,252,245,0.6);
   border: 0.5px solid rgba(0,0,0,0.1);
   border-radius: 3px;
   overflow: hidden;
@@ -195,7 +195,7 @@ a:hover { color: #B07D3A; }
 }
 .story-card {
   padding: 14px 16px;
-  background: rgba(255,255,255,0.45);
+  background: rgba(255,252,245,0.55);
   border: 0.5px solid rgba(0,0,0,0.1);
   border-radius: 3px;
   overflow: hidden;
@@ -285,19 +285,19 @@ a:hover { color: #B07D3A; }
     
 
     <section class="section weather-section">
-      <div class="section-label">Toronto Weather</div>
+      <div class="section-label">☀️ Toronto Weather</div>
       
       <div class="weather-panel">
         <div class="weather-temp-line">
-          <span class="weather-icon-big">🌧️</span>
-          <span class="weather-temp-big">17°C</span>
+          <span class="weather-icon-big">☁️</span>
+          <span class="weather-temp-big">18°C</span>
         </div>
-        <div class="weather-desc">Slight rain</div>
+        <div class="weather-desc">Overcast</div>
         <div class="weather-hilow">
-          <span class="hi">H: 18°</span>&nbsp;&nbsp;<span class="lo">L: 14°</span>
+          <span class="hi">H: 19°</span>&nbsp;&nbsp;<span class="lo">L: 13°</span>
         </div>
         <div class="weather-details">
-          <span>💨 Wind 9 km/h</span><span>Gusts 13 km/h</span><span>💧 75%</span>
+          <span>💨 Wind 11 km/h</span><span>Gusts 15 km/h</span><span>💧 95%</span>
         </div>
       </div>
       <div class="forecast-row">
@@ -305,52 +305,52 @@ a:hover { color: #B07D3A; }
           <div class="day-label">Mon</div>
           <div class="day-icon">☁️</div>
           <div class="day-desc">Overcast</div>
-          <div class="day-hi">16°</div>
-          <div class="day-lo">11°</div>
+          <div class="day-hi">17°</div>
+          <div class="day-lo">10°</div>
           <div class="day-precip">💧 0%</div>
-          <div class="day-wind">💨 19 km/h · 36 km/h</div>
+          <div class="day-wind">💨 17 km/h · 33 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Tue</div>
           <div class="day-icon">☁️</div>
           <div class="day-desc">Overcast</div>
-          <div class="day-hi">21°</div>
-          <div class="day-lo">10°</div>
+          <div class="day-hi">22°</div>
+          <div class="day-lo">11°</div>
           <div class="day-precip">💧 26%</div>
-          <div class="day-wind">💨 24 km/h · 42 km/h</div>
+          <div class="day-wind">💨 22 km/h · 38 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Wed</div>
           <div class="day-icon">🌦️</div>
-          <div class="day-desc">Slight showers</div>
-          <div class="day-hi">22°</div>
+          <div class="day-desc">Moderate showers</div>
+          <div class="day-hi">20°</div>
           <div class="day-lo">14°</div>
           <div class="day-precip">💧 56%</div>
-          <div class="day-wind">💨 20 km/h · 44 km/h</div>
+          <div class="day-wind">💨 21 km/h · 35 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Thu</div>
           <div class="day-icon">🌦️</div>
-          <div class="day-desc">Moderate showers</div>
-          <div class="day-hi">22°</div>
+          <div class="day-desc">Slight showers</div>
+          <div class="day-hi">21°</div>
           <div class="day-lo">14°</div>
           <div class="day-precip">💧 80%</div>
-          <div class="day-wind">💨 43 km/h · 72 km/h</div>
+          <div class="day-wind">💨 42 km/h · 59 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Fri</div>
           <div class="day-icon">🌦️</div>
           <div class="day-desc">Light drizzle</div>
-          <div class="day-hi">21°</div>
-          <div class="day-lo">13°</div>
+          <div class="day-hi">22°</div>
+          <div class="day-lo">14°</div>
           <div class="day-precip">💧 8%</div>
-          <div class="day-wind">💨 20 km/h · 46 km/h</div>
+          <div class="day-wind">💨 17 km/h · 46 km/h</div>
         </div></div>
     </section>
     
 
     <section class="section markets-section">
-      <div class="section-label">Markets</div>
+      <div class="section-label">📈 Markets</div>
       <div class="markets-grid">
         <div class="markets-group">
           <div class="markets-group-label">Indices</div>
@@ -395,13 +395,13 @@ a:hover { color: #B07D3A; }
           <table class="markets-table"><tbody>
             <tr>
               <td class="mkt-name">BTC<span class="mkt-desc">Bitcoin</span></td>
-              <td class="mkt-price">$63,985.95</td>
-              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.66%</span></td>
+              <td class="mkt-price">$65,100.83</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+1.07%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">USD/CAD<span class="mkt-desc">Forex</span></td>
               <td class="mkt-price">1.40</td>
-              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.21%</span></td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.16%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">10Y UST<span class="mkt-desc">Treasury yield</span></td>
@@ -413,113 +413,113 @@ a:hover { color: #B07D3A; }
     
 
     <section class="section news-section">
-      <div class="section-label">Tech News</div>
+      <div class="section-label">💻 Tech News</div>
       <div class="stories-grid">
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/14/as-ai-companies-race-to-go-public-who-else-is-along-for-the-ride/" target="_blank" rel="noopener">As AI companies race to go public, who else is along for the ride?</a></h3>
-          <p class="story-summary">Startups are trying to &quot;ride that SpaceX IPO wave.&quot;</p>
-          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
+          <img class="story-img" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/high.webp?quality=90&amp;#038;strip=all&amp;#038;crop=0,0,100,100" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.theverge.com/tech/949648/fbi-fake-town-cyberattacks-kinetic-cyber-range" target="_blank" rel="noopener">The FBI built a small town to simulate cyberattacks</a></h3>
+          <p class="story-summary">Last year, the FBI opened a Cyber Range in Huntsville, Alabama, for simulating cyberattacks. Think of it sort of like the famous Hogan&#x27;s Alley, but for modern digital crime training. It&#x27;s a massive 22,000 square-foot replica of an entire town, complete with a convenience store, gas station, hospital</p>
+          <div class="story-meta">The Verge &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/14/techcrunch-mobility-spacex-rockets-past-tesla/" target="_blank" rel="noopener">TechCrunch Mobility: SpaceX rockets past Tesla</a></h3>
-          <p class="story-summary">Welcome back to TechCrunch Mobility, your hub for the future of transportation and now, more than ever, how AI is playing a part.</p>
-          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
+          <img class="story-img" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/STK269_ANTHROPIC_2_C.jpg?quality=90&amp;#038;strip=all&amp;#038;crop=0,0,100,100" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.theverge.com/ai-artificial-intelligence/949644/china-white-house-anthropic-mythos" target="_blank" rel="noopener">China may have accessed Mythos</a></h3>
+          <p class="story-summary">According to a new report from Semafor, the White House&#x27;s decision to impose export restrictions on Anthropic&#x27;s Mythos was driven in part by fears that it had been accessed by a group linked to China. If the Chinese government actually had access to Mythos 5 or Fable 5, it would present a serious na</p>
+          <div class="story-meta">The Verge &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/14/the-new-sonos-play-has-become-my-go-to-desk-and-kitchen-speaker/" target="_blank" rel="noopener">The new Sonos Play has become my go-to desk and kitchen speaker</a></h3>
-          <p class="story-summary">The new Sonos Play can act as a portable speaker inside and outside your home.</p>
-          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
+          <img class="story-img" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/a0770643655_10.jpg?quality=90&amp;#038;strip=all&amp;#038;crop=0,0,100,100" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.theverge.com/entertainment/949621/conclave-nyc-summer-block-party-album-review" target="_blank" rel="noopener">Conclave is the sound of a NYC summer block party</a></h3>
+          <p class="story-summary">I have this vivid memory of walking to pick up my oldest from school in June of 2022. For a variety of reasons, I was in a very bad place mentally. And to make matters worse, it was brutally hot. I was depressed, angry with the world, sunburned, and soaked through with sweat. But as [&amp;#8230;]</p>
+          <div class="story-meta">The Verge &nbsp;·&nbsp; Jun 14, 2026</div>
         </div></div>
     </section>
     
 
     <section class="section news-section">
-      <div class="section-label">AI News</div>
+      <div class="section-label">🤖 AI News</div>
       <div class="stories-grid">
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future/" target="_blank" rel="noopener">As Anthropic suspends access to new models, India debates its AI future</a></h3>
-          <p class="story-summary">Tech leaders debate whether the Anthropic episode is a wake-up call for India’s AI ambitions.</p>
-          <div class="story-meta">AI News &amp; Artificial Intelligence | TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
+          <img class="story-img" src="https://images.ctfassets.net/jdtwqhzvc2n1/1U9H8GLIqoGqKpitVfgw3T/ba56292f99409eca709dac0b176ec245/nuneybits_Vector_art_of_white_goose_silhouette_flying_through_c_8100d5a7-9e36-4ed6-a188-016470e1d0e1.webp?w=300&amp;q=30" alt="" loading="lazy"><h3 class="story-headline"><a href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free" target="_blank" rel="noopener">Claude Code costs up to $200 a month. Goose does the same thing for free.</a></h3>
+          <p class="story-summary">The artificial intelligence coding revolution comes with a catch: it&amp;#x27;s expensive. Claude Code , Anthropic&amp;#x27;s terminal-based AI agent that can write, debug, and deploy code autonomously, has captured the imagination of software developers worldwide. But its pricing — ranging from $20 to $200</p>
+          <div class="story-meta">AI &nbsp;·&nbsp; Jan 19, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/amazon-ceo-reportedly-raised-anthropic-model-concerns-before-government-crackdown/" target="_blank" rel="noopener">Amazon CEO reportedly raised Anthropic model concerns before government crackdown</a></h3>
-          <p class="story-summary">Amazon CEO Andy Jassy may have been the source of security concerns that led Anthropic to cut off worldwide access to two models on Friday.</p>
-          <div class="story-meta">AI News &amp; Artificial Intelligence | TechCrunch &nbsp;·&nbsp; Jun 13, 2026</div>
+          <img class="story-img" src="https://images.ctfassets.net/jdtwqhzvc2n1/wHv1Wez7Ps9wYVYAo9fwT/14b41f606dbf1f5b17994be510407449/nuneybits_Hyper-realistic_image_of_a_retro_computer_with_a_glos_61ffb6e2-7c33-4d45-85f7-69c28693b3ec.webp?w=300&amp;q=30" alt="" loading="lazy"><h3 class="story-headline"><a href="https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no" target="_blank" rel="noopener">Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required</a></h3>
+          <p class="story-summary">Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users — and according to company insiders, the team built the entire feature in approximately a week and a half, largely using Claude Code itself. The laun</p>
+          <div class="story-meta">AI &nbsp;·&nbsp; Jan 12, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/openai-faces-investigation-from-state-attorneys-general/" target="_blank" rel="noopener">OpenAI faces investigation from state attorneys general</a></h3>
-          <p class="story-summary">It&#x27;s not clear which states are involved, but they&#x27;re asking about everything from OpenAI&#x27;s ad policies to its handling of health data.</p>
-          <div class="story-meta">AI News &amp; Artificial Intelligence | TechCrunch &nbsp;·&nbsp; Jun 13, 2026</div>
+          <img class="story-img" src="https://images.ctfassets.net/jdtwqhzvc2n1/66Tw6dMGGoSZZOK6XB6gm6/0fafc7520898e26c88edf1de9e74e863/nuneybits_Vector_art_of_radiant_skull_emitting_code_beams_deep__17d19acc-0af7-41ad-ac28-16f09ef5234b.webp?w=300&amp;q=30" alt="" loading="lazy"><h3 class="story-headline"><a href="https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in" target="_blank" rel="noopener">Nous Research&#x27;s NousCoder-14B is an open-source coding model landing right in the Claude Code moment</a></h3>
+          <p class="story-summary">Nous Research , the open-source artificial intelligence startup backed by crypto venture firm Paradigm , released a new competitive programming model on Monday that it says matches or exceeds several larger proprietary systems — trained in just four days using 48 of Nvidia&amp;#x27;s latest B200 graphic</p>
+          <div class="story-meta">AI &nbsp;·&nbsp; Jan 07, 2026</div>
         </div></div>
     </section>
     
 
     <section class="section news-section">
-      <div class="section-label">Finance &amp; Markets News</div>
+      <div class="section-label">📊 Finance &amp; Markets News</div>
       <div class="stories-grid">
         <div class="story-card">
-          <img class="story-img" src="https://media.zenfs.com/en/thestreet_881/30c0d59b5b871611e5fd7a80bb24d2b9" alt="" loading="lazy"><h3 class="story-headline"><a href="https://finance.yahoo.com/markets/stocks/articles/bank-america-revisits-oracle-stock-163300959.html" target="_blank" rel="noopener">Bank of America revisits Oracle stock price target after post-earnings selloff</a></h3>
-          <p class="story-summary"></p>
-          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 14, 2026</div>
+          <img class="story-img" src="https://images.mktw.net/im-71206903" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.marketwatch.com/story/spacex-shows-investors-still-want-moonshots-the-fed-may-test-that-theory-this-week-d7771f3a?mod=mw_rss_topstories" target="_blank" rel="noopener">SpaceX shows investors still want moonshots. The Fed may test that theory this week.</a></h3>
+          <p class="story-summary">Higher interest rates could make the AI growth story that’s been powering the bull market harder to justify.</p>
+          <div class="story-meta">MarketWatch.com - Top Stories &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://s.yimg.com/uu/api/res/1.2/7lB9YceowSOBHbvH7DgaFA--~B/aD0zNjY4O3c9NTUwMDthcHBpZD15dGFjaHlvbg--/https://d29szjachogqwa.cloudfront.net/images/2026-06/8e0d0f04-6355-42e7-ba12-de0d06744ff8" alt="" loading="lazy"><h3 class="story-headline"><a href="https://finance.yahoo.com/markets/article/spacex-ipo-afterglow-kevin-warshs-first-fed-meeting-and-a-potential-us-iran-deal-what-to-watch-this-week-142500418.html" target="_blank" rel="noopener">SpaceX IPO afterglow, Kevin Warsh&#x27;s first Fed meeting, and a potential US-Iran deal: What to watch this week</a></h3>
-          <p class="story-summary"></p>
-          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 14, 2026</div>
+          <img class="story-img" src="https://images.mktw.net/im-73074176" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.marketwatch.com/story/will-the-real-kevin-warsh-please-stand-up-ahead-of-his-first-fed-meeting-economists-honestly-dont-know-what-to-expect-6fa95c8c?mod=mw_rss_topstories" target="_blank" rel="noopener">Will the real Kevin Warsh please stand up? Ahead of his first Fed meeting, economists honestly don’t know what to expect.</a></h3>
+          <p class="story-summary">Perhaps the only thing that can be said with certainty about Kevin Warsh’s press conference following his first meeting as Federal Reserve chair this week is that he will have a captive audience.</p>
+          <div class="story-meta">MarketWatch.com - Top Stories &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://media.zenfs.com/en/moneywise_327/4edf6244beaca3cb630fc82e71c7bec2" alt="" loading="lazy"><h3 class="story-headline"><a href="https://finance.yahoo.com/markets/stocks/articles/elon-musks-1-trillion-fortune-163000095.html" target="_blank" rel="noopener">Elon Musk&#x27;s $1 trillion fortune is so vast that Jeff Bezos is now closer in wealth to the average American</a></h3>
-          <p class="story-summary"></p>
-          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 14, 2026</div>
+          <img class="story-img" src="https://images.mktw.net/im-28641878" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.marketwatch.com/story/defaults-in-debt-markets-are-starting-again-warns-pimco-heres-the-bond-giants-game-plan-16559c6d?mod=mw_rss_topstories" target="_blank" rel="noopener">Defaults in debt markets are starting again, warns Pimco. Here’s the bond giant’s game plan.</a></h3>
+          <p class="story-summary">Investors should increasingly seek out fixed income to anchor portfolios as equity valuations look stretched, says Pimco.</p>
+          <div class="story-meta">MarketWatch.com - Top Stories &nbsp;·&nbsp; Jun 14, 2026</div>
         </div></div>
     </section>
     
 
     <section class="section news-section">
-      <div class="section-label">Global News</div>
+      <div class="section-label">🌍 Global News</div>
       <div class="stories-grid">
-        <div class="story-card">
-          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9c96/live/b9b7b210-67f8-11f1-8e1d-bbbb1017d210.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.com/news/articles/czj83zlx1vjo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Lebanon says three killed in Israeli strike on Beirut suburb</a></h3>
-          <p class="story-summary">Israel says it targeted the Iran-backed Hezbollah, as Tehran warns this could derail a US-Iran deal to end the fighting.</p>
-          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 14, 2026</div>
-        </div>
         <div class="story-card">
           <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/539b/live/de1b20f0-67fe-11f1-9446-05fff8c055e2.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.com/news/articles/cx2kjwgwxwlo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">UK and Japan agree £18bn investment deal</a></h3>
           <p class="story-summary">Japanese firms will spend billions on UK infrastructure and offshore wind, Downing Street says.</p>
           <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fa2f/live/754ea070-67fd-11f1-8094-9970ec1ebecd.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.com/news/articles/cly9eljexnno?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">&#x27;Boyfriend duties call,&#x27; Trudeau says after skipping Canada match to watch Perry</a></h3>
-          <p class="story-summary">Cameras caught Perry running off stage to greet the former Canadian leader with a kiss.</p>
+          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/e640/live/efdb6b60-6821-11f1-8e1d-bbbb1017d210.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.com/news/videos/crkvek3dnrgo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Protesters clash with police ahead of G7 summit in Geneva</a></h3>
+          <p class="story-summary">Swiss police deployed a water cannon and fired tear gas to disperse anti-G7 protesters after clashes.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 14, 2026</div>
+        </div>
+        <div class="story-card">
+          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/94f7/live/fd42fdf0-67df-11f1-8546-8f19e4fe30f4.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.com/news/articles/c20ygjem17zo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Swiss voters reject 10 million population cap</a></h3>
+          <p class="story-summary">Nearly 55% of participants voted against the proposal to cap population by cutting migration, results show.</p>
           <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 14, 2026</div>
         </div></div>
     </section>
     
 
     <section class="section news-section">
-      <div class="section-label">Toronto Local</div>
+      <div class="section-label">🍁 Toronto Local</div>
       <div class="stories-grid">
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/marc-pinizzotto-procession-9.7234986?cmp=rss" target="_blank" rel="noopener">Procession to be held for Toronto police officer shot in investigation tied to U.S. consulate shooting</a></h3>
-          <p class="story-summary">A procession will be held for the Toronto police officer who was killed after an exchange of gunfire in the city&#x27;s northwest end Thursday.</p>
-          <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 14, 2026</div>
+          <img class="story-img" src="https://i.cbc.ca/ais/1.7335488,1760642490487/full/max/0/default.jpg?im=Crop%2Crect%3D%281%2C0%2C716%2C402%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/kitchener-waterloo/deadly-ontario-crash-opp-9.7235010?cmp=rss" target="_blank" rel="noopener">OPP to launch intersection safety campaign following deadly crash in rural Ontario</a></h3>
+          <p class="story-summary">As rural Ontario community is dealing with the grief of a deadly crash, the province&#x27;s police force is preparing a new safety blitz.</p>
+          <div class="story-meta">CBC &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.cbc.ca/player/play/9.7234735?cmp=rss" target="_blank" rel="noopener">FIFA World Cup 2026 bringing special energy to Toronto, local business owners say</a></h3>
+          <img class="story-img" src="https://i.cbc.ca/ais/6094e7b5-eb7b-4818-9b7b-ca987036108e,1781318102184/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1920%2C1080%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/marc-pinizzotto-procession-9.7234986?cmp=rss" target="_blank" rel="noopener">Procession held for Toronto police officer shot in investigation tied to U.S. consulate shooting</a></h3>
+          <p class="story-summary">Hundreds of first responders gathered along the streets of Toronto on Sunday afternoon for a procession honouring the Toronto police officer who was killed in a gunfire exchange in the city&#x27;s northwest end Thursday.</p>
+          <div class="story-meta">CBC &nbsp;·&nbsp; Jun 14, 2026</div>
+        </div>
+        <div class="story-card">
+          <img class="story-img" src="https://i.cbc.ca/ais/6073b29b-c93a-4803-9966-0b95155c3328,1781390700317/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1920%2C1080%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/player/play/9.7234735?cmp=rss" target="_blank" rel="noopener">FIFA World Cup 2026 bringing special energy to Toronto, local business owners say</a></h3>
           <p class="story-summary">Canada&#x27;s national men&#x27;s soccer team recorded their first-ever point at the FIFA World Cup against Bosnia-Herzegovina on Friday. The team now looks forward to a matchup with Qatar on Thursday, in Vancouver. Local business owners in Toronto say every match is drawing large crowds and a special energy </p>
-          <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 13, 2026</div>
-        </div>
-        <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/sunday-fifa-fan-festival-open-weather-9.7234941?cmp=rss" target="_blank" rel="noopener">FIFA Fan Festival delays opening on Sunday due to thunderstorm risk, poor weather</a></h3>
-          <p class="story-summary">Toronto&#x27;s FIFA Fan Festival will have a delayed open on Sunday due to a risk of thunderstorms.</p>
-          <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 14, 2026</div>
+          <div class="story-meta">CBC &nbsp;·&nbsp; Jun 13, 2026</div>
         </div></div>
     </section>
     
 
     <footer class="footer">
       <div class="footer-row">
-        <div class="footer-generated">Generated at 12:52 PM ET</div>
+        <div class="footer-generated">Generated at 05:40 PM ET</div>
         <a href="https://namitdadlani.com" class="footer-logo" target="_blank" rel="noopener">
           <span class="logo-mark">
             <span class="logo-brace">{</span>
