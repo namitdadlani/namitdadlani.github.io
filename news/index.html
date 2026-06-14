@@ -198,9 +198,17 @@ a:hover { color: #B07D3A; }
   background: rgba(255,255,255,0.45);
   border: 0.5px solid rgba(0,0,0,0.1);
   border-radius: 3px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+.story-img {
+  width: calc(100% + 32px);
+  margin: -14px -16px 6px;
+  height: 160px;
+  object-fit: cover;
+  display: block;
 }
 .story-headline {
   font-family: 'DM Serif Display', Georgia, serif;
@@ -281,15 +289,15 @@ a:hover { color: #B07D3A; }
       
       <div class="weather-panel">
         <div class="weather-temp-line">
-          <span class="weather-icon-big">☀️</span>
+          <span class="weather-icon-big">☁️</span>
           <span class="weather-temp-big">17°C</span>
         </div>
-        <div class="weather-desc">Clear sky</div>
+        <div class="weather-desc">Overcast</div>
         <div class="weather-hilow">
-          <span class="hi">H: 19°</span>&nbsp;&nbsp;<span class="lo">L: 13°</span>
+          <span class="hi">H: 18°</span>&nbsp;&nbsp;<span class="lo">L: 14°</span>
         </div>
         <div class="weather-details">
-          <span>💨 Wind 12 km/h</span><span>Gusts 24 km/h</span><span>💧 86%</span>
+          <span>💨 Wind 1 km/h</span><span>Gusts 1 km/h</span><span>💧 75%</span>
         </div>
       </div>
       <div class="forecast-row">
@@ -297,46 +305,46 @@ a:hover { color: #B07D3A; }
           <div class="day-label">Mon</div>
           <div class="day-icon">☁️</div>
           <div class="day-desc">Overcast</div>
-          <div class="day-hi">17°</div>
-          <div class="day-lo">10°</div>
+          <div class="day-hi">16°</div>
+          <div class="day-lo">11°</div>
           <div class="day-precip">💧 0%</div>
-          <div class="day-wind">💨 20 km/h · 43 km/h</div>
+          <div class="day-wind">💨 17 km/h · 41 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Tue</div>
           <div class="day-icon">☁️</div>
           <div class="day-desc">Overcast</div>
-          <div class="day-hi">23°</div>
-          <div class="day-lo">14°</div>
-          <div class="day-precip">💧 19%</div>
+          <div class="day-hi">21°</div>
+          <div class="day-lo">10°</div>
+          <div class="day-precip">💧 21%</div>
           <div class="day-wind">💨 24 km/h · 42 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Wed</div>
           <div class="day-icon">🌦️</div>
           <div class="day-desc">Slight showers</div>
-          <div class="day-hi">21°</div>
+          <div class="day-hi">22°</div>
           <div class="day-lo">14°</div>
-          <div class="day-precip">💧 62%</div>
-          <div class="day-wind">💨 20 km/h · 37 km/h</div>
+          <div class="day-precip">💧 63%</div>
+          <div class="day-wind">💨 20 km/h · 44 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Thu</div>
           <div class="day-icon">🌦️</div>
           <div class="day-desc">Moderate showers</div>
-          <div class="day-hi">20°</div>
-          <div class="day-lo">15°</div>
-          <div class="day-precip">💧 78%</div>
-          <div class="day-wind">💨 25 km/h · 42 km/h</div>
+          <div class="day-hi">22°</div>
+          <div class="day-lo">14°</div>
+          <div class="day-precip">💧 79%</div>
+          <div class="day-wind">💨 43 km/h · 72 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Fri</div>
-          <div class="day-icon">☁️</div>
-          <div class="day-desc">Overcast</div>
-          <div class="day-hi">24°</div>
-          <div class="day-lo">14°</div>
-          <div class="day-precip">💧 15%</div>
-          <div class="day-wind">💨 15 km/h · 32 km/h</div>
+          <div class="day-icon">🌦️</div>
+          <div class="day-desc">Light drizzle</div>
+          <div class="day-hi">21°</div>
+          <div class="day-lo">13°</div>
+          <div class="day-precip">💧 14%</div>
+          <div class="day-wind">💨 20 km/h · 46 km/h</div>
         </div></div>
     </section>
     
@@ -387,8 +395,8 @@ a:hover { color: #B07D3A; }
           <table class="markets-table"><tbody>
             <tr>
               <td class="mkt-name">BTC<span class="mkt-desc">Bitcoin</span></td>
-              <td class="mkt-price">$64,316.71</td>
-              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.15%</span></td>
+              <td class="mkt-price">$64,022.57</td>
+              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.61%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">USD/CAD<span class="mkt-desc">Forex</span></td>
@@ -408,19 +416,19 @@ a:hover { color: #B07D3A; }
       <div class="section-label">Tech News</div>
       <div class="stories-grid">
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://garrit.xyz/posts/2026-06-13-pac-man-but-you-re-the-ghost" target="_blank" rel="noopener">Pac-Man, but You&#x27;re the Ghost</a></h3>
-          <p class="story-summary">Article URL: https://garrit.xyz/posts/2026-06-13-pac-man-but-you-re-the-ghost Comments URL: https://news.ycombinator.com/item?id=48524135 Points: 3 # Comments: 1</p>
-          <div class="story-meta">Hacker News: Front Page &nbsp;·&nbsp; Jun 14, 2026</div>
+          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/14/the-new-sonos-play-has-become-my-go-to-desk-and-kitchen-speaker/" target="_blank" rel="noopener">The new Sonos Play has become my go-to desk and kitchen speaker</a></h3>
+          <p class="story-summary">The new Sonos Play can act as a portable speaker inside and outside your home.</p>
+          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://martinfowler.com/architecture/" target="_blank" rel="noopener">Software Architecture Guide</a></h3>
-          <p class="story-summary">Article URL: https://martinfowler.com/architecture/ Comments URL: https://news.ycombinator.com/item?id=48524084 Points: 8 # Comments: 1</p>
-          <div class="story-meta">Hacker News: Front Page &nbsp;·&nbsp; Jun 14, 2026</div>
+          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future/" target="_blank" rel="noopener">As Anthropic suspends access to new models, India debates its AI future</a></h3>
+          <p class="story-summary">Tech leaders debate whether the Anthropic episode is a wake-up call for India’s AI ambitions.</p>
+          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://sqltoerdiagram.com/" target="_blank" rel="noopener">Free SQL→ER diagram tool, runs in the browser, nothing uploaded</a></h3>
-          <p class="story-summary">Article URL: https://sqltoerdiagram.com/ Comments URL: https://news.ycombinator.com/item?id=48523992 Points: 4 # Comments: 1</p>
-          <div class="story-meta">Hacker News: Front Page &nbsp;·&nbsp; Jun 14, 2026</div>
+          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/meta-reportedly-moves-to-unwind-2b-manus-deal-after-beijings-demand/" target="_blank" rel="noopener">Meta reportedly moves to unwind $2B Manus deal after Beijing’s demand</a></h3>
+          <p class="story-summary">Meta starts dismantling its $2 billion Manus acquisition after Beijing ordered the deal reversed.</p>
+          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
         </div></div>
     </section>
     
@@ -450,19 +458,19 @@ a:hover { color: #B07D3A; }
       <div class="section-label">Finance &amp; Markets News</div>
       <div class="stories-grid">
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://finance.yahoo.com/markets/live/spacex-ipo-live-updates-elon-musks-spacex-set-to-make-record-debut-as-dow-sp-500-nasdaq-rise-230015961.html" target="_blank" rel="noopener">SpaceX IPO live updates: Elon Musk&#x27;s SpaceX stock soars in market debut as Dow, S&amp;P 500, Nasdaq rise</a></h3>
+          <img class="story-img" src="https://s.yimg.com/uu/api/res/1.2/7lB9YceowSOBHbvH7DgaFA--~B/aD0zNjY4O3c9NTUwMDthcHBpZD15dGFjaHlvbg--/https://d29szjachogqwa.cloudfront.net/images/2026-06/8e0d0f04-6355-42e7-ba12-de0d06744ff8" alt="" loading="lazy"><h3 class="story-headline"><a href="https://finance.yahoo.com/markets/article/spacex-ipo-afterglow-kevin-warshs-first-fed-meeting-and-a-potential-us-iran-deal-what-to-watch-this-week-142500418.html" target="_blank" rel="noopener">SpaceX IPO afterglow, Kevin Warsh&#x27;s first Fed meeting, and a potential US-Iran deal: What to watch this week</a></h3>
           <p class="story-summary"></p>
-          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 11, 2026</div>
+          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://finance.yahoo.com/markets/commodities/articles/soybeans-slip-lower-friday-214713751.html" target="_blank" rel="noopener">Soybeans Slip Lower on Friday</a></h3>
+          <img class="story-img" src="https://media.zenfs.com/en/24_7_wall_st__718/a44632452d527dd49b029fd9ae1e5667" alt="" loading="lazy"><h3 class="story-headline"><a href="https://finance.yahoo.com/markets/options/articles/1-5-million-401-k-152426220.html" target="_blank" rel="noopener">The $1.5 Million 401(k) Tax Trap: How Bracket Smoothing Saves Retirees From 40% Effective Rates</a></h3>
           <p class="story-summary"></p>
-          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 12, 2026</div>
+          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://finance.yahoo.com/markets/commodities/articles/wheat-falls-lower-friday-214713223.html" target="_blank" rel="noopener">Wheat Falls Lower on Friday</a></h3>
+          <img class="story-img" src="https://media.zenfs.com/en/ibd.com/553a55a5438576064cccd15ab67dbdc4" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-wild-week-5-stocks-buy-areas-spacex-next-test/?src=A00220&amp;yptr=yahoo" target="_blank" rel="noopener">Dow Jones Futures: No Iran Deal Yet; Five Stocks In Buy Areas, SpaceX&#x27;s Next Test</a></h3>
           <p class="story-summary"></p>
-          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 12, 2026</div>
+          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 14, 2026</div>
         </div></div>
     </section>
     
@@ -471,19 +479,19 @@ a:hover { color: #B07D3A; }
       <div class="section-label">Global News</div>
       <div class="stories-grid">
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.bbc.com/news/articles/cgk6jzkr0xvo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Nigerian author accuses hospital of stalling review into her son&#x27;s death</a></h3>
-          <p class="story-summary">Chimamanda Ngozi Adichie&#x27;s 21-month old son died in a Lagos hospital, which she says is trying to stop an inquest into the circumstances of his death.</p>
+          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9c96/live/b9b7b210-67f8-11f1-8e1d-bbbb1017d210.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.com/news/articles/czj83zlx1vjo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Lebanon says three killed in Israeli strike on Beirut suburb</a></h3>
+          <p class="story-summary">Israel says it targeted the Iran-backed Hezbollah, as Tehran warns this could derail a US-Iran deal to end the fighting.</p>
           <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.bbc.com/news/articles/c5yz7gj4x3yo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Ticketmaster says Knicks fans won&#x27;t be locked out of game after last-minute panic</a></h3>
-          <p class="story-summary">An note on the Ticketmaster website for buying tickets to the game caused confusion and backlash among New Yorkers.</p>
-          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 13, 2026</div>
+          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/539b/live/de1b20f0-67fe-11f1-9446-05fff8c055e2.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.com/news/articles/cx2kjwgwxwlo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">UK and Japan agree £18bn investment deal</a></h3>
+          <p class="story-summary">Japanese firms will spend billions on UK infrastructure and offshore wind, Downing Street says.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.bbc.com/news/articles/cpq3dnr5vlzo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Vincent&#x27;s parents &#x27;never say he&#x27;s good enough&#x27; - so he turned to a middle-aged couple online</a></h3>
-          <p class="story-summary">A niche group of content creators called &quot;virtual parents&quot; have become hugely popular among young people.</p>
-          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 13, 2026</div>
+          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/fa2f/live/754ea070-67fd-11f1-8094-9970ec1ebecd.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.com/news/articles/cly9eljexnno?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">&#x27;Boyfriend duties call,&#x27; Trudeau says after skipping Canada match to watch Perry</a></h3>
+          <p class="story-summary">Cameras caught Perry running off stage to greet the former Canadian leader with a kiss.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Jun 14, 2026</div>
         </div></div>
     </section>
     
@@ -492,18 +500,18 @@ a:hover { color: #B07D3A; }
       <div class="section-label">Toronto Local</div>
       <div class="stories-grid">
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/toronto-path-stabber-bisesar-discharge-9.7234358?cmp=rss" target="_blank" rel="noopener">Woman who killed stranger in downtown Toronto store granted absolute discharge</a></h3>
-          <p class="story-summary">A woman found not criminally responsible for stabbing a stranger to death in a downtown Toronto drugstore a decade ago has been granted an absolute discharge after an Ontario board concluded she no longer poses a significant threat to public safety.</p>
+          <h3 class="story-headline"><a href="https://www.cbc.ca/player/play/9.7234735?cmp=rss" target="_blank" rel="noopener">FIFA World Cup 2026 bringing special energy to Toronto, local business owners say</a></h3>
+          <p class="story-summary">Canada&#x27;s national men&#x27;s soccer team recorded their first-ever point at the FIFA World Cup against Bosnia-Herzegovina on Friday. The team now looks forward to a matchup with Qatar on Thursday, in Vancouver. Local business owners in Toronto say every match is drawing large crowds and a special energy </p>
           <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 13, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/tributes-to-fallen-tps-officer-9.7232999?cmp=rss" target="_blank" rel="noopener">&#x27;Our loving family is shattered,&#x27; says mother of slain Toronto police officer</a></h3>
-          <p class="story-summary">The death of Const. Marc Pinizzotto, who was fatally shot while conducting a search warrant early Thursday morning, has drawn tributes from all over the country, ranging from Ontario&#x27;s premier to the prime minister.</p>
-          <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 12, 2026</div>
+          <h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/sunday-fifa-fan-festival-open-weather-9.7234941?cmp=rss" target="_blank" rel="noopener">FIFA Fan Festival delays opening on Sunday due to thunderstorm risk, poor weather</a></h3>
+          <p class="story-summary">Toronto&#x27;s FIFA Fan Festival will have a delayed open on Sunday due to a risk of thunderstorms.</p>
+          <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.cbc.ca/player/play/9.7234735?cmp=rss" target="_blank" rel="noopener">FIFA World Cup 2026 bringing special energy to Toronto, local business owners say</a></h3>
-          <p class="story-summary">Canada&#x27;s national men&#x27;s soccer team recorded their first-ever point at the FIFA World Cup against Bosnia-Herzegovina on Friday. The team now looks forward to a matchup with Qatar on Thursday, in Vancouver. Local business owners in Toronto say every match is drawing large crowds and a special energy </p>
+          <h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/kitchener-waterloo/opp-fatal-crash-waterloo-9.7234491?cmp=rss" target="_blank" rel="noopener">5 children killed in a crash near Kitchener-Waterloo: OPP</a></h3>
+          <p class="story-summary">Five children between the ages of four and 12 were killed in a two-vehicle collision in rural Ontario, according to OPP. Several others, including one infant, were injured.</p>
           <div class="story-meta">CBC | Toronto News &nbsp;·&nbsp; Jun 13, 2026</div>
         </div></div>
     </section>
@@ -511,7 +519,7 @@ a:hover { color: #B07D3A; }
 
     <footer class="footer">
       <div class="footer-row">
-        <div class="footer-generated">Generated at 01:13 AM ET</div>
+        <div class="footer-generated">Generated at 11:41 AM ET</div>
         <a href="https://namitdadlani.com" class="footer-logo" target="_blank" rel="noopener">
           <span class="logo-mark">
             <span class="logo-brace">{</span>
