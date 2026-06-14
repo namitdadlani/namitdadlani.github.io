@@ -6,71 +6,74 @@
   <title>The Dadlani Digest</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: #f5f0e8;
-  color: #1a1a1a;
-  font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  background: #FAFAF8;
+  color: #1a1a18;
+  font-family: 'Outfit', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-a { color: #1a1a1a; }
-a:hover { color: #8b1a1a; }
+a { color: #1a1a18; }
+a:hover { color: #B07D3A; }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
 /* Masthead */
 .masthead {
   text-align: center;
-  border-bottom: 3px double #1a1a1a;
+  border-bottom: 3px double rgba(0,0,0,0.15);
   padding: 32px 24px 20px;
   margin-bottom: 32px;
 }
 .masthead-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Serif Display', Georgia, serif;
   font-size: clamp(2.4rem, 6vw, 4.2rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   line-height: 1.1;
+  color: #1a1a18;
 }
 .masthead-motto {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Serif Display', Georgia, serif;
   font-style: italic;
-  font-size: 1.1rem;
-  color: #555;
+  font-size: 1.0rem;
+  color: #5F5E5A;
   margin-top: 6px;
 }
 .masthead-date {
-  font-size: 0.85rem;
-  color: #666;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.69rem;
+  color: #B07D3A;
   margin-top: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 }
 
 /* Section labels */
 .section { margin-bottom: 40px; }
 .section-label {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.69rem;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #8b1a1a;
-  border-bottom: 2px solid #8b1a1a;
+  letter-spacing: 0.12em;
+  color: #B07D3A;
+  border-bottom: 0.5px solid #B07D3A;
   padding-bottom: 4px;
   margin-bottom: 16px;
 }
 
 /* Weather — today panel */
 .weather-panel {
-  background: rgba(255,255,255,0.55);
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  background: rgba(255,255,255,0.5);
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
   padding: 28px 24px 22px;
   margin-bottom: 14px;
   text-align: center;
@@ -84,16 +87,16 @@ a:hover { color: #8b1a1a; }
 }
 .weather-icon-big { font-size: 2.6rem; line-height: 1; }
 .weather-temp-big {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Serif Display', Georgia, serif;
   font-size: 2.8rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1;
 }
-.weather-desc { font-size: 1.1rem; color: #555; margin-bottom: 6px; }
-.weather-hilow { font-size: 0.95rem; color: #444; margin-bottom: 8px; }
-.weather-hilow .hi { font-weight: 700; }
-.weather-hilow .lo { color: #777; }
-.weather-details { font-size: 0.88rem; color: #666; }
+.weather-desc { font-size: 1.0rem; color: #5F5E5A; margin-bottom: 6px; }
+.weather-hilow { font-size: 0.9rem; color: #5F5E5A; margin-bottom: 8px; }
+.weather-hilow .hi { font-weight: 500; }
+.weather-hilow .lo { color: #888780; }
+.weather-details { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: #888780; }
 .weather-details span + span::before { content: ' · '; }
 
 /* Weather — 5-day forecast */
@@ -102,20 +105,21 @@ a:hover { color: #8b1a1a; }
   flex: 1 1 0;
   text-align: center;
   padding: 12px 6px 10px;
-  background: rgba(255,255,255,0.6);
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  background: rgba(255,255,255,0.5);
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
 }
-.day-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #8b1a1a; }
+.day-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #B07D3A; }
 .day-icon { font-size: 1.6rem; margin: 5px 0 2px; }
-.day-desc { font-size: 0.68rem; color: #777; margin-bottom: 4px; line-height: 1.2; }
-.day-hi { font-weight: 700; font-size: 1rem; }
-.day-lo { color: #666; font-size: 0.88rem; }
-.day-precip { font-size: 0.78rem; color: #555; margin-top: 4px; }
+.day-desc { font-size: 0.65rem; color: #888780; margin-bottom: 4px; line-height: 1.2; }
+.day-hi { font-weight: 500; font-size: 1rem; color: #1a1a18; }
+.day-lo { color: #888780; font-size: 0.85rem; }
+.day-precip { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #5F5E5A; margin-top: 4px; }
 .day-wind {
-  font-size: 0.72rem;
-  color: #777;
-  border-top: 1px solid #e4dfd4;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: #888780;
+  border-top: 0.5px solid rgba(0,0,0,0.08);
   margin-top: 6px;
   padding-top: 5px;
   line-height: 1.5;
@@ -128,20 +132,21 @@ a:hover { color: #8b1a1a; }
   gap: 14px;
 }
 .markets-group {
-  background: rgba(255,255,255,0.55);
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  background: rgba(255,255,255,0.5);
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
   overflow: hidden;
 }
 .markets-group-label {
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #888;
+  letter-spacing: 0.1em;
+  color: #888780;
   padding: 7px 12px 6px;
-  background: rgba(0,0,0,0.03);
-  border-bottom: 1px solid #e4dfd4;
+  background: rgba(0,0,0,0.025);
+  border-bottom: 0.5px solid rgba(0,0,0,0.06);
 }
 .markets-table {
   width: 100%;
@@ -150,14 +155,16 @@ a:hover { color: #8b1a1a; }
 }
 .markets-table td {
   padding: 9px 12px;
-  border-bottom: 1px solid #ede9e0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.06);
   vertical-align: middle;
 }
 .markets-table tr:last-child td { border-bottom: none; }
-.mkt-name { font-weight: 700; }
-.mkt-desc { display: block; font-size: 0.73rem; color: #888; font-weight: 400; }
+.mkt-name { font-weight: 500; }
+.mkt-desc { display: block; font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #888780; font-weight: 400; }
 .mkt-price {
   text-align: right;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -165,14 +172,15 @@ a:hover { color: #8b1a1a; }
 .pct-badge {
   display: inline-block;
   padding: 2px 7px;
-  border-radius: 4px;
-  font-size: 0.78rem;
-  font-weight: 600;
+  border-radius: 3px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
 .pct-positive { background: #d4edda; color: #1a6e2e; }
 .pct-negative { background: #f8d7da; color: #721c24; }
-.pct-neutral  { background: #eeebe4; color: #888; }
+.pct-neutral  { background: #EDEAE0; color: #888780; }
 
 /* Stories grid */
 .stories-grid {
@@ -187,42 +195,75 @@ a:hover { color: #8b1a1a; }
 }
 .story-card {
   padding: 14px 16px;
-  background: rgba(255,255,255,0.5);
-  border: 1px solid #ddd;
-  border-radius: 2px;
+  background: rgba(255,255,255,0.45);
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 .story-headline {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'DM Serif Display', Georgia, serif;
   font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.3;
+  font-weight: 400;
+  line-height: 1.35;
 }
 .story-headline a { text-decoration: none; }
-.story-headline a:hover { text-decoration: underline; color: #8b1a1a; }
+.story-headline a:hover { text-decoration: underline; color: #B07D3A; }
 .story-summary {
-  font-size: 0.88rem;
-  color: #444;
+  font-size: 0.85rem;
+  color: #5F5E5A;
   flex: 1;
+  line-height: 1.65;
 }
 .story-meta {
-  font-size: 0.78rem;
-  color: #888;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: #888780;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 /* Footer */
 .footer {
-  border-top: 2px solid #1a1a1a;
+  border-top: 0.5px solid rgba(0,0,0,0.1);
   margin-top: 48px;
   padding: 20px 0 36px;
-  font-size: 0.8rem;
-  color: #888;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.69rem;
+  color: #888780;
 }
-.error-note { color: #888; font-style: italic; font-size: 0.9rem; }
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.footer-logo {
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.logo-mark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  letter-spacing: -0.03em;
+}
+.logo-brace {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.1em;
+  color: #B07D3A;
+  font-weight: 400;
+}
+.logo-letters {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1em;
+  color: #1a1a18;
+}
+.logo-letters em { font-style: italic; }
+.error-note { color: #888780; font-style: italic; font-size: 0.9rem; }
 </style>
 </head>
 <body>
@@ -231,7 +272,7 @@ a:hover { color: #8b1a1a; }
     <header class="masthead">
       <div class="masthead-title">The Dadlani Digest</div>
       <div class="masthead-motto">Built by code, read over coffee.</div>
-      <div class="masthead-date">Sunday, June 14, 2026 &nbsp;|&nbsp; Generated at 12:33 AM ET</div>
+      <div class="masthead-date">Sunday, June 14, 2026</div>
     </header>
     
 
@@ -241,14 +282,14 @@ a:hover { color: #8b1a1a; }
       <div class="weather-panel">
         <div class="weather-temp-line">
           <span class="weather-icon-big">☀️</span>
-          <span class="weather-temp-big">16°C</span>
+          <span class="weather-temp-big">17°C</span>
         </div>
         <div class="weather-desc">Clear sky</div>
         <div class="weather-hilow">
           <span class="hi">H: 19°</span>&nbsp;&nbsp;<span class="lo">L: 13°</span>
         </div>
         <div class="weather-details">
-          <span>💨 Wind 8 km/h</span><span>Gusts 22 km/h</span><span>💧 65%</span>
+          <span>💨 Wind 12 km/h</span><span>Gusts 24 km/h</span><span>💧 86%</span>
         </div>
       </div>
       <div class="forecast-row">
@@ -346,8 +387,8 @@ a:hover { color: #8b1a1a; }
           <table class="markets-table"><tbody>
             <tr>
               <td class="mkt-name">BTC<span class="mkt-desc">Bitcoin</span></td>
-              <td class="mkt-price">$64,439.00</td>
-              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.04%</span></td>
+              <td class="mkt-price">$64,316.71</td>
+              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.15%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">USD/CAD<span class="mkt-desc">Forex</span></td>
@@ -367,18 +408,18 @@ a:hover { color: #8b1a1a; }
       <div class="section-label">Tech News</div>
       <div class="stories-grid">
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://techcrunch.com/2026/06/13/as-anthropic-suspends-access-to-new-models-india-debates-its-ai-future/" target="_blank" rel="noopener">As Anthropic suspends access to new models, India debates its AI future</a></h3>
-          <p class="story-summary">Tech leaders debate whether the Anthropic episode is a wake-up call for India’s AI ambitions.</p>
-          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Jun 14, 2026</div>
-        </div>
-        <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.rhawa.org/file/secure/shs-the-impact-of-rent-control-in-st-paul.pdf" target="_blank" rel="noopener">The Redistribution of Housing Wealth Caused by Rent Control [pdf]</a></h3>
-          <p class="story-summary">Article URL: https://www.rhawa.org/file/secure/shs-the-impact-of-rent-control-in-st-paul.pdf Comments URL: https://news.ycombinator.com/item?id=48523773 Points: 43 # Comments: 32</p>
+          <h3 class="story-headline"><a href="https://garrit.xyz/posts/2026-06-13-pac-man-but-you-re-the-ghost" target="_blank" rel="noopener">Pac-Man, but You&#x27;re the Ghost</a></h3>
+          <p class="story-summary">Article URL: https://garrit.xyz/posts/2026-06-13-pac-man-but-you-re-the-ghost Comments URL: https://news.ycombinator.com/item?id=48524135 Points: 3 # Comments: 1</p>
           <div class="story-meta">Hacker News: Front Page &nbsp;·&nbsp; Jun 14, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://ataraxy-labs.github.io/weave/" target="_blank" rel="noopener">Weave: Merging based on language structure and not lines</a></h3>
-          <p class="story-summary">Article URL: https://ataraxy-labs.github.io/weave/ Comments URL: https://news.ycombinator.com/item?id=48523705 Points: 5 # Comments: 1</p>
+          <h3 class="story-headline"><a href="https://martinfowler.com/architecture/" target="_blank" rel="noopener">Software Architecture Guide</a></h3>
+          <p class="story-summary">Article URL: https://martinfowler.com/architecture/ Comments URL: https://news.ycombinator.com/item?id=48524084 Points: 8 # Comments: 1</p>
+          <div class="story-meta">Hacker News: Front Page &nbsp;·&nbsp; Jun 14, 2026</div>
+        </div>
+        <div class="story-card">
+          <h3 class="story-headline"><a href="https://sqltoerdiagram.com/" target="_blank" rel="noopener">Free SQL→ER diagram tool, runs in the browser, nothing uploaded</a></h3>
+          <p class="story-summary">Article URL: https://sqltoerdiagram.com/ Comments URL: https://news.ycombinator.com/item?id=48523992 Points: 4 # Comments: 1</p>
           <div class="story-meta">Hacker News: Front Page &nbsp;·&nbsp; Jun 14, 2026</div>
         </div></div>
     </section>
@@ -414,12 +455,12 @@ a:hover { color: #8b1a1a; }
           <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 11, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-iran-deal-spacex-ipo-spcx-stock/?src=A00220&amp;yptr=yahoo" target="_blank" rel="noopener">Stock Market Today: Dow Ends Higher On Iran Deal Hopes; SpaceX Rockets 19% In Debut</a></h3>
+          <h3 class="story-headline"><a href="https://finance.yahoo.com/markets/commodities/articles/soybeans-slip-lower-friday-214713751.html" target="_blank" rel="noopener">Soybeans Slip Lower on Friday</a></h3>
           <p class="story-summary"></p>
           <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 12, 2026</div>
         </div>
         <div class="story-card">
-          <h3 class="story-headline"><a href="https://finance.yahoo.com/markets/stocks/articles/rxo-debt-rating-p-holds-204915139.html" target="_blank" rel="noopener">RXO’s debt rating at S&amp;P holds; so does its negative outlook</a></h3>
+          <h3 class="story-headline"><a href="https://finance.yahoo.com/markets/commodities/articles/wheat-falls-lower-friday-214713223.html" target="_blank" rel="noopener">Wheat Falls Lower on Friday</a></h3>
           <p class="story-summary"></p>
           <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Jun 12, 2026</div>
         </div></div>
@@ -469,7 +510,16 @@ a:hover { color: #8b1a1a; }
     
 
     <footer class="footer">
-      <div class="footer-generated">Generated 2026-06-14 00:33 ET &nbsp;|&nbsp; Powered by code</div>
+      <div class="footer-row">
+        <div class="footer-generated">Generated at 01:13 AM ET</div>
+        <a href="https://namitdadlani.com" class="footer-logo" target="_blank" rel="noopener">
+          <span class="logo-mark">
+            <span class="logo-brace">{</span>
+            <span class="logo-letters">N<em>D</em></span>
+            <span class="logo-brace">}</span>
+          </span>
+        </a>
+      </div>
     </footer>
     
   </div>
