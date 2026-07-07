@@ -618,12 +618,15 @@ footer {
     border-left: none;
     border-top: 0.5px solid var(--border);
     padding-left: 0;
-    padding-top: 16px;
+    padding-top: 0;
     padding-bottom: 0;
   }
   .stat {
     text-align: left;
-    padding: 12px 0;
+    padding: 10px 0;
+  }
+  .stat:first-child {
+    padding-top: 14px;
   }
   .stat:last-child { border-bottom: none; }
   #hero { padding-bottom: 40px; }
