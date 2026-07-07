@@ -611,16 +611,22 @@ footer {
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 24px;
   }
   .hero-left { padding-right: 0; }
   .hero-right {
     border-left: none;
     border-top: 0.5px solid var(--border);
     padding-left: 0;
-    padding-top: 32px;
+    padding-top: 20px;
+    padding-bottom: 0;
   }
-  .stat { text-align: left; }
+  .stat {
+    text-align: left;
+    padding: 12px 0;
+  }
+  .stat:last-child { border-bottom: none; }
+  #hero { padding-bottom: 40px; }
 
   .nav-links { display: none; }
 
