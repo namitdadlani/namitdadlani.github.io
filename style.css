@@ -409,6 +409,135 @@ body.dark .icon-sun  { display: block; }
   padding-top: 3px;
 }
 
+/* ─── Lately ─────────────────────────────────────── */
+.lately-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 4vw, 34px);
+  font-weight: 400;
+  margin-bottom: 32px;
+  color: var(--text);
+}
+.lately-heading em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.lately-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lately-entry {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+  padding: 24px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+.lately-entry:hover {
+  border-color: var(--amber);
+  background: var(--bg-secondary);
+}
+
+.lately-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.lately-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--amber);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.lately-avatar img {
+  width: 115%;
+  height: 115%;
+  object-fit: cover;
+  object-position: center top;
+  margin: -7.5%;
+}
+
+.lately-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lately-in-mark {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  border-radius: 2px;
+  padding: 1px 3px;
+  line-height: 1;
+}
+
+.lately-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.lately-more {
+  color: var(--amber);
+  white-space: nowrap;
+}
+.lately-link {
+  color: var(--amber);
+}
+
+.lately-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.lately-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lately-foot {
+  display: flex;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 0.5px solid var(--border-faint);
+}
+
+.lately-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.lately-action svg {
+  width: 15px;
+  height: 15px;
+}
+
 /* ─── Footer / Contact ───────────────────────────── */
 footer {
   padding: 32px 0;
@@ -455,4 +584,7 @@ footer {
   .stat { text-align: left; }
 
   .nav-links { display: none; }
+
+  .lately-entry { padding: 18px; }
+  .lately-foot { flex-wrap: wrap; gap: 12px; }
 }
