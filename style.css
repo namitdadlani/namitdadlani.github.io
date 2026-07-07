@@ -613,7 +613,7 @@ footer {
     grid-template-columns: 1fr;
     gap: 0;
   }
-  .hero-left { padding-right: 0; }
+  .hero-left { padding-right: 0; padding-bottom: 20px; }
   .hero-right {
     border-left: none;
     border-top: 0.5px solid var(--border);
@@ -629,7 +629,7 @@ footer {
     padding-top: 14px;
   }
   .stat:last-child { border-bottom: none; }
-  #hero { padding-bottom: 40px; }
+  #hero { padding-bottom: 10px; }
 
   .nav-links { display: none; }
 
