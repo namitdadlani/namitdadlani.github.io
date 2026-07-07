@@ -262,6 +262,19 @@ body.dark .icon-sun  { display: block; }
   margin-top: 2px;
 }
 
+/* ─── Section title (h2 under eyebrow) ──────────── */
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 4vw, 34px);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 32px;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--amber);
+}
+
 /* ─── About ──────────────────────────────────────── */
 .about-body {
   display: flex;
@@ -410,17 +423,6 @@ body.dark .icon-sun  { display: block; }
 }
 
 /* ─── Lately ─────────────────────────────────────── */
-.lately-heading {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(28px, 4vw, 34px);
-  font-weight: 400;
-  margin-bottom: 32px;
-  color: var(--text);
-}
-.lately-heading em {
-  font-style: italic;
-  color: var(--amber);
-}
 
 .lately-list {
   display: flex;
