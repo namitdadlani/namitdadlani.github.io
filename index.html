@@ -137,11 +137,11 @@
           <ul class="exp-bullets">
             <li>Founding engineer on a 4-person team that built a Host Provisioning Service from scratch, adopted by 5 AWS services across 38 regions, supporting ~200K hosts at peak scale and eliminating the need for ~25 dedicated engineers across customer teams (~$5–6M/year in avoided headcount).</li>
             <li>Designed and built CRUD APIs for compute, networking, and storage resources (EC2, EBS, VPC, ENI), backed by an event-driven orchestration system using DynamoDB Streams, Step Functions, and Lambda.</li>
-            <li>Reduced host provisioning latency by ~57% by building efficient systems to eliminate cold-start bottlenecks and implementing exponential backoff retry logic to handle throttling.</li>
-            <li>Owned end-to-end design and implementation of customer-managed key (CMK) encryption for hosted volumes, consulted with AWS KMS and security teams, completed security review, and enabled customer teams to serve government and enterprise clients.</li>
+            <li>Reduced host provisioning latency by ~57% by building efficient systems to eliminate slow start bottlenecks and implementing exponential backoff retry logic to handle throttling.</li>
+            <li>Owned end-to-end design and implementation of customer-managed key (CMK) encryption for hosted volumes, consulted with AWS KMS and security teams, co-ordinated security review to enabled customer teams to serve government and enterprise clients.</li>
             <li>Extended the Host Creation API with snapshot-based recovery, allowing customer services to restore hosts from prior state and improving system resilience across failure scenarios.</li>
             <li>Led the service launch into AWS GovCloud as the sole engineer responsible for all code changes, cross-functional coordination, and compliance adaptations for regulated environments.</li>
-            <li>Onboarded an 18-person team as the founding engineer, creating documentation, running knowledge transfer sessions, and supporting first on-call rotations to enable a zero-impact production handover.</li>
+            <li>Onboarded an 18-person team as the founding engineer, creating documentation, running knowledge transfer sessions, and supporting their on-call rotations to enable a zero-impact production handover.</li>
           </ul>
           <div class="exp-tags">
             <span class="tag">Java</span>
@@ -383,7 +383,12 @@
   <footer id="contact">
     <div class="container">
       <div class="footer-row">
-        <p class="footer-status">Open to new opportunities · Toronto, CA</p>
+        <p class="footer-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Open to new opportunities ·
+          <svg class="status-icon" id="status-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+          <span id="status-phrase"></span> in Toronto
+        </p>
         <a href="https://www.linkedin.com/in/namit-dadlani" class="btn" target="_blank" rel="noopener noreferrer">Get in touch →</a>
       </div>
       <p class="footer-copy">namitdadlani.com</p>
@@ -401,6 +406,104 @@
       const next = body.classList.contains('dark') ? 'light' : 'dark';
       body.className = next;
       localStorage.setItem('theme', next);
+    });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function parseStat(text) {
+      const range = text.match(/^(\D*)(\d+)–(\d+)(\D*)$/);
+      if (range) return { type: 'range', prefix: range[1], low: +range[2], high: +range[3], suffix: range[4] };
+      const single = text.match(/^(\D*)(\d+)(\D*)$/);
+      if (single) return { type: 'single', prefix: single[1], value: +single[2], suffix: single[3] };
+      return null;
+    }
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function animateStat(el, delay) {
+      const original = el.textContent;
+      const parsed = parseStat(original);
+      if (!parsed) return;
+      if (reduceMotion) { el.textContent = original; return; }
+
+      setTimeout(() => {
+        const start = performance.now();
+        const duration = 1400;
+        function frame(now) {
+          const t = Math.min((now - start) / duration, 1);
+          const e = easeOutCubic(t);
+          if (parsed.type === 'range') {
+            el.textContent = `${parsed.prefix}${Math.round(parsed.low * e)}–${Math.round(parsed.high * e)}${parsed.suffix}`;
+          } else {
+            el.textContent = `${parsed.prefix}${Math.round(parsed.value * e)}${parsed.suffix}`;
+          }
+          if (t < 1) requestAnimationFrame(frame);
+          else el.textContent = original;
+        }
+        requestAnimationFrame(frame);
+      }, delay);
+    }
+
+    const heroRight = document.querySelector('.hero-right');
+    const statNums  = heroRight.querySelectorAll('.stat-num');
+
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          statNums.forEach((el, i) => animateStat(el, i * 120));
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    statObserver.observe(heroRight);
+
+    const STATUS_ICONS = {
+      sunrise: '<path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="19.78" y1="10.22" x2="18.36" y2="11.64"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="16 5 12 9 8 5"/>',
+      sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+      sunset: '<path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="19.78" y1="10.22" x2="18.36" y2="11.64"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 5 12 9 16 5"/>',
+      moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+    };
+
+    function torontoHour() {
+      return parseInt(
+        new Intl.DateTimeFormat('en-CA', {
+          timeZone: 'America/Toronto',
+          hour12: false,
+          hour: 'numeric',
+        }).format(new Date()), 10
+      );
+    }
+
+    function bucketFor(hour) {
+      if (hour >= 5 && hour < 12)  return { label: 'Morning',    icon: 'sunrise' };
+      if (hour >= 12 && hour < 17) return { label: 'Afternoon',  icon: 'sun'     };
+      if (hour >= 17 && hour < 21) return { label: 'Evening',    icon: 'sunset'  };
+      return                               { label: 'Late night', icon: 'moon'    };
+    }
+
+    const statusIcon   = document.getElementById('status-icon');
+    const statusPhrase = document.getElementById('status-phrase');
+    let currentBucket  = null;
+
+    function renderStatus() {
+      const bucket = bucketFor(torontoHour());
+      if (bucket.label === currentBucket) return;
+      currentBucket = bucket.label;
+      statusPhrase.textContent = bucket.label;
+      statusIcon.innerHTML = STATUS_ICONS[bucket.icon];
+    }
+
+    renderStatus();
+    let statusInterval = setInterval(renderStatus, 60000);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        clearInterval(statusInterval);
+      } else {
+        renderStatus();
+        statusInterval = setInterval(renderStatus, 60000);
+      }
     });
   </script>
 
