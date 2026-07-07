@@ -611,14 +611,14 @@ footer {
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 0;
   }
   .hero-left { padding-right: 0; }
   .hero-right {
     border-left: none;
     border-top: 0.5px solid var(--border);
     padding-left: 0;
-    padding-top: 20px;
+    padding-top: 16px;
     padding-bottom: 0;
   }
   .stat {
