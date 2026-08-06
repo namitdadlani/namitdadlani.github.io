@@ -68,6 +68,15 @@ a:hover { color: #B07D3A; }
   padding-bottom: 4px;
   margin-bottom: 16px;
 }
+.section-summary {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #5F5E5A;
+  line-height: 1.5;
+  margin-top: -8px;
+  margin-bottom: 18px;
+}
 
 /* Weather — today panel */
 .weather-panel {
@@ -98,6 +107,16 @@ a:hover { color: #B07D3A; }
 .weather-hilow .lo { color: #888780; }
 .weather-details { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: #888780; }
 .weather-details span + span::before { content: ' · '; }
+.weather-summary {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #5F5E5A;
+  line-height: 1.5;
+  text-align: center;
+  margin: 10px 0 14px;
+}
+.weather-summary p + p { margin-top: 2px; }
 
 /* Weather — 5-day forecast */
 .forecast-row { display: flex; gap: 10px; }
@@ -280,7 +299,7 @@ a:hover { color: #B07D3A; }
     <header class="masthead">
       <div class="masthead-title">The Dadlani Digest</div>
       <div class="masthead-motto">Built by code, read over coffee.</div>
-      <div class="masthead-date">Wednesday, August 05, 2026</div>
+      <div class="masthead-date">Thursday, August 06, 2026</div>
     </header>
     
 
@@ -289,62 +308,63 @@ a:hover { color: #B07D3A; }
       
       <div class="weather-panel">
         <div class="weather-temp-line">
-          <span class="weather-icon-big">⛅</span>
-          <span class="weather-temp-big">18°C</span>
+          <span class="weather-icon-big">☀️</span>
+          <span class="weather-temp-big">19°C</span>
         </div>
-        <div class="weather-desc">Partly cloudy</div>
+        <div class="weather-desc">Clear sky</div>
         <div class="weather-hilow">
-          <span class="hi">H: 28°</span>&nbsp;&nbsp;<span class="lo">L: 17°</span>
+          <span class="hi">H: 28°</span>&nbsp;&nbsp;<span class="lo">L: 18°</span>
         </div>
         <div class="weather-details">
-          <span>💨 Wind 5 km/h</span><span>Gusts 6 km/h</span><span>💧 0%</span>
+          <span>💨 Wind 3 km/h</span><span>Gusts 5 km/h</span><span>💧 16%</span>
         </div>
       </div>
+      
       <div class="forecast-row">
         <div class="day-card">
-          <div class="day-label">Thu</div>
-          <div class="day-icon">🌦️</div>
-          <div class="day-desc">Light drizzle</div>
-          <div class="day-hi">28°</div>
-          <div class="day-lo">19°</div>
-          <div class="day-precip">💧 26%</div>
-          <div class="day-wind">💨 12 km/h · 22 km/h</div>
-        </div>
-        <div class="day-card">
           <div class="day-label">Fri</div>
-          <div class="day-icon">🌦️</div>
-          <div class="day-desc">Moderate showers</div>
-          <div class="day-hi">27°</div>
+          <div class="day-icon">🌧️</div>
+          <div class="day-desc">Moderate rain</div>
+          <div class="day-hi">24°</div>
           <div class="day-lo">21°</div>
-          <div class="day-precip">💧 26%</div>
-          <div class="day-wind">💨 11 km/h · 14 km/h</div>
+          <div class="day-precip">💧 38%</div>
+          <div class="day-wind">💨 15 km/h · 21 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Sat</div>
           <div class="day-icon">🌦️</div>
           <div class="day-desc">Moderate drizzle</div>
-          <div class="day-hi">30°</div>
-          <div class="day-lo">20°</div>
-          <div class="day-precip">💧 26%</div>
-          <div class="day-wind">💨 18 km/h · 30 km/h</div>
+          <div class="day-hi">32°</div>
+          <div class="day-lo">21°</div>
+          <div class="day-precip">💧 38%</div>
+          <div class="day-wind">💨 20 km/h · 33 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Sun</div>
-          <div class="day-icon">⛈️</div>
-          <div class="day-desc">Thunderstorm</div>
+          <div class="day-icon">☁️</div>
+          <div class="day-desc">Overcast</div>
           <div class="day-hi">28°</div>
-          <div class="day-lo">20°</div>
-          <div class="day-precip">💧 28%</div>
-          <div class="day-wind">💨 21 km/h · 31 km/h</div>
+          <div class="day-lo">19°</div>
+          <div class="day-precip">💧 26%</div>
+          <div class="day-wind">💨 19 km/h · 45 km/h</div>
         </div>
         <div class="day-card">
           <div class="day-label">Mon</div>
+          <div class="day-icon">⛈️</div>
+          <div class="day-desc">Thunderstorm</div>
+          <div class="day-hi">30°</div>
+          <div class="day-lo">19°</div>
+          <div class="day-precip">💧 57%</div>
+          <div class="day-wind">💨 19 km/h · 35 km/h</div>
+        </div>
+        <div class="day-card">
+          <div class="day-label">Tue</div>
           <div class="day-icon">🌦️</div>
           <div class="day-desc">Light drizzle</div>
-          <div class="day-hi">28°</div>
+          <div class="day-hi">27°</div>
           <div class="day-lo">20°</div>
-          <div class="day-precip">💧 43%</div>
-          <div class="day-wind">💨 21 km/h · 34 km/h</div>
+          <div class="day-precip">💧 57%</div>
+          <div class="day-wind">💨 20 km/h · 37 km/h</div>
         </div></div>
     </section>
     
@@ -357,18 +377,18 @@ a:hover { color: #B07D3A; }
           <table class="markets-table"><tbody>
             <tr>
               <td class="mkt-name">S&amp;P 500<span class="mkt-desc">US large-cap</span></td>
-              <td class="mkt-price">7,736.52</td>
-              <td class="mkt-pct"><span class="pct-badge pct-positive">+1.79%</span></td>
+              <td class="mkt-price">7,723.55</td>
+              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.17%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">NASDAQ<span class="mkt-desc">Tech composite</span></td>
-              <td class="mkt-price">26,584.99</td>
-              <td class="mkt-pct"><span class="pct-badge pct-positive">+2.59%</span></td>
+              <td class="mkt-price">26,363.44</td>
+              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.83%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">TSX<span class="mkt-desc">Toronto S&amp;E</span></td>
-              <td class="mkt-price">35,801.59</td>
-              <td class="mkt-pct"><span class="pct-badge pct-positive">+1.63%</span></td>
+              <td class="mkt-price">36,146.42</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.96%</span></td>
             </tr></tbody></table>
         </div>
         <div class="markets-group">
@@ -376,18 +396,18 @@ a:hover { color: #B07D3A; }
           <table class="markets-table"><tbody>
             <tr>
               <td class="mkt-name">AMZN<span class="mkt-desc">Amazon</span></td>
-              <td class="mkt-price">$277.42</td>
-              <td class="mkt-pct"><span class="pct-badge pct-negative">-2.32%</span></td>
+              <td class="mkt-price">$272.65</td>
+              <td class="mkt-pct"><span class="pct-badge pct-negative">-1.72%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">NVDA<span class="mkt-desc">Nvidia</span></td>
-              <td class="mkt-price">$211.94</td>
-              <td class="mkt-pct"><span class="pct-badge pct-positive">+2.56%</span></td>
+              <td class="mkt-price">$219.22</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+3.43%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">MSFT<span class="mkt-desc">Microsoft</span></td>
-              <td class="mkt-price">$492.81</td>
-              <td class="mkt-pct"><span class="pct-badge pct-positive">+1.06%</span></td>
+              <td class="mkt-price">$487.46</td>
+              <td class="mkt-pct"><span class="pct-badge pct-negative">-1.09%</span></td>
             </tr></tbody></table>
         </div>
         <div class="markets-group">
@@ -395,18 +415,18 @@ a:hover { color: #B07D3A; }
           <table class="markets-table"><tbody>
             <tr>
               <td class="mkt-name">BTC<span class="mkt-desc">Bitcoin</span></td>
-              <td class="mkt-price">$64,037.37</td>
-              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.02%</span></td>
+              <td class="mkt-price">$64,763.91</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.25%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">USD/CAD<span class="mkt-desc">Forex</span></td>
-              <td class="mkt-price">1.41</td>
-              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.09%</span></td>
+              <td class="mkt-price">1.40</td>
+              <td class="mkt-pct"><span class="pct-badge pct-positive">+0.03%</span></td>
             </tr>
             <tr>
               <td class="mkt-name">10Y UST<span class="mkt-desc">Treasury yield</span></td>
-              <td class="mkt-price">4.63</td>
-              <td class="mkt-pct"><span class="pct-badge pct-negative">-1.26%</span></td>
+              <td class="mkt-price">4.62</td>
+              <td class="mkt-pct"><span class="pct-badge pct-negative">-0.22%</span></td>
             </tr></tbody></table>
         </div></div>
     </section>
@@ -414,112 +434,117 @@ a:hover { color: #B07D3A; }
 
     <section class="section news-section">
       <div class="section-label">💻 Tech News</div>
+      
       <div class="stories-grid">
         <div class="story-card">
-          <img class="story-img" src="https://media.wired.com/photos/686466f75387ebe0264fb50c/master/pass/The%20Best%20MagSafe%20Accessories%20for%20Your%20New%20iPhone.png" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.wired.com/gallery/best-magsafe-accessories/" target="_blank" rel="noopener">The Best MagSafe Accessories (for Android Too!): Chargers, Wallets, and More</a></h3>
-          <p class="story-summary">MagSafe accessories make your phone feel uniquely yours. These are our favorites, including Android-friendly Qi2 picks.</p>
-          <div class="story-meta">WIRED &nbsp;·&nbsp; Aug 05, 2026</div>
+          <img class="story-img" src="https://media.wired.com/photos/67b63b972c751893c256c1e6/master/pass/WIRED-Coupons-R2_16.png" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.wired.com/story/hungryroot-promo-code/" target="_blank" rel="noopener">Hungryroot Coupon Codes: 30% Off This August</a></h3>
+          <p class="story-summary">Get up to 30% off your first order and free gifts using a Hungryroot promo code today. Discover our best coupons and discounts to let you save on your healthy groceries as a new or returning customer.</p>
+          <div class="story-meta">WIRED &nbsp;·&nbsp; Aug 06, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://media.wired.com/photos/6a722a7bae3498c6a7a1fa71/master/pass/Review--BenQ-GV50-Ceiling-Projector.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.wired.com/review/review-benq-gv50/" target="_blank" rel="noopener">BenQ GV50 Review: Highly Portable, but With Quality Trade-Offs</a></h3>
-          <p class="story-summary">This affordable, portable projector doesn’t try to be a cinematic marvel, but it’s fun to use.</p>
-          <div class="story-meta">WIRED &nbsp;·&nbsp; Aug 05, 2026</div>
+          <img class="story-img" src="https://media.wired.com/photos/66ea076ee8502211cd1d9a42/master/pass/WIRED-Coupons-13.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.wired.com/story/govee-discount-code/" target="_blank" rel="noopener">Govee Discount Codes and Deals: 30% Off</a></h3>
+          <p class="story-summary">New to Govee? Get a $5 coupon on your first purchase just for signing up.</p>
+          <div class="story-meta">WIRED &nbsp;·&nbsp; Aug 06, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://media.wired.com/photos/6a722554fb6a38d5e63c17fb/master/pass/Cougars-Lower-Risks-of-Car-Crashes-by-Eating-All-the-Deer-Science-1399723814.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.wired.com/story/cougars-lower-risks-car-crashes-by-hunting-deer/" target="_blank" rel="noopener">Cougars Lower the Risks of Car Crashes by Hunting Deer</a></h3>
-          <p class="story-summary">A new study shows how the big cats cause deer to move away from roads and deeper into the forest, where they pose less of a hazard to motorists.</p>
-          <div class="story-meta">WIRED &nbsp;·&nbsp; Aug 05, 2026</div>
+          <img class="story-img" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/STK171_VRG_Illo_15_Normand_ElonMusk_15.jpg?quality=90&amp;strip=all&amp;crop=0,0,100,100" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.theverge.com/ai-artificial-intelligence/976004/elon-musk-grokipedia-ai-wikipedia-not-updating-dead" target="_blank" rel="noopener">Elon Musk’s attempt at an AI Wikipedia hasn’t been updated in months</a></h3>
+          <p class="story-summary">xAI&#x27;s Grokipedia, an online encyclopedia with AI-generated articles that Elon Musk once promised would be a &quot;massive improvement&quot; over Wikipedia, apparently hasn&#x27;t been updated since April 24th, according to a report from Lawfare. &quot;As far as we can tell, no entry has changed in more than three month</p>
+          <div class="story-meta">The Verge &nbsp;·&nbsp; Aug 06, 2026</div>
         </div></div>
     </section>
     
 
     <section class="section news-section">
       <div class="section-label">🤖 AI News</div>
+      
       <div class="stories-grid">
         <div class="story-card">
-          <img class="story-img" src="https://images.ctfassets.net/jdtwqhzvc2n1/1U9H8GLIqoGqKpitVfgw3T/ba56292f99409eca709dac0b176ec245/nuneybits_Vector_art_of_white_goose_silhouette_flying_through_c_8100d5a7-9e36-4ed6-a188-016470e1d0e1.webp?w=300&amp;q=30" alt="" loading="lazy"><h3 class="story-headline"><a href="https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free" target="_blank" rel="noopener">Claude Code costs up to $200 a month. Goose does the same thing for free.</a></h3>
-          <p class="story-summary">The artificial intelligence coding revolution comes with a catch: it&amp;#x27;s expensive. Claude Code , Anthropic&amp;#x27;s terminal-based AI agent that can write, debug, and deploy code autonomously, has captured the imagination of software developers worldwide. But its pricing — ranging from $20 to $200</p>
-          <div class="story-meta">AI &nbsp;·&nbsp; Jan 19, 2026</div>
+          <img class="story-img" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/STK171_VRG_Illo_15_Normand_ElonMusk_15.jpg?quality=90&amp;strip=all&amp;crop=0,0,100,100" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.theverge.com/ai-artificial-intelligence/976004/elon-musk-grokipedia-ai-wikipedia-not-updating-dead" target="_blank" rel="noopener">Elon Musk’s attempt at an AI Wikipedia hasn’t been updated in months</a></h3>
+          <p class="story-summary">xAI&#x27;s Grokipedia, an online encyclopedia with AI-generated articles that Elon Musk once promised would be a &quot;massive improvement&quot; over Wikipedia, apparently hasn&#x27;t been updated since April 24th, according to a report from Lawfare. &quot;As far as we can tell, no entry has changed in more than three month</p>
+          <div class="story-meta">AI &nbsp;·&nbsp; Aug 06, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://images.ctfassets.net/jdtwqhzvc2n1/wHv1Wez7Ps9wYVYAo9fwT/14b41f606dbf1f5b17994be510407449/nuneybits_Hyper-realistic_image_of_a_retro_computer_with_a_glos_61ffb6e2-7c33-4d45-85f7-69c28693b3ec.webp?w=300&amp;q=30" alt="" loading="lazy"><h3 class="story-headline"><a href="https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no" target="_blank" rel="noopener">Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required</a></h3>
-          <p class="story-summary">Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users — and according to company insiders, the team built the entire feature in approximately a week and a half, largely using Claude Code itself. The laun</p>
-          <div class="story-meta">AI &nbsp;·&nbsp; Jan 12, 2026</div>
+          <img class="story-img" src="https://techcrunch.com/wp-content/uploads/2025/10/GettyImages-2235448056.jpg?resize=1200,800" alt="" loading="lazy"><h3 class="story-headline"><a href="https://techcrunch.com/2026/08/05/meta-launches-muse-code-an-ai-agent-for-large-code-bases/" target="_blank" rel="noopener">Meta launches Muse Code, an AI agent for large code bases</a></h3>
+          <p class="story-summary">Meta expanded its AI coding offerings with a new agent that, it promises, can handle complex tasks with complex software.</p>
+          <div class="story-meta">TechCrunch &nbsp;·&nbsp; Aug 05, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://images.ctfassets.net/jdtwqhzvc2n1/66Tw6dMGGoSZZOK6XB6gm6/0fafc7520898e26c88edf1de9e74e863/nuneybits_Vector_art_of_radiant_skull_emitting_code_beams_deep__17d19acc-0af7-41ad-ac28-16f09ef5234b.webp?w=300&amp;q=30" alt="" loading="lazy"><h3 class="story-headline"><a href="https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in" target="_blank" rel="noopener">Nous Research&#x27;s NousCoder-14B is an open-source coding model landing right in the Claude Code moment</a></h3>
-          <p class="story-summary">Nous Research , the open-source artificial intelligence startup backed by crypto venture firm Paradigm , released a new competitive programming model on Monday that it says matches or exceeds several larger proprietary systems — trained in just four days using 48 of Nvidia&amp;#x27;s latest B200 graphic</p>
-          <div class="story-meta">AI &nbsp;·&nbsp; Jan 07, 2026</div>
+          <img class="story-img" src="https://cdn.arstechnica.net/wp-content/uploads/2026/08/GettyImages-2285051730-1152x648.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://arstechnica.com/security/2026/08/anthropics-ai-used-fake-identities-malware-in-rogue-attack-on-github-project/" target="_blank" rel="noopener">Anthropic’s AI used fake identities, malware in rogue attack on GitHub project</a></h3>
+          <p class="story-summary">Anthropic and OpenAI models’ unprompted actions forced halt to UK cyber tests.</p>
+          <div class="story-meta">AI - Ars Technica &nbsp;·&nbsp; Aug 05, 2026</div>
         </div></div>
     </section>
     
 
     <section class="section news-section">
       <div class="section-label">📊 Finance &amp; Markets News</div>
+      
       <div class="stories-grid">
         <div class="story-card">
-          <img class="story-img" src="https://s.yimg.com/uu/api/res/1.2/2WmdF0VwXW6Mf2iFF2Fjdw--~B/aD0yMjY4O3c9MzY4MTthcHBpZD15dGFjaHlvbg--/https://d29szjachogqwa.cloudfront.net/images/2026-08/a03e0372-ab2b-46c6-aefa-1242d4b1a886" alt="" loading="lazy"><h3 class="story-headline"><a href="https://finance.yahoo.com/markets/live/stock-market-today-wednesday-august-5-dow-sp-500-nasdaq-oil-093653327.html" target="_blank" rel="noopener">Stock market today: Dow and S&amp;P 500 edge higher as Trump says Hormuz deal is close, Nasdaq digests tech earnings</a></h3>
-          <p class="story-summary"></p>
-          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Aug 05, 2026</div>
-        </div>
-        <div class="story-card">
-          <img class="story-img" src="https://images.mktw.net/im-99622573" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.marketwatch.com/story/walt-disneys-stock-climbs-as-company-cites-toy-story-5-for-earnings-growth-fe0c86c1?mod=mw_rss_topstories" target="_blank" rel="noopener">Walt Disney’s stock climbs as company cites ‘Toy Story 5’ for earnings growth</a></h3>
-          <p class="story-summary">Walt Disney’s stock, which has been struggling all year, rallied on Wednesday as the entertainment giant reported surprisingly strong earnings.</p>
+          <img class="story-img" src="https://images.mktw.net/im-60833731" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.marketwatch.com/story/block-slashed-40-of-its-workforce-for-ai-and-earnings-suggest-thats-paying-off-852b7c54?mod=mw_rss_topstories" target="_blank" rel="noopener">Block slashed 40% of its workforce for AI — and its earnings suggest that’s paying off</a></h3>
+          <p class="story-summary">“We can ship higher-quality products much, much more quickly,” an executive said in the wake of the company’s better-than-expected earnings report</p>
           <div class="story-meta">MarketWatch.com - Top Stories &nbsp;·&nbsp; Aug 05, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://images.mktw.net/im-56375265" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.marketwatch.com/story/the-s-p-500-just-hit-a-new-high-big-short-investor-michael-burry-thinks-it-could-bring-a-1987-style-fall-775c3b95?mod=mw_rss_topstories" target="_blank" rel="noopener">The S&amp;P 500 just hit a new high. ‘Big Short’ investor Michael Burry thinks it could bring a 1987-style fall.</a></h3>
-          <p class="story-summary">The famed investor says watch out after that S&amp;amp;P 500 surge on Tuesday. He’s not budging from some bearish tech views.</p>
+          <img class="story-img" src="https://images.mktw.net/im-80028774" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.marketwatch.com/story/why-at-t-verizon-and-t-mobile-shares-are-down-after-spacexs-earnings-033a07ce?mod=mw_rss_topstories" target="_blank" rel="noopener">Why AT&amp;T, Verizon and T-Mobile shares are down after SpaceX’s earnings</a></h3>
+          <p class="story-summary">SpaceX thinks it will be able to build wireless capabilities without massive network investments.</p>
           <div class="story-meta">MarketWatch.com - Top Stories &nbsp;·&nbsp; Aug 05, 2026</div>
+        </div>
+        <div class="story-card">
+          <img class="story-img" src="https://media.zenfs.com/en/moby_896/61247bf9f5d605b021da323ce0b0edeb" alt="" loading="lazy"><h3 class="story-headline"><a href="https://finance.yahoo.com/markets/stocks/articles/palantir-crushes-earnings-karp-preaches-185332224.html" target="_blank" rel="noopener">Palantir Crushes Earnings as Karp Preaches “Sovereign AI”</a></h3>
+          <p class="story-summary">After 230 days of sideways misery, Monday’s double beat sent PLTR’s shares surging 30%, silencing the haters once again.</p>
+          <div class="story-meta">Yahoo Finance &nbsp;·&nbsp; Aug 04, 2026</div>
         </div></div>
     </section>
     
 
     <section class="section news-section">
       <div class="section-label">🌍 Global News</div>
+      
       <div class="stories-grid">
         <div class="story-card">
-          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f3c4/live/a542eee0-90ba-11f1-b2ab-0dd01740f9f6.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.co.uk/news/videos/c935ng9n2klo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Record heatwave in South Korea as temperatures soar to 42.5C</a></h3>
-          <p class="story-summary">There have been at least 19 deaths related to the heatwave which has brought the country&#x27;s hottest day since records began.</p>
-          <div class="story-meta">BBC News &nbsp;·&nbsp; Aug 05, 2026</div>
+          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/bbf5/live/ace34820-9155-11f1-a649-9747aa0331f7.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.co.uk/news/articles/cm2g0038yr8o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Outrage as Ugandan football captain murdered in street gang attack</a></h3>
+          <p class="story-summary">The 27-year-old was beaten to death by suspected robbers after resisting an attempt to steal his belongings, police say.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Aug 06, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9a75/live/a8f42cc0-901a-11f1-b783-f784376ffc11.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.co.uk/news/articles/cn0n9w95n70o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Pakistan restricts international media reporting</a></h3>
-          <p class="story-summary">Anyone working for foreign media, including Pakistanis, will now need permission to report from anywhere outside three major cities.</p>
-          <div class="story-meta">BBC News &nbsp;·&nbsp; Aug 05, 2026</div>
+          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/daee/live/cd5712d0-9146-11f1-a25e-953fc20be644.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.co.uk/news/articles/cx2v551w9v8o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Indian journalist Tarun Tejpal convicted in rape case</a></h3>
+          <p class="story-summary">The Goa bench of the Bombay High Court overturned a 2021 trial court verdict clearing Tejpal of all charges.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Aug 06, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/8cab/live/189914e0-90b2-11f1-b2ab-0dd01740f9f6.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.co.uk/news/articles/c330pxyvzzyo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Russian strike kills at least 17 as Zelensky says interceptors could have saved lives</a></h3>
-          <p class="story-summary">The Russia defence ministry said it had struck logistics hubs and supply centres in Kyiv and the surrounding region.</p>
-          <div class="story-meta">BBC News &nbsp;·&nbsp; Aug 05, 2026</div>
+          <img class="story-img" src="https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/f468/live/5910e320-9131-11f1-b387-374684edd409.jpg" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.bbc.co.uk/news/articles/cx2kgdnyk2po?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Meta says AI model accessed the internet and hacked another firm</a></h3>
+          <p class="story-summary">Meta is the latest company to disclose an AI agent breach, raising cyber-security concerns.</p>
+          <div class="story-meta">BBC News &nbsp;·&nbsp; Aug 06, 2026</div>
         </div></div>
     </section>
     
 
     <section class="section news-section">
       <div class="section-label">🍁 Toronto Local</div>
+      
       <div class="stories-grid">
         <div class="story-card">
-          <img class="story-img" src="https://i.cbc.ca/ais/f2737cc8-5d13-4f75-9cf7-8252cd419126,1785878812985/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C65%2C1242%2C698%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/elections-to-be-called-ontario-ridings-9.7296315?cmp=rss" target="_blank" rel="noopener">Ford could call byelections in 3 Ontario ridings today</a></h3>
-          <p class="story-summary">Wednesday is the last day Premier Doug Ford can call a byelection in Scarborough Southwest, where the provincial seat has been vacant since February. But he could call elections in two other ridings where the spots are also open.</p>
+          <img class="story-img" src="https://i.cbc.ca/ais/20e9c5b4-99dc-4157-aba9-f684a921eedd,1785976903887/full/max/0/default.jpg?im=Crop%2Crect%3D%28110%2C677%2C14268%2C8025%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/toronto-ontario-line-we-build-fcc-pape-tunnel-9.7297823?cmp=rss" target="_blank" rel="noopener">Portion of Ontario Line to be built by Italy&#x27;s Webuild, Spain’s FCC in $4.3B contract</a></h3>
+          <p class="story-summary">Two European companies have signed a $4.32-billion contract for the construction of a set of twin tunnels and two new underground stations that will connect the planned Ontario Line with the Line 2 TTC subway.</p>
+          <div class="story-meta">CBC &nbsp;·&nbsp; Aug 06, 2026</div>
+        </div>
+        <div class="story-card">
+          <img class="story-img" src="https://i.cbc.ca/ais/7f67ac79-0906-4096-8fae-3841d315685d,1785965812328/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1920%2C1080%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/canada-toronto-shoplifting-rates-on-the-rise-2025-9.7297563?cmp=rss" target="_blank" rel="noopener">Canada’s shoplifting rate is on the rise as Toronto police lay thousands of charges</a></h3>
+          <p class="story-summary">A Toronto police division says it has laid thousands of charges against shoplifters over the last two years as a recent Stats Can report shows shoplifting rates rising for five years in a row.</p>
           <div class="story-meta">CBC &nbsp;·&nbsp; Aug 05, 2026</div>
         </div>
         <div class="story-card">
-          <img class="story-img" src="https://i.cbc.ca/ais/50052c7f-38da-4cd6-a4a0-e9581fe6e132,1785426557923/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C450%2C8640%2C4860%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/world-cup-visa-spending-9.7295978?cmp=rss" target="_blank" rel="noopener">Spending in Toronto, Vancouver was up on World Cup match days, Visa data suggests</a></h3>
-          <p class="story-summary">New Visa data suggests the FIFA World Cup brought a rise in spending among consumers in Canadian host cities.</p>
-          <div class="story-meta">CBC &nbsp;·&nbsp; Aug 04, 2026</div>
-        </div>
-        <div class="story-card">
-          <img class="story-img" src="https://i.cbc.ca/ais/1.6316436,1686165352000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C267%2C5184%2C2916%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/toronto-fire-kitchen-one-dead-9.7295762?cmp=rss" target="_blank" rel="noopener">Man dead in kitchen fire in Toronto Community Housing building</a></h3>
-          <p class="story-summary">A man is dead after a &quot;cooking-related&quot; incident in an apartment building, Toronto Fire says.</p>
-          <div class="story-meta">CBC &nbsp;·&nbsp; Aug 04, 2026</div>
+          <img class="story-img" src="https://i.cbc.ca/ais/b0048e55-2655-4e8b-959e-e25a1c107530,1785960668029/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C257%2C750%2C421%29%3BResize%3D%28620%29" alt="" loading="lazy"><h3 class="story-headline"><a href="https://www.cbc.ca/news/canada/toronto/pygmy-hippo-calf-toronto-zoo-9.7297422?cmp=rss" target="_blank" rel="noopener">Move over, Moo Deng: Pygmy hippo calf born at Toronto Zoo</a></h3>
+          <p class="story-summary">Toronto just got its very own Moo Deng. The Toronto Zoo says a female pygmy hippo calf was born Sunday morning to 20-year-old mother Kindia.</p>
+          <div class="story-meta">CBC &nbsp;·&nbsp; Aug 05, 2026</div>
         </div></div>
     </section>
     
 
     <footer class="footer">
       <div class="footer-row">
-        <div class="footer-generated">Generated at 07:45 AM ET</div>
+        <div class="footer-generated">Generated at 02:51 AM ET</div>
         <a href="https://namitdadlani.com" class="footer-logo" target="_blank" rel="noopener">
           <span class="logo-mark">
             <span class="logo-brace">{</span>
