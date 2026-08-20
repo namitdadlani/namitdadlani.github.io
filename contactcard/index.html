@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Namit Dadlani | Lift Pass</title>
 <meta name="description" content="Namit Dadlani's digital contact card — Instagram, LinkedIn, and the mountains he's skied." />
+<meta name="color-scheme" content="light" />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,47 +30,6 @@
     --punch:#eaf5fc;
     --shadow:0 24px 60px -28px rgba(11,46,77,0.35);
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --sky-top:#071a2e;
-      --sky-bottom:#0a233c;
-      --paper:#0f2b45;
-      --paper-edge:#153a5b;
-      --sky-300:#1c4a70;
-      --alpine:#9fd0f2;
-      --midnight:#f0f7fc;
-      --ink:#b9d3e6;
-      --muted:#7fa0bd;
-      --red:#ff5b6d;
-      --red-ink:#ff8794;
-      --ridge-back:#123452;
-      --ridge-mid:#0d2941;
-      --ridge-front:#081c2f;
-      --snowcap:rgba(255,255,255,0.14);
-      --punch:#0a233c;
-      --shadow:0 24px 60px -20px rgba(0,0,0,0.55);
-    }
-  }
-  :root[data-theme="dark"]{
-    --sky-top:#071a2e;
-    --sky-bottom:#0a233c;
-    --paper:#0f2b45;
-    --paper-edge:#153a5b;
-    --sky-300:#1c4a70;
-    --alpine:#9fd0f2;
-    --midnight:#f0f7fc;
-    --ink:#b9d3e6;
-    --muted:#7fa0bd;
-    --red:#ff5b6d;
-    --red-ink:#ff8794;
-    --ridge-back:#123452;
-    --ridge-mid:#0d2941;
-    --ridge-front:#081c2f;
-    --snowcap:rgba(255,255,255,0.14);
-    --punch:#0a233c;
-    --shadow:0 24px 60px -20px rgba(0,0,0,0.55);
-  }
-
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 
   html{ -webkit-text-size-adjust:100%; }
@@ -323,6 +283,7 @@
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Whistler Blackcomb<span class="prov">BC</span></span></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Cypress Mountain<span class="prov">BC</span></span></li>
       <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Grouse Mountain<span class="prov">BC</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Earl Bales Ski &amp; Snowboard Centre<span class="prov">ON</span></span></li>
     </ul>
   </section>
 
@@ -354,15 +315,9 @@
       });
     }
   }
-  function isDark(){
-    var explicit = document.documentElement.getAttribute('data-theme');
-    if(explicit === 'dark') return true;
-    if(explicit === 'light') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }
   function tick(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle = isDark() ? 'rgba(220,238,252,0.55)' : 'rgba(23,81,127,0.28)';
+    ctx.fillStyle = 'rgba(23,81,127,0.28)';
     for(var i=0;i<flakes.length;i++){
       var f = flakes[i];
       f.y += f.s;
