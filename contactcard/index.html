@@ -117,7 +117,8 @@
     align-items:baseline;
     gap:0 7px;
   }
-  p.tagline .dot{ color:var(--red); font-weight:700; }
+  p.tagline .dot{ display:inline-flex; align-self:center; }
+  p.tagline .dot svg{ display:block; width:5px; height:5px; }
 
   .tear{
     position:relative;
@@ -254,7 +255,7 @@
       </svg>
     </div>
     <h1 class="name">Namit Dadlani</h1>
-    <p class="tagline"><span class="word">Skier</span><span class="dot">&middot;</span><span class="word">Photographer</span><span class="dot">&middot;</span><span class="word">Software Builder</span></p>
+    <p class="tagline"><span class="word">Skier</span><span class="dot" aria-hidden="true"><svg viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.5" fill="#d8283a"/></svg></span><span class="word">Photographer</span><span class="dot" aria-hidden="true"><svg viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.5" fill="#d8283a"/></svg></span><span class="word">Software Builder</span></p>
   </div>
 
   <div class="tear" aria-hidden="true"><div class="notch left"></div><div class="notch right"></div></div>
