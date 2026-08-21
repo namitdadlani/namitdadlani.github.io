@@ -111,8 +111,13 @@
     font-weight:600;
     color:var(--alpine);
     letter-spacing:0.01em;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:baseline;
+    gap:0 7px;
   }
-  p.tagline .dot{ color:var(--red); margin:0 4px; font-weight:700; }
+  p.tagline .dot{ color:var(--red); font-weight:700; }
 
   .tear{
     position:relative;
@@ -249,7 +254,7 @@
       </svg>
     </div>
     <h1 class="name">Namit Dadlani</h1>
-    <p class="tagline">Skier<span class="dot">&middot;</span>Photographer<span class="dot">&middot;</span>Software Builder</p>
+    <p class="tagline"><span class="word">Skier</span><span class="dot">&middot;</span><span class="word">Photographer</span><span class="dot">&middot;</span><span class="word">Software Builder</span></p>
   </div>
 
   <div class="tear" aria-hidden="true"><div class="notch left"></div><div class="notch right"></div></div>
@@ -288,7 +293,7 @@
   </section>
 
   <div class="footer-rule" aria-hidden="true"></div>
-  <p class="footer-note">See you on the hill</p>
+  <p class="footer-note">See you on the slopes</p>
 </main>
 
 <script>
