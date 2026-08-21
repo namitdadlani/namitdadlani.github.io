@@ -47,12 +47,12 @@
     overflow-x:hidden;
   }
 
-  #snow{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  #lp-snow{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
 
-  .ridge{ position:fixed; top:0; left:0; width:100%; height:min(34vh,300px); z-index:0; }
-  .ridge svg{ width:100%; height:100%; display:block; }
+  .lp-ridge{ position:fixed; top:0; left:0; width:100%; height:min(34vh,300px); z-index:0; }
+  .lp-ridge svg{ width:100%; height:100%; display:block; }
 
-  main.ticket{
+  main.lp-ticket{
     position:relative;
     z-index:1;
     width:100%;
@@ -64,9 +64,9 @@
     border:1px solid var(--paper-edge);
   }
 
-  .stub{ padding: 30px 28px 22px; text-align:center; position:relative; }
+  .lp-stub{ padding: 30px 28px 22px; text-align:center; position:relative; }
 
-  .punch{
+  .lp-punch{
     width:22px; height:22px;
     background:var(--punch);
     border-radius:50%;
@@ -76,7 +76,7 @@
     box-shadow: inset 0 2px 4px rgba(11,46,77,0.18);
   }
 
-  .eyebrow{
+  .lp-eyebrow{
     font-family:'Space Mono', monospace;
     font-size:0.66rem;
     letter-spacing:0.16em;
@@ -85,7 +85,7 @@
     font-weight:700;
   }
 
-  .badge{
+  .lp-badge{
     width:76px; height:76px;
     margin:18px auto 14px;
     border-radius:50%;
@@ -94,9 +94,9 @@
     display:flex; align-items:center; justify-content:center;
     color:var(--alpine);
   }
-  .badge svg{ width:38px; height:38px; }
+  .lp-badge svg{ width:38px; height:38px; }
 
-  h1.name{
+  h1.lp-name{
     font-family:'Manrope', sans-serif;
     font-weight:800;
     font-size:clamp(1.9rem, 8vw, 2.4rem);
@@ -105,7 +105,7 @@
     text-wrap:balance;
   }
 
-  p.tagline{
+  p.lp-tagline{
     margin-top:8px;
     font-size:0.92rem;
     font-weight:600;
@@ -117,27 +117,27 @@
     align-items:baseline;
     gap:0 7px;
   }
-  p.tagline .dot{ display:inline-flex; align-self:center; }
-  p.tagline .dot svg{ display:block; width:5px; height:5px; }
+  p.lp-tagline .lp-dot{ display:inline-flex; align-self:center; }
+  p.lp-tagline .lp-dot svg{ display:block; width:5px; height:5px; }
 
-  .tear{
+  .lp-tear{
     position:relative;
     height:0;
     border-top:2px dashed var(--sky-300);
     margin: 0 0;
   }
-  .tear .notch{
+  .lp-tear .lp-notch{
     position:absolute; top:50%; width:22px; height:22px;
     background:var(--sky-bottom);
     border-radius:50%;
     transform:translateY(-50%);
   }
-  .tear .notch.left{ left:-11px; }
-  .tear .notch.right{ right:-11px; }
+  .lp-tear .lp-notch.lp-left{ left:-11px; }
+  .lp-tear .lp-notch.lp-right{ right:-11px; }
 
-  .actions{ padding:24px 24px 6px; display:flex; flex-direction:column; gap:12px; }
+  .lp-actions{ padding:24px 24px 6px; display:flex; flex-direction:column; gap:12px; }
 
-  .cta{
+  .lp-cta{
     display:flex; align-items:center; gap:12px;
     padding:14px 18px;
     border-radius:14px;
@@ -150,32 +150,32 @@
     transition: background .15s ease, color .15s ease, transform .1s ease, border-color .15s ease;
     min-height:52px;
   }
-  .cta .icon{
+  .lp-cta .lp-icon{
     width:34px; height:34px;
     border-radius:9px;
     border:1.6px solid currentColor;
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0;
   }
-  .cta .icon svg{ width:19px; height:19px; }
-  .cta .icon span.letters{
+  .lp-cta .lp-icon svg{ width:19px; height:19px; }
+  .lp-cta .lp-icon span.lp-letters{
     font-family:'Space Mono', monospace;
     font-weight:700;
     font-size:0.78rem;
   }
-  .cta:hover, .cta:active{
+  .lp-cta:hover, .lp-cta:active{
     background:var(--red);
     border-color:var(--red);
     color:#fff;
     transform:translateY(1px);
   }
   @media (hover:none){
-    .cta:active{ background:var(--red); border-color:var(--red); color:#fff; }
+    .lp-cta:active{ background:var(--red); border-color:var(--red); color:#fff; }
   }
 
-  section.resorts{ padding:22px 24px 20px; }
-  section.resorts .eyebrow{ color:var(--alpine); }
-  section.resorts .hint{
+  section.lp-resorts{ padding:22px 24px 20px; }
+  section.lp-resorts .lp-eyebrow{ color:var(--alpine); }
+  section.lp-resorts .lp-hint{
     font-size:0.82rem;
     color:var(--muted);
     margin-top:6px;
@@ -183,13 +183,13 @@
     font-style:italic;
   }
 
-  ul.grid{
+  ul.lp-grid{
     list-style:none;
     display:grid;
     grid-template-columns:repeat(2, 1fr);
     gap:10px;
   }
-  ul.grid li{
+  ul.lp-grid li{
     display:flex; align-items:flex-start; gap:8px;
     padding:10px 10px;
     border-radius:12px;
@@ -199,8 +199,8 @@
     color:var(--midnight);
     line-height:1.25;
   }
-  ul.grid li svg{ width:15px; height:15px; margin-top:2px; flex-shrink:0; color:var(--alpine); }
-  ul.grid li .prov{
+  ul.lp-grid li svg{ width:15px; height:15px; margin-top:2px; flex-shrink:0; color:var(--alpine); }
+  ul.lp-grid li .lp-prov{
     display:block;
     font-family:'Space Mono', monospace;
     font-weight:700;
@@ -210,11 +210,11 @@
     margin-top:2px;
   }
 
-  .footer-rule{
+  .lp-footer-rule{
     margin: 4px 24px 0;
     border-top:2px dashed var(--sky-300);
   }
-  p.footer-note{
+  p.lp-footer-note{
     text-align:center;
     font-family:'Space Mono', monospace;
     font-size:0.72rem;
@@ -225,13 +225,13 @@
   }
 
   @media (prefers-reduced-motion: reduce){
-    .cta{ transition:none; }
+    .lp-cta{ transition:none; }
   }
 </style>
 </head>
 <body>
 
-<div class="ridge" aria-hidden="true">
+<div class="lp-ridge" aria-hidden="true">
   <svg viewBox="0 0 400 140" preserveAspectRatio="none">
     <polygon points="0,140 70,35 150,140" fill="var(--ridge-back)"/>
     <polygon points="120,140 210,20 300,140" fill="var(--ridge-mid)"/>
@@ -242,27 +242,27 @@
   </svg>
 </div>
 
-<canvas id="snow" aria-hidden="true"></canvas>
+<canvas id="lp-snow" aria-hidden="true"></canvas>
 
-<main class="ticket">
-  <div class="stub">
-    <div class="punch"></div>
-    <div class="eyebrow">Lift Pass &middot; All Mountain Access</div>
-    <div class="badge">
+<main class="lp-ticket">
+  <div class="lp-stub">
+    <div class="lp-punch"></div>
+    <div class="lp-eyebrow">Lift Pass &middot; All Mountain Access</div>
+    <div class="lp-badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/>
         <path d="M16 9 L18 4 L20.5 9" />
       </svg>
     </div>
-    <h1 class="name">Namit Dadlani</h1>
-    <p class="tagline"><span class="word">Skier</span><span class="dot" aria-hidden="true"><svg viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.5" fill="#d8283a"/></svg></span><span class="word">Photographer</span><span class="dot" aria-hidden="true"><svg viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.5" fill="#d8283a"/></svg></span><span class="word">Software Builder</span></p>
+    <h1 class="lp-name">Namit Dadlani</h1>
+    <p class="lp-tagline"><span class="lp-word">Skier</span><span class="lp-dot" aria-hidden="true"><svg viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.5" fill="#d8283a"/></svg></span><span class="lp-word">Photographer</span><span class="lp-dot" aria-hidden="true"><svg viewBox="0 0 5 5"><circle cx="2.5" cy="2.5" r="2.5" fill="#d8283a"/></svg></span><span class="lp-word">Software Builder</span></p>
   </div>
 
-  <div class="tear" aria-hidden="true"><div class="notch left"></div><div class="notch right"></div></div>
+  <div class="lp-tear" aria-hidden="true"><div class="lp-notch lp-left"></div><div class="lp-notch lp-right"></div></div>
 
-  <div class="actions">
-    <a class="cta" href="https://www.instagram.com/seenbynamit" target="_blank" rel="noopener">
-      <span class="icon">
+  <div class="lp-actions">
+    <a class="lp-cta" href="https://www.instagram.com/seenbynamit" target="_blank" rel="noopener">
+      <span class="lp-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <rect x="3" y="3" width="18" height="18" rx="5"/>
           <circle cx="12" cy="12" r="4.2"/>
@@ -271,35 +271,35 @@
       </span>
       Instagram
     </a>
-    <a class="cta" href="https://www.linkedin.com/in/namit-dadlani" target="_blank" rel="noopener">
-      <span class="icon"><span class="letters">in</span></span>
+    <a class="lp-cta" href="https://www.linkedin.com/in/namit-dadlani" target="_blank" rel="noopener">
+      <span class="lp-icon"><span class="lp-letters">in</span></span>
       LinkedIn
     </a>
   </div>
 
-  <div class="tear" aria-hidden="true"><div class="notch left"></div><div class="notch right"></div></div>
+  <div class="lp-tear" aria-hidden="true"><div class="lp-notch lp-left"></div><div class="lp-notch lp-right"></div></div>
 
-  <section class="resorts">
-    <div class="eyebrow">Resorts Skied</div>
-    <p class="hint">Ask me about any of these.</p>
-    <ul class="grid">
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Mt. Tremblant<span class="prov">QC</span></span></li>
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Blue Mountain<span class="prov">ON</span></span></li>
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Mt. St. Louis Moonstone<span class="prov">ON</span></span></li>
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Whistler Blackcomb<span class="prov">BC</span></span></li>
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Cypress Mountain<span class="prov">BC</span></span></li>
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Grouse Mountain<span class="prov">BC</span></span></li>
-      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Earl Bales Ski &amp; Snowboard Centre<span class="prov">ON</span></span></li>
+  <section class="lp-resorts">
+    <div class="lp-eyebrow">Resorts Skied</div>
+    <p class="lp-hint">Ask me about any of these.</p>
+    <ul class="lp-grid">
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Mt. Tremblant<span class="lp-prov">QC</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Blue Mountain<span class="lp-prov">ON</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Mt. St. Louis Moonstone<span class="lp-prov">ON</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Whistler Blackcomb<span class="lp-prov">BC</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Cypress Mountain<span class="lp-prov">BC</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Grouse Mountain<span class="lp-prov">BC</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 19 L9 8 L13 14 L16 9 L21 19 Z"/></svg><span>Earl Bales Ski &amp; Snowboard Centre<span class="lp-prov">ON</span></span></li>
     </ul>
   </section>
 
-  <div class="footer-rule" aria-hidden="true"></div>
-  <p class="footer-note">See you on the slopes</p>
+  <div class="lp-footer-rule" aria-hidden="true"></div>
+  <p class="lp-footer-note">See you on the slopes</p>
 </main>
 
 <script>
 (function(){
-  var canvas = document.getElementById('snow');
+  var canvas = document.getElementById('lp-snow');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduce){ return; }
   var ctx = canvas.getContext('2d');
