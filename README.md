@@ -26,17 +26,34 @@ The design was thought through — typography, color palette, spacing, component
 
 ```
 /
-├── index.html       — all page content
-├── style.css        — all styles
+├── index.html       — homepage (all main-page content)
+├── style.css        — shared styles (homepage + /workshop)
 ├── favicon.svg      — logo mark adapted for browser tab
-└── screenshots/     — approved design mockups used during build
+├── DESIGN.md         — design system reference
+├── CNAME
+├── news/             — standalone digest page, /news
+├── contactcard/       — standalone digital business card, /contactcard
+├── workshop/          — experiments section shell, /workshop
+├── resume/            — resume PDF, linked from the Contact section
+├── photos/            — image assets used on the homepage
+└── screenshots/       — approved design mockups used during build
 ```
+
+`news/` and `contactcard/` are fully self-contained (their own inline styles, not `style.css`). `workshop/` links `style.css` and reuses the homepage's nav/theme-toggle/footer, so it stays visually part of the main site — see the "Subsections" section in DESIGN.md for why.
 
 ---
 
 ## Running locally
 
-Open `index.html` in a browser. No server needed.
+For the homepage alone, opening `index.html` directly works fine. But `News`, `Workshop`, and in-page links back to the homepage (`../#about`, etc.) use clean directory-style URLs that only resolve correctly through a real server — `file://` won't auto-resolve `news/` or `workshop/` to their `index.html`. Serve the repo root instead:
+
+```
+npx serve .
+# or
+python -m http.server
+```
+
+Then open the printed `localhost` URL.
 
 ---
 
@@ -58,6 +75,7 @@ Push to the `main` branch. GitHub Pages serves it directly from the repo root.
 - [x] News subsection — `/news`, a standalone digest page
 - [x] Contact card subsection — `/contactcard`, a standalone digital business card
 - [x] Workshop section shell — `/workshop`, empty landing page for future client-side experiments
+- [x] Contact section — own section (not just a footer line), with Email / Resume / LinkedIn icon buttons
 - [ ] Graphic face / illustration for the hero
 - [ ] Articles / Writing section
 - [ ] Photography subsection
