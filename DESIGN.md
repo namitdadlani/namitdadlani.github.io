@@ -248,6 +248,15 @@ Full content for each section is in the resume and career profile on file.
 
 ---
 
+## Subsections
+
+The site has grown a few standalone subsections beyond the main `index.html`, each with a different relationship to this design system:
+
+- **`/news`** and **`/contactcard`** — fully self-contained, one-off pages with their own inline `<style>` blocks and their own font choices. They intentionally don't share `style.css`, since each has its own distinct visual identity (a newspaper digest, a ski-themed event card).
+- **`/workshop`** — the odd one out, and the pattern to follow for anything similar going forward: it **links `../style.css`** and reuses the real nav, theme toggle, and footer markup verbatim from `index.html`, so it looks and behaves like a native part of the main site rather than a novelty. Only a small local `<style>` block is added per Workshop page, for the handful of bits genuinely specific to that page (e.g. an empty-state card). Individual future experiments live at `/workshop/<demo-name>/` and may load one CDN-hosted client-side library (e.g. Transformers.js) via a plain `<script>` tag — no bundler, no backend, no API keys exposed in the browser.
+
+---
+
 ## Design Principles
 
 - **Editorial warmth over developer cliché** — no terminal green, no matrix
@@ -284,3 +293,4 @@ Full content for each section is in the resume and career profile on file.
 
 Keep all styles in `style.css`. No inline styles except where unavoidable.
 No external CSS frameworks — plain CSS only.
+  

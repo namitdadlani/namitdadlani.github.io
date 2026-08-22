@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namit Dadlani | Workshop</title>
+  <meta name="description" content="Small, real, interactive experiments — built with free and genuinely keyless client-side tools, running entirely in your browser." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    /* ── Workshop-only additions (kept local — the shared design system lives in style.css) ── */
+    .wk-empty {
+      border: 0.5px solid var(--border);
+      border-radius: 3px;
+      padding: 28px 24px;
+      margin-top: 32px;
+      cursor: default;
+    }
+    .wk-empty-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .wk-empty-desc {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 480px;
+    }
+    .wk-empty-desc a {
+      color: var(--amber);
+    }
+  </style>
+</head>
+
+<body class="light">
+
+  <!-- ── NAV ──────────────────────────────────────── -->
+  <nav>
+    <a href="../index.html" class="nav-logo">
+      <span class="logo-mark">
+        <span class="logo-brace">{</span>
+        <span class="logo-letters">N<em>D</em></span>
+        <span class="logo-brace">}</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#education">Education</a></li>
+      <li><a href="../index.html#lately">Lately</a></li>
+      <li><a href="../news/">News</a></li>
+      <li><a href="./">Workshop</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- ── WORKSHOP INTRO ───────────────────────────── -->
+  <section id="workshop">
+    <div class="container">
+      <p class="section-label">Workshop</p>
+      <h2 class="section-title">Small experiments, <em>live.</em></h2>
+      <div class="about-body">
+        <p>
+          A space for small, real, interactive things I build — not case studies, not write-ups,
+          things you can actually click around in.
+        </p>
+        <p>
+          Everything here runs entirely client-side: in-browser AI, canvas and WebGL toys, built
+          with free tools that don't need an account or a secret key. Nothing you do on these pages
+          gets sent to a server — it all happens right here, in your browser.
+        </p>
+      </div>
+
+      <div class="wk-empty">
+        <p class="wk-empty-title">First experiment — coming soon.</p>
+        <p class="wk-empty-desc">
+          This section is freshly built and intentionally empty for now. Check back soon, or see
+          <a href="../news/">what's new</a> in the meantime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER / CONTACT ──────────────────────────── -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-row">
+        <p class="footer-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Open to new opportunities ·
+          <svg class="status-icon" id="status-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+          <span id="status-phrase"></span> in Toronto
+        </p>
+        <a href="https://www.linkedin.com/in/namit-dadlani" class="btn" target="_blank" rel="noopener noreferrer">Get in touch →</a>
+      </div>
+      <p class="footer-copy">namitdadlani.com</p>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById('theme-toggle');
+
+    const saved = localStorage.getItem('theme') || 'light';
+    body.className = saved;
+
+    toggle.addEventListener('click', () => {
+      const next = body.classList.contains('dark') ? 'light' : 'dark';
+      body.className = next;
+      localStorage.setItem('theme', next);
+    });
+
+    const STATUS_ICONS = {
+      sunrise: '<path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="19.78" y1="10.22" x2="18.36" y2="11.64"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="16 5 12 9 8 5"/>',
+      sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+      sunset: '<path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="19.78" y1="10.22" x2="18.36" y2="11.64"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 5 12 9 16 5"/>',
+      moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+    };
+
+    function torontoHour() {
+      return parseInt(
+        new Intl.DateTimeFormat('en-CA', {
+          timeZone: 'America/Toronto',
+          hour12: false,
+          hour: 'numeric',
+        }).format(new Date()), 10
+      );
+    }
+
+    function bucketFor(hour) {
+      if (hour >= 5 && hour < 12)  return { label: 'Morning',    icon: 'sunrise' };
+      if (hour >= 12 && hour < 17) return { label: 'Afternoon',  icon: 'sun'     };
+      if (hour >= 17 && hour < 21) return { label: 'Evening',    icon: 'sunset'  };
+      return                               { label: 'Late night', icon: 'moon'    };
+    }
+
+    const statusIcon   = document.getElementById('status-icon');
+    const statusPhrase = document.getElementById('status-phrase');
+    let currentBucket  = null;
+
+    function renderStatus() {
+      const bucket = bucketFor(torontoHour());
+      if (bucket.label === currentBucket) return;
+      currentBucket = bucket.label;
+      statusPhrase.textContent = bucket.label;
+      statusIcon.innerHTML = STATUS_ICONS[bucket.icon];
+    }
+
+    renderStatus();
+    let statusInterval = setInterval(renderStatus, 60000);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        clearInterval(statusInterval);
+      } else {
+        renderStatus();
+        statusInterval = setInterval(renderStatus, 60000);
+      }
+    });
+  </script>
+
+</body>
+</html>

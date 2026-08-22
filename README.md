@@ -12,6 +12,8 @@ Plain HTML, CSS, and JavaScript. No framework, no build step, no dependencies.
 
 That's intentional. A portfolio site doesn't need React. Keeping it simple means it's fast, easy to maintain, and the code is readable by anyone who opens it.
 
+Individual `/workshop` experiments may load a client-side library straight from a CDN (e.g. [Transformers.js](https://huggingface.co/docs/transformers.js) for in-browser AI) via a plain `<script>` tag. That's still no bundler, no npm, and no backend — just an extra script tag on that one page.
+
 ---
 
 ## Design
@@ -53,6 +55,10 @@ Push to the `main` branch. GitHub Pages serves it directly from the repo root.
 - [x] Content — About, Experience, Education, Hero stats
 - [x] Light / dark theme toggle
 - [x] Favicon
+- [x] News subsection — `/news`, a standalone digest page
+- [x] Contact card subsection — `/contactcard`, a standalone digital business card
+- [x] Workshop section shell — `/workshop`, empty landing page for future client-side experiments
 - [ ] Graphic face / illustration for the hero
 - [ ] Articles / Writing section
 - [ ] Photography subsection
+- [ ] First Workshop experiment (client-side, keyless — e.g. Transformers.js)
