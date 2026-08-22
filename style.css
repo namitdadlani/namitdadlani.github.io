@@ -219,13 +219,20 @@ body.dark .icon-sun  { display: block; }
   color: var(--text);
   border-radius: 3px;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   transition: background-color 0.2s ease;
   cursor: pointer;
   background: none;
 }
 .btn:hover {
   background: var(--bg-secondary);
+}
+.btn svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
 
 /* ─── Hero stats ─────────────────────────────────── */
@@ -550,6 +557,12 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  flex-wrap: wrap;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
