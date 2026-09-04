@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Namit Dadlani | Workshop</title>
-  <meta name="description" content="Small, real, interactive experiments — built with free and genuinely keyless client-side tools, running entirely in your browser." />
+  <meta name="description" content="Small, real, interactive experiments, built with free and genuinely keyless client-side tools that run entirely in your browser." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,31 +14,55 @@
   <link rel="stylesheet" href="../style.css" />
 
   <style>
-    /* ── Workshop-only additions (kept local — the shared design system lives in style.css) ── */
-    .wk-empty {
-      border: 0.5px solid var(--border);
-      border-radius: 3px;
-      padding: 28px 24px;
+    /* ── Workshop-only additions (kept local, the shared design system lives in style.css) ── */
+    .wk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
       margin-top: 32px;
-      cursor: default;
     }
-    .wk-empty-title {
+    .wk-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+    .wk-card:hover {
+      border-color: var(--amber);
+      background: var(--bg-secondary);
+    }
+    .wk-card-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .wk-card-title {
       font-family: 'DM Serif Display', serif;
       font-size: 19px;
       font-weight: 400;
       color: var(--text);
-      margin-bottom: 8px;
     }
-    .wk-empty-desc {
+    .wk-card-desc {
       font-family: 'Outfit', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-muted);
-      line-height: 1.7;
-      max-width: 480px;
+      line-height: 1.65;
     }
-    .wk-empty-desc a {
-      color: var(--amber);
+    .wk-card-arrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-top: auto;
+      padding-top: 4px;
     }
+    .wk-card:hover .wk-card-arrow { color: var(--amber); }
   </style>
 </head>
 
@@ -87,7 +111,7 @@
       <h2 class="section-title">Small experiments, <em>live.</em></h2>
       <div class="about-body">
         <p>
-          A space for small, real, interactive things I build — things you can actually click
+          A space for small, real, interactive things I build, things you can actually click
           around in.
         </p>
         <p>
@@ -97,12 +121,26 @@
         </p>
       </div>
 
-      <div class="wk-empty">
-        <p class="wk-empty-title">First experiment — coming soon.</p>
-        <p class="wk-empty-desc">
-          This section is freshly built and intentionally empty for now. Check back soon, or see
-          <a href="../news/">what's new</a> in the meantime.
-        </p>
+      <div class="wk-grid">
+        <a class="wk-card" href="backoff/">
+          <span class="wk-card-tag">Systems Lab</span>
+          <span class="wk-card-title">Retry with backoff</span>
+          <span class="wk-card-desc">
+            Fixed-interval retry vs. exponential backoff with jitter, racing against the same
+            simulated service outage.
+          </span>
+          <span class="wk-card-arrow">Open demo &rarr;</span>
+        </a>
+
+        <a class="wk-card" href="partitioning/">
+          <span class="wk-card-tag">Systems Lab</span>
+          <span class="wk-card-title">Partitioning hosts</span>
+          <span class="wk-card-desc">
+            A ring visualization comparing consistent hashing to naive modulo hashing as shards
+            are added or removed.
+          </span>
+          <span class="wk-card-arrow">Open demo &rarr;</span>
+        </a>
       </div>
     </div>
   </section>

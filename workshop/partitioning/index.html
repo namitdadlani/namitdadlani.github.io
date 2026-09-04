@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consistent Hashing | Workshop | Namit Dadlani</title>
+  <meta name="description" content="An interactive ring visualization comparing consistent hashing to naive modulo hashing when hosts are added or removed." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="stylesheet" href="../../style.css" />
+
+  <style>
+    .wk-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-faint);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .wk-back:hover { color: var(--amber); }
+
+    .wk-lede {
+      max-width: 620px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .wk-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .wk-mode-toggle {
+      display: inline-flex;
+      border: 0.5px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-left: auto;
+    }
+    .wk-mode-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 8px 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .wk-mode-btn.active {
+      background: var(--amber);
+      color: #FAFAF8;
+    }
+
+    .wk-stage {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 32px;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .wk-ring-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 12px 0;
+    }
+    #ring-svg { width: 100%; max-width: 420px; height: auto; }
+
+    .wk-ring-node circle { fill: var(--amber); }
+    .wk-ring-node text {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      fill: var(--text-muted);
+    }
+    .wk-ring-key circle { fill: var(--text-faint); transition: fill 0.3s ease; }
+    .wk-ring-key.moved circle { fill: #B0533A; }
+    .wk-ring-edge { stroke: var(--border); stroke-width: 1; opacity: 0.5; transition: stroke 0.3s ease, opacity 0.3s ease; }
+    .wk-ring-edge.moved { stroke: #B0533A; opacity: 0.9; }
+    .wk-ring-track { fill: none; stroke: var(--border); stroke-width: 1; }
+
+    .wk-side { display: flex; flex-direction: column; gap: 20px; }
+    .wk-stat-card {
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 16px 18px;
+    }
+    .wk-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 30px;
+      color: var(--text);
+      display: block;
+      font-variant-numeric: tabular-nums;
+    }
+    .wk-stat-num.amber { color: #B0533A; }
+    .wk-stat-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      display: block;
+    }
+
+    .wk-mode-desc {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .wk-mode-desc strong { color: var(--text); font-weight: 500; }
+
+    @media (max-width: 640px) {
+      .wk-stage { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body class="light">
+
+  <!-- ── NAV ──────────────────────────────────────── -->
+  <nav>
+    <a href="../../" class="nav-logo">
+      <span class="logo-mark">
+        <span class="logo-brace">{</span>
+        <span class="logo-letters">N<em>D</em></span>
+        <span class="logo-brace">}</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../#about">About</a></li>
+      <li><a href="../../#experience">Experience</a></li>
+      <li><a href="../../#education">Education</a></li>
+      <li><a href="../../#lately">Lately</a></li>
+      <li><a href="../../news/">News</a></li>
+      <li><a href="../">Workshop</a></li>
+      <li><a href="../../#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </nav>
+
+  <section id="wk-demo">
+    <div class="container">
+      <a href="../" class="wk-back">&larr; Workshop</a>
+      <p class="section-label">Systems Lab</p>
+      <h2 class="section-title">Partitioning <em>hosts.</em></h2>
+
+      <p class="wk-lede">
+        A provisioning service assigns each host to one of a handful of shards. Add or remove a
+        shard and watch how many hosts get reassigned. The difference between consistent
+        hashing and naive modulo hashing is the whole reason large fleets can scale without a
+        full reshuffle every time.
+      </p>
+
+      <div class="wk-controls">
+        <button class="btn" id="add-btn">Add shard</button>
+        <button class="btn" id="remove-btn">Remove shard</button>
+        <button class="btn" id="reset-btn">Reset</button>
+        <div class="wk-mode-toggle">
+          <button class="wk-mode-btn active" data-mode="consistent">Consistent hash</button>
+          <button class="wk-mode-btn" data-mode="modulo">Modulo hash</button>
+        </div>
+      </div>
+
+      <div class="wk-stage">
+        <div class="wk-ring-wrap">
+          <svg id="ring-svg" viewBox="0 0 320 320"></svg>
+        </div>
+
+        <div class="wk-side">
+          <div class="wk-stat-card">
+            <span class="wk-stat-num" id="stat-shards">4</span>
+            <span class="wk-stat-label">shards</span>
+          </div>
+          <div class="wk-stat-card">
+            <span class="wk-stat-num amber" id="stat-moved">0</span>
+            <span class="wk-stat-label">hosts reassigned on last change</span>
+          </div>
+          <p class="wk-mode-desc" id="mode-desc">
+            <strong>Consistent hashing:</strong> shards and hosts sit on the same ring. Each host
+            belongs to the next shard clockwise, so adding or removing a shard only reassigns the
+            hosts between it and its neighbour.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <p class="footer-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Open to new opportunities &middot;
+          <svg class="status-icon" id="status-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+          <span id="status-phrase"></span> in Toronto
+        </p>
+      </div>
+      <p class="footer-copy">namitdadlani.com</p>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'light';
+    body.className = saved;
+    toggle.addEventListener('click', () => {
+      const next = body.classList.contains('dark') ? 'light' : 'dark';
+      body.className = next;
+      localStorage.setItem('theme', next);
+    });
+
+    const STATUS_ICONS = {
+      sunrise: '<path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="19.78" y1="10.22" x2="18.36" y2="11.64"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="16 5 12 9 8 5"/>',
+      sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+      sunset: '<path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="19.78" y1="10.22" x2="18.36" y2="11.64"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 5 12 9 16 5"/>',
+      moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+    };
+    function torontoHour() {
+      return parseInt(new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', hour12: false, hour: 'numeric' }).format(new Date()), 10);
+    }
+    function bucketFor(hour) {
+      if (hour >= 5 && hour < 12)  return { label: 'Morning',    icon: 'sunrise' };
+      if (hour >= 12 && hour < 17) return { label: 'Afternoon',  icon: 'sun'     };
+      if (hour >= 17 && hour < 21) return { label: 'Evening',    icon: 'sunset'  };
+      return                               { label: 'Late night', icon: 'moon'    };
+    }
+    const statusIcon = document.getElementById('status-icon');
+    const statusPhrase = document.getElementById('status-phrase');
+    let currentBucket = null;
+    function renderStatus() {
+      const bucket = bucketFor(torontoHour());
+      if (bucket.label === currentBucket) return;
+      currentBucket = bucket.label;
+      statusPhrase.textContent = bucket.label;
+      statusIcon.innerHTML = STATUS_ICONS[bucket.icon];
+    }
+    renderStatus();
+    setInterval(renderStatus, 60000);
+
+    /* ── Ring visualization ─────────────────────────── */
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.getElementById('ring-svg');
+    const CX = 160, CY = 160, R = 120, KEY_R = 92;
+    const NUM_HOSTS = 24;
+
+    let mode = 'consistent';
+    let shards = [0, 1, 2, 3]; // shard ids, position on ring = hash(id)
+    let hosts = [];
+
+    function hashPos(id) {
+      // deterministic pseudo-hash spread around the ring (0..1)
+      let h = 0;
+      const s = String(id);
+      for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+      h = (h * 2654435761) >>> 0;
+      return (h % 10000) / 10000;
+    }
+
+    function initHosts() {
+      hosts = [];
+      for (let i = 0; i < NUM_HOSTS; i++) {
+        hosts.push({ id: 'h' + i, pos: hashPos('host-' + i) });
+      }
+    }
+
+    function shardAssignConsistent(hostPos, shardList) {
+      const sorted = shardList.map(id => ({ id, pos: hashPos('shard-' + id) })).sort((a, b) => a.pos - b.pos);
+      for (const s of sorted) {
+        if (hostPos <= s.pos) return s.id;
+      }
+      return sorted[0].id;
+    }
+
+    function shardAssignModulo(hostIndex, shardList) {
+      const n = shardList.length;
+      return shardList[hostIndex % n];
+    }
+
+    function computeAssignments(shardList) {
+      const map = {};
+      hosts.forEach((h, i) => {
+        map[h.id] = mode === 'consistent'
+          ? shardAssignConsistent(h.pos, shardList)
+          : shardAssignModulo(i, shardList);
+      });
+      return map;
+    }
+
+    let prevAssignments = null;
+
+    function polar(cx, cy, r, frac) {
+      const angle = frac * Math.PI * 2 - Math.PI / 2;
+      return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+    }
+
+    function el(tag, attrs) {
+      const e = document.createElementNS(NS, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+
+    const shardColors = ['#B07D3A', '#7A8C6B', '#5A7A8C', '#8C5A7A', '#8C7A5A', '#5A8C7A'];
+    function colorFor(shardId, shardList) {
+      const idx = shardList.slice().sort((a, b) => a - b).indexOf(shardId);
+      return shardColors[idx % shardColors.length];
+    }
+
+    function render() {
+      svg.innerHTML = '';
+      const assignments = computeAssignments(shards);
+
+      svg.appendChild(el('circle', { cx: CX, cy: CY, r: R, class: 'wk-ring-track' }));
+
+      // edges: key -> shard
+      hosts.forEach(h => {
+        const shardId = assignments[h.id];
+        const shardPos = hashPos('shard-' + shardId);
+        const kp = polar(CX, CY, KEY_R, h.pos);
+        const sp = polar(CX, CY, R, shardPos);
+        const moved = prevAssignments && prevAssignments[h.id] !== shardId;
+        const line = el('line', {
+          x1: kp.x, y1: kp.y, x2: sp.x, y2: sp.y,
+          class: 'wk-ring-edge' + (moved ? ' moved' : ''),
+        });
+        svg.appendChild(line);
+      });
+
+      // shard nodes
+      shards.forEach(id => {
+        const pos = hashPos('shard-' + id);
+        const p = polar(CX, CY, R, pos);
+        const g = el('g', { class: 'wk-ring-node' });
+        const dot = el('circle', { cx: p.x, cy: p.y, r: 7 });
+        dot.setAttribute('fill', colorFor(id, shards));
+        g.appendChild(dot);
+        const labelP = polar(CX, CY, R + 16, pos);
+        const text = el('text', { x: labelP.x, y: labelP.y, 'text-anchor': 'middle' });
+        text.textContent = 'S' + id;
+        g.appendChild(text);
+        svg.appendChild(g);
+      });
+
+      // host keys
+      hosts.forEach(h => {
+        const shardId = assignments[h.id];
+        const moved = prevAssignments && prevAssignments[h.id] !== shardId;
+        const p = polar(CX, CY, KEY_R, h.pos);
+        const g = el('g', { class: 'wk-ring-key' + (moved ? ' moved' : '') });
+        const dot = el('circle', { cx: p.x, cy: p.y, r: 3.5 });
+        if (!moved) dot.setAttribute('fill', colorFor(shardId, shards));
+        g.appendChild(dot);
+        svg.appendChild(g);
+      });
+
+      const movedCount = prevAssignments
+        ? hosts.filter(h => prevAssignments[h.id] !== assignments[h.id]).length
+        : 0;
+
+      document.getElementById('stat-shards').textContent = shards.length;
+      document.getElementById('stat-moved').textContent = movedCount;
+
+      prevAssignments = assignments;
+    }
+
+    let nextShardId = shards.length;
+
+    function addShard() {
+      shards.push(nextShardId++);
+      render();
+    }
+    function removeShard() {
+      if (shards.length <= 1) return;
+      shards.pop();
+      render();
+    }
+    function resetAll() {
+      shards = [0, 1, 2, 3];
+      nextShardId = 4;
+      prevAssignments = null;
+      initHosts();
+      render();
+      prevAssignments = computeAssignments(shards);
+    }
+
+    document.getElementById('add-btn').addEventListener('click', addShard);
+    document.getElementById('remove-btn').addEventListener('click', removeShard);
+    document.getElementById('reset-btn').addEventListener('click', resetAll);
+
+    const modeDescs = {
+      consistent: '<strong>Consistent hashing:</strong> shards and hosts sit on the same ring. Each host belongs to the next shard clockwise, so adding or removing a shard only reassigns the hosts between it and its neighbour.',
+      modulo: '<strong>Modulo hashing:</strong> a host’s shard is <code>index % shard_count</code>. Changing the shard count changes the modulus for almost every host at once, so most of the fleet gets reassigned.',
+    };
+
+    document.querySelectorAll('.wk-mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.wk-mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        mode = btn.dataset.mode;
+        document.getElementById('mode-desc').innerHTML = modeDescs[mode];
+        prevAssignments = null;
+        render();
+        prevAssignments = computeAssignments(shards);
+      });
+    });
+
+    initHosts();
+    render();
+    prevAssignments = computeAssignments(shards);
+  </script>
+
+</body>
+</html>

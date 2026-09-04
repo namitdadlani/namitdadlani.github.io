@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retry with Backoff | Workshop | Namit Dadlani</title>
+  <meta name="description" content="An interactive visualization of naive retry vs. exponential backoff with jitter against a throttling service." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="stylesheet" href="../../style.css" />
+
+  <style>
+    .wk-back {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-faint);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .wk-back:hover { color: var(--amber); }
+
+    .wk-lede {
+      max-width: 620px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .wk-lede code {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--amber);
+      background: var(--amber-light);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .wk-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .wk-legend {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .wk-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .wk-dot-key { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .wk-dot-key.fail { background: var(--text-faint); }
+    .wk-dot-key.throttle { background: #B0533A; }
+    .wk-dot-key.ok { background: var(--amber); }
+
+    .wk-lane-wrap { margin-bottom: 28px; }
+    .wk-lane-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .wk-lane-label .wk-lane-stat {
+      color: var(--text-faint);
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .wk-track {
+      position: relative;
+      height: 46px;
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-secondary);
+      overflow: hidden;
+    }
+    .wk-outage {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      background: rgba(176, 83, 58, 0.12);
+      border-right: 0.5px solid rgba(176, 83, 58, 0.35);
+    }
+    .wk-outage-label {
+      position: absolute;
+      top: 4px; left: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #B0533A;
+    }
+    .wk-playhead {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--text);
+      opacity: 0.35;
+      transform: translateX(-9999px);
+    }
+    .wk-dot {
+      position: absolute;
+      top: 50%;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.25s cubic-bezier(.2,1.4,.4,1);
+      cursor: default;
+    }
+    .wk-dot.show { transform: translate(-50%, -50%) scale(1); }
+    .wk-dot.throttle { background: #B0533A; }
+    .wk-dot.ok { background: var(--amber); box-shadow: 0 0 0 3px var(--amber-light); }
+
+    .wk-summary {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .wk-stat-card {
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 20px;
+    }
+    .wk-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--text);
+      display: block;
+      font-variant-numeric: tabular-nums;
+    }
+    .wk-stat-num.amber { color: var(--amber); }
+    .wk-stat-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="light">
+
+  <!-- ── NAV ──────────────────────────────────────── -->
+  <nav>
+    <a href="../../" class="nav-logo">
+      <span class="logo-mark">
+        <span class="logo-brace">{</span>
+        <span class="logo-letters">N<em>D</em></span>
+        <span class="logo-brace">}</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../../#about">About</a></li>
+      <li><a href="../../#experience">Experience</a></li>
+      <li><a href="../../#education">Education</a></li>
+      <li><a href="../../#lately">Lately</a></li>
+      <li><a href="../../news/">News</a></li>
+      <li><a href="../">Workshop</a></li>
+      <li><a href="../../#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </nav>
+
+  <section id="wk-demo">
+    <div class="container">
+      <a href="../" class="wk-back">&larr; Workshop</a>
+      <p class="section-label">Systems Lab</p>
+      <h2 class="section-title">Retry with <em>backoff.</em></h2>
+
+      <p class="wk-lede">
+        A service goes down and recovers a few seconds later. Two clients are calling it: one retries
+        on a fixed interval, the other backs off exponentially with jitter, the same pattern used to
+        handle <code>429</code> throttling in the host provisioning API at AWS. Watch which one clears
+        the outage in fewer calls.
+      </p>
+
+      <div class="wk-controls">
+        <button class="btn" id="run-btn">Run simulation</button>
+        <button class="btn" id="reset-btn">Reset</button>
+      </div>
+
+      <div class="wk-legend">
+        <span><span class="wk-dot-key throttle"></span>throttled (429)</span>
+        <span><span class="wk-dot-key ok"></span>succeeded</span>
+      </div>
+
+      <div class="wk-lane-wrap">
+        <div class="wk-lane-label">
+          Fixed interval retry (400ms)
+          <span class="wk-lane-stat" id="naive-stat">&middot;</span>
+        </div>
+        <div class="wk-track" id="naive-track">
+          <div class="wk-outage" id="naive-outage"><span class="wk-outage-label">outage</span></div>
+          <div class="wk-playhead" id="naive-playhead"></div>
+        </div>
+      </div>
+
+      <div class="wk-lane-wrap">
+        <div class="wk-lane-label">
+          Exponential backoff + jitter
+          <span class="wk-lane-stat" id="backoff-stat">&middot;</span>
+        </div>
+        <div class="wk-track" id="backoff-track">
+          <div class="wk-outage" id="backoff-outage"><span class="wk-outage-label">outage</span></div>
+          <div class="wk-playhead" id="backoff-playhead"></div>
+        </div>
+      </div>
+
+      <div class="wk-summary" id="summary" hidden>
+        <div class="wk-stat-card">
+          <span class="wk-stat-num" id="sum-naive-attempts">&middot;</span>
+          <span class="wk-stat-label">fixed-interval calls made</span>
+        </div>
+        <div class="wk-stat-card">
+          <span class="wk-stat-num amber" id="sum-backoff-attempts">&middot;</span>
+          <span class="wk-stat-label">backoff calls made</span>
+        </div>
+        <div class="wk-stat-card">
+          <span class="wk-stat-num" id="sum-reduction">&middot;</span>
+          <span class="wk-stat-label">fewer calls with backoff</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <p class="footer-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Open to new opportunities &middot;
+          <svg class="status-icon" id="status-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+          <span id="status-phrase"></span> in Toronto
+        </p>
+      </div>
+      <p class="footer-copy">namitdadlani.com</p>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme') || 'light';
+    body.className = saved;
+    toggle.addEventListener('click', () => {
+      const next = body.classList.contains('dark') ? 'light' : 'dark';
+      body.className = next;
+      localStorage.setItem('theme', next);
+    });
+
+    const STATUS_ICONS = {
+      sunrise: '<path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="19.78" y1="10.22" x2="18.36" y2="11.64"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="16 5 12 9 8 5"/>',
+      sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+      sunset: '<path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="2" y1="18" x2="4" y2="18"/><line x1="20" y1="18" x2="22" y2="18"/><line x1="19.78" y1="10.22" x2="18.36" y2="11.64"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 5 12 9 16 5"/>',
+      moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+    };
+    function torontoHour() {
+      return parseInt(new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', hour12: false, hour: 'numeric' }).format(new Date()), 10);
+    }
+    function bucketFor(hour) {
+      if (hour >= 5 && hour < 12)  return { label: 'Morning',    icon: 'sunrise' };
+      if (hour >= 12 && hour < 17) return { label: 'Afternoon',  icon: 'sun'     };
+      if (hour >= 17 && hour < 21) return { label: 'Evening',    icon: 'sunset'  };
+      return                               { label: 'Late night', icon: 'moon'    };
+    }
+    const statusIcon = document.getElementById('status-icon');
+    const statusPhrase = document.getElementById('status-phrase');
+    let currentBucket = null;
+    function renderStatus() {
+      const bucket = bucketFor(torontoHour());
+      if (bucket.label === currentBucket) return;
+      currentBucket = bucket.label;
+      statusPhrase.textContent = bucket.label;
+      statusIcon.innerHTML = STATUS_ICONS[bucket.icon];
+    }
+    renderStatus();
+    setInterval(renderStatus, 60000);
+
+    /* ── Retry / backoff simulation ─────────────────── */
+    const WINDOW = 8000;   // simulated ms shown across the full track width
+    const SPEED = 4;       // simulated ms per real ms (playback speed)
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const runBtn = document.getElementById('run-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const summary = document.getElementById('summary');
+    let running = false;
+    let timeouts = [];
+
+    function clearTimeouts() {
+      timeouts.forEach(clearTimeout);
+      timeouts = [];
+    }
+
+    function buildNaiveSchedule(outageEnd) {
+      const attempts = [];
+      let t = 0;
+      const interval = 400;
+      while (t < WINDOW) {
+        const ok = t >= outageEnd;
+        attempts.push({ time: t, ok });
+        if (ok) break;
+        t += interval;
+      }
+      return attempts;
+    }
+
+    function buildBackoffSchedule(outageEnd) {
+      const attempts = [];
+      let t = 0;
+      let delay = 250;
+      const cap = 4000;
+      while (t < WINDOW) {
+        const ok = t >= outageEnd;
+        attempts.push({ time: t, ok });
+        if (ok) break;
+        delay = Math.min(delay * 2, cap);
+        const jitter = delay * 0.25 * Math.random();
+        t += delay + jitter;
+      }
+      return attempts;
+    }
+
+    function pctOf(t) { return Math.min((t / WINDOW) * 100, 100); }
+
+    function placeOutageBand(el, outageEnd) {
+      el.style.width = pctOf(outageEnd) + '%';
+    }
+
+    function renderLane(trackId, playheadId, statId, attempts, outageEnd) {
+      const track = document.getElementById(trackId);
+      const playhead = document.getElementById(playheadId);
+      const stat = document.getElementById(statId);
+
+      track.querySelectorAll('.wk-dot').forEach(d => d.remove());
+      playhead.style.transform = 'translateX(-9999px)';
+      stat.textContent = 'running…';
+
+      attempts.forEach((a, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'wk-dot ' + (a.ok ? 'ok' : 'throttle');
+        dot.style.left = pctOf(a.time) + '%';
+        dot.title = `attempt ${i + 1} @ ${Math.round(a.time)}ms: ${a.ok ? '200 OK' : '429 throttled'}`;
+        track.appendChild(dot);
+
+        const delayReal = reduceMotion ? 0 : a.time / SPEED;
+        const to = setTimeout(() => {
+          requestAnimationFrame(() => dot.classList.add('show'));
+          if (i === attempts.length - 1) {
+            stat.textContent = `${attempts.length} call${attempts.length === 1 ? '' : 's'} · ${a.ok ? 'succeeded' : 'no success in window'}`;
+          }
+        }, delayReal);
+        timeouts.push(to);
+      });
+
+      if (!reduceMotion) {
+        const duration = WINDOW / SPEED;
+        const start = performance.now();
+        function step(now) {
+          const elapsed = now - start;
+          const t = Math.min(elapsed / duration, 1);
+          playhead.style.transform = `translateX(${t * track.clientWidth}px)`;
+          if (t < 1 && running) requestAnimationFrame(step);
+          else playhead.style.transform = 'translateX(-9999px)';
+        }
+        requestAnimationFrame(step);
+      }
+    }
+
+    function run() {
+      if (running) return;
+      running = true;
+      summary.hidden = true;
+      clearTimeouts();
+
+      const outageEnd = 2000 + Math.random() * 1400;
+
+      placeOutageBand(document.getElementById('naive-outage'), outageEnd);
+      placeOutageBand(document.getElementById('backoff-outage'), outageEnd);
+
+      const naive = buildNaiveSchedule(outageEnd);
+      const backoff = buildBackoffSchedule(outageEnd);
+
+      renderLane('naive-track', 'naive-playhead', 'naive-stat', naive, outageEnd);
+      renderLane('backoff-track', 'backoff-playhead', 'backoff-stat', backoff, outageEnd);
+
+      const totalReal = reduceMotion ? 0 : WINDOW / SPEED + 300;
+      const to = setTimeout(() => {
+        running = false;
+        document.getElementById('sum-naive-attempts').textContent = naive.length;
+        document.getElementById('sum-backoff-attempts').textContent = backoff.length;
+        const diff = naive.length - backoff.length;
+        document.getElementById('sum-reduction').textContent = diff > 0 ? `${diff}` : '0';
+        summary.hidden = false;
+      }, totalReal);
+      timeouts.push(to);
+    }
+
+    function reset() {
+      running = false;
+      clearTimeouts();
+      ['naive-track', 'backoff-track'].forEach(id => {
+        document.getElementById(id).querySelectorAll('.wk-dot').forEach(d => d.remove());
+      });
+      document.getElementById('naive-stat').textContent = '·';
+      document.getElementById('backoff-stat').textContent = '·';
+      document.getElementById('naive-outage').style.width = '0';
+      document.getElementById('backoff-outage').style.width = '0';
+      summary.hidden = true;
+    }
+
+    runBtn.addEventListener('click', run);
+    resetBtn.addEventListener('click', reset);
+
+    run();
+  </script>
+
+</body>
+</html>
